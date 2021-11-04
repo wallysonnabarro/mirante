@@ -16,7 +16,6 @@ namespace TechBeauty.Dominio.Modelo
         public static Beneficio GerarBeneficio(string nome, string descricao)
         {
             Beneficio beneficio = new();
-           
             beneficio.Nome = nome;
             beneficio.Descricao = descricao;
             return beneficio;
