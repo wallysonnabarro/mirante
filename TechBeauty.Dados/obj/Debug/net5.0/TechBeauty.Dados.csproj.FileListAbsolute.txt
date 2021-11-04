@@ -1,0 +1,57 @@
+C:\Users\pedro\source\repos\TechBeauty\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.csproj.AssemblyReference.cache
+C:\Users\pedro\source\repos\TechBeauty\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pedro\source\repos\TechBeauty\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.AssemblyInfoInputs.cache
+C:\Users\pedro\source\repos\TechBeauty\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.AssemblyInfo.cs
+C:\Users\pedro\source\repos\TechBeauty\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.csproj.CoreCompileInputs.cache
+C:\Users\Wallyson Nabarro\source\repos\TechBeauty_s\TechBeauty_solution\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.csproj.AssemblyReference.cache
+C:\Users\Wallyson Nabarro\source\repos\TechBeauty_s\TechBeauty_solution\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Wallyson Nabarro\source\repos\TechBeauty_s\TechBeauty_solution\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.AssemblyInfoInputs.cache
+C:\Users\Wallyson Nabarro\source\repos\TechBeauty_s\TechBeauty_solution\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.AssemblyInfo.cs
+C:\Users\Wallyson Nabarro\source\repos\TechBeauty_s\TechBeauty_solution\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.csproj.CoreCompileInputs.cache
+C:\Users\Wallyson Nabarro\source\repos\TechBeauty_s\TechBeauty_solution\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dados.deps.json
+C:\Users\Wallyson Nabarro\source\repos\TechBeauty_s\TechBeauty_solution\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dados.runtimeconfig.json
+C:\Users\Wallyson Nabarro\source\repos\TechBeauty_s\TechBeauty_solution\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dados.runtimeconfig.dev.json
+C:\Users\Wallyson Nabarro\source\repos\TechBeauty_s\TechBeauty_solution\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dados.dll
+C:\Users\Wallyson Nabarro\source\repos\TechBeauty_s\TechBeauty_solution\TechBeauty.Dados\bin\Debug\net5.0\ref\TechBeauty.Dados.dll
+C:\Users\Wallyson Nabarro\source\repos\TechBeauty_s\TechBeauty_solution\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dados.pdb
+C:\Users\Wallyson Nabarro\source\repos\TechBeauty_s\TechBeauty_solution\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dominio.dll
+C:\Users\Wallyson Nabarro\source\repos\TechBeauty_s\TechBeauty_solution\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dominio.pdb
+C:\Users\Wallyson Nabarro\source\repos\TechBeauty_s\TechBeauty_solution\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.dll
+C:\Users\Wallyson Nabarro\source\repos\TechBeauty_s\TechBeauty_solution\TechBeauty.Dados\obj\Debug\net5.0\ref\TechBeauty.Dados.dll
+C:\Users\Wallyson Nabarro\source\repos\TechBeauty_s\TechBeauty_solution\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.pdb
+C:\Users\Wallyson Nabarro\source\repos\TechBeauty_s\TechBeauty_solution\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.genruntimeconfig.cache
+C:\Users\Nikollas Delfino\Desktop\O SALAO\Mirante.TechBeauty\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dados.deps.json
+C:\Users\Nikollas Delfino\Desktop\O SALAO\Mirante.TechBeauty\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dados.runtimeconfig.json
+C:\Users\Nikollas Delfino\Desktop\O SALAO\Mirante.TechBeauty\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dados.runtimeconfig.dev.json
+C:\Users\Nikollas Delfino\Desktop\O SALAO\Mirante.TechBeauty\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dados.dll
+C:\Users\Nikollas Delfino\Desktop\O SALAO\Mirante.TechBeauty\TechBeauty.Dados\bin\Debug\net5.0\ref\TechBeauty.Dados.dll
+C:\Users\Nikollas Delfino\Desktop\O SALAO\Mirante.TechBeauty\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dados.pdb
+C:\Users\Nikollas Delfino\Desktop\O SALAO\Mirante.TechBeauty\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dominio.dll
+C:\Users\Nikollas Delfino\Desktop\O SALAO\Mirante.TechBeauty\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dominio.pdb
+C:\Users\Nikollas Delfino\Desktop\O SALAO\Mirante.TechBeauty\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.csproj.AssemblyReference.cache
+C:\Users\Nikollas Delfino\Desktop\O SALAO\Mirante.TechBeauty\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nikollas Delfino\Desktop\O SALAO\Mirante.TechBeauty\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.AssemblyInfoInputs.cache
+C:\Users\Nikollas Delfino\Desktop\O SALAO\Mirante.TechBeauty\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.AssemblyInfo.cs
+C:\Users\Nikollas Delfino\Desktop\O SALAO\Mirante.TechBeauty\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.csproj.CoreCompileInputs.cache
+C:\Users\Nikollas Delfino\Desktop\O SALAO\Mirante.TechBeauty\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.dll
+C:\Users\Nikollas Delfino\Desktop\O SALAO\Mirante.TechBeauty\TechBeauty.Dados\obj\Debug\net5.0\ref\TechBeauty.Dados.dll
+C:\Users\Nikollas Delfino\Desktop\O SALAO\Mirante.TechBeauty\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.pdb
+C:\Users\Nikollas Delfino\Desktop\O SALAO\Mirante.TechBeauty\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.genruntimeconfig.cache
+C:\Users\Pedro Gutierrez\source\repos\TechSolution\Mirante.TechBeauty\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dados.deps.json
+C:\Users\Pedro Gutierrez\source\repos\TechSolution\Mirante.TechBeauty\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dados.runtimeconfig.json
+C:\Users\Pedro Gutierrez\source\repos\TechSolution\Mirante.TechBeauty\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dados.runtimeconfig.dev.json
+C:\Users\Pedro Gutierrez\source\repos\TechSolution\Mirante.TechBeauty\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dados.dll
+C:\Users\Pedro Gutierrez\source\repos\TechSolution\Mirante.TechBeauty\TechBeauty.Dados\bin\Debug\net5.0\ref\TechBeauty.Dados.dll
+C:\Users\Pedro Gutierrez\source\repos\TechSolution\Mirante.TechBeauty\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dados.pdb
+C:\Users\Pedro Gutierrez\source\repos\TechSolution\Mirante.TechBeauty\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dominio.dll
+C:\Users\Pedro Gutierrez\source\repos\TechSolution\Mirante.TechBeauty\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dominio.pdb
+C:\Users\Pedro Gutierrez\source\repos\TechSolution\Mirante.TechBeauty\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.csproj.AssemblyReference.cache
+C:\Users\Pedro Gutierrez\source\repos\TechSolution\Mirante.TechBeauty\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Pedro Gutierrez\source\repos\TechSolution\Mirante.TechBeauty\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.AssemblyInfoInputs.cache
+C:\Users\Pedro Gutierrez\source\repos\TechSolution\Mirante.TechBeauty\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.AssemblyInfo.cs
+C:\Users\Pedro Gutierrez\source\repos\TechSolution\Mirante.TechBeauty\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.csproj.CoreCompileInputs.cache
+C:\Users\Pedro Gutierrez\source\repos\TechSolution\Mirante.TechBeauty\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.dll
+C:\Users\Pedro Gutierrez\source\repos\TechSolution\Mirante.TechBeauty\TechBeauty.Dados\obj\Debug\net5.0\ref\TechBeauty.Dados.dll
+C:\Users\Pedro Gutierrez\source\repos\TechSolution\Mirante.TechBeauty\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.pdb
+C:\Users\Pedro Gutierrez\source\repos\TechSolution\Mirante.TechBeauty\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.genruntimeconfig.cache
+C:\Users\Wallyson Nabarro\source\repos\TechBeauty_s\TechBeauty_solution\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.csproj.CopyComplete

@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TechBeauty.Dominio.Modelo.Agendamento" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACAAAEAAAAAAAACCAAAAEAAAIQAAEQEAAAAAAAAAE=</HashCode>
+      <FileName>Modelo\Agendamento.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Modelo.Beneficio" Collapsed="true">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAABAAAAAABAAAAAAAAACAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Modelo\Beneficio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Modelo.Caixa" Collapsed="true">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAADAAAAEAQAACAIABAAAAAAAAAAAAAAkAAgAAAAAAA=</HashCode>
+      <FileName>Modelo\Caixa.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Modelo.Cargo" Collapsed="true">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAABAAAACAAAAAEAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Modelo\Cargo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Modelo.Cliente" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Modelo\Cliente.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Modelo.Colaborador" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIAAAAAAAAAAAAAAAAIMAAgAAAAAAAAAAABAAEAA=</HashCode>
+      <FileName>Modelo\Colaborador.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Modelo.Contato" Collapsed="true">
+    <Position X="8.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAEEgAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Modelo\Contato.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Modelo.ContratoTrabalho" Collapsed="true">
+    <Position X="12.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAQAAAAAAECAAAEAAAAAAAAAAhAAAAAAAgAAA=</HashCode>
+      <FileName>Modelo\ContratoTrabalho.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Modelo.Endereco" Collapsed="true">
+    <Position X="5.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAACIAAAAAgAGAAAAAAEAAAAAAAAABAAA=</HashCode>
+      <FileName>Modelo\Endereco.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Modelo.Escala" Collapsed="true">
+    <Position X="8.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACAABAAAABAAAAAAAAAAEEAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Modelo\Escala.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Modelo.EspacoCliente" Collapsed="true">
+    <Position X="12.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAABAAAgEAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Modelo\EspacoCliente.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Modelo.Genero" Collapsed="true">
+    <Position X="14" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAABAEEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Modelo\Genero.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Modelo.LogAgendamento" Collapsed="true">
+    <Position X="7" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAEAAAAAAAAAAAgBAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Modelo\LogAgendamento.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Modelo.OrdemServico" Collapsed="true">
+    <Position X="10.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAEAAIAAAAAAACCBAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Modelo\OrdemServico.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Modelo.Pagamento" Collapsed="true">
+    <Position X="14" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAEAAAAAAFAAAABAAAEAEAAAAAAQQAAAAAAAAAA=</HashCode>
+      <FileName>Modelo\Pagamento.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Modelo.Pessoa" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAACAAAIAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Modelo\Pessoa.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Modelo.RegimeContratual" Collapsed="true">
+    <Position X="5.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAABAEEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Modelo\RegimeContratual.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Modelo.Servico" Collapsed="true">
+    <Position X="8.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAJAAAAAAAABAEAAAAAAAAAAAAEAAEAAAA=</HashCode>
+      <FileName>Modelo\Servico.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Modelo.TipoContato" Collapsed="true">
+    <Position X="12.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAABAEEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Modelo\TipoContato.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Modelo.Usuario" Collapsed="true">
+    <Position X="5.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAQAAAACIAAAAEAAAAAAAADAAAAAAEAAAA=</HashCode>
+      <FileName>Modelo\Usuario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Repositorio.AgendamentoRepositorio" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAgABAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Repositorio\AgendamentoRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Repositorio.CargoRepositorio" Collapsed="true">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAAAABAAAACAQAAAAAAAEAAAA=</HashCode>
+      <FileName>Repositorio\CargoRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Repositorio.ClienteRepositorio" Collapsed="true">
+    <Position X="5.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAABAABgAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Repositorio\ClienteRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Repositorio.ColaboradorRepositorio" Collapsed="true">
+    <Position X="7" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositorio\ColaboradorRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Repositorio.ContatoRepositorio" Collapsed="true">
+    <Position X="10.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAEgAAABAABAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Repositorio\ContatoRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Repositorio.ContratoTrabalhoRepositorio" Collapsed="true">
+    <Position X="14" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAABAQBAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Repositorio\ContratoTrabalhoRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Repositorio.EnderecoRepositorio" Collapsed="true">
+    <Position X="7" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAARAABAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Repositorio\EnderecoRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Repositorio.EscalaRepositorio" Collapsed="true">
+    <Position X="10.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAJAABAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Repositorio\EscalaRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Repositorio.GeneroRepositorio" Collapsed="true">
+    <Position X="5.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAABAABAAAAAAAAAIAAAAEAAAA=</HashCode>
+      <FileName>Repositorio\GeneroRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Repositorio.LogAgendamentoRepositorio" Collapsed="true">
+    <Position X="8.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Repositorio\LogAgendamentoRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Repositorio.OrdemServicoRepositorio" Collapsed="true">
+    <Position X="12.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAgAAABIABAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Repositorio\OrdemServicoRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Repositorio.RegimeContratualRepositorio" Collapsed="true">
+    <Position X="7" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAABAABAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Repositorio\RegimeContratualRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Repositorio.ServicoRepositorio" Collapsed="true">
+    <Position X="10.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAABAABBAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Repositorio\ServicoRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechBeauty.Dominio.Repositorio.TipoContatoRepositorio" Collapsed="true">
+    <Position X="14" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgEAABAABAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Repositorio\TipoContatoRepositorio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="TechBeauty.Dominio.Modelo.Enumeradores.FormaPagamento" Collapsed="true">
+    <Position X="5.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iAAAAAAAAAAAAAAAAAACAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Modelo\Enumeradores\FormaPagamento.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TechBeauty.Dominio.Modelo.Enumeradores.StatusAgendamento" Collapsed="true">
+    <Position X="7" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAgAAAAIAICEAAAAAACAAAAAAAAAAEIAA=</HashCode>
+      <FileName>Modelo\Enumeradores\StatusAgendamento.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TechBeauty.Dominio.Modelo.Enumeradores.StatusOS" Collapsed="true">
+    <Position X="8.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAACAAAAAAAAAAAAAAQAAAAAAAEAAA=</HashCode>
+      <FileName>Modelo\Enumeradores\StatusOS.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
