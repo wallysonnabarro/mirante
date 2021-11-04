@@ -27,6 +27,7 @@ namespace TechBeauty.Dados
         public DbSet<Pagamento> Pagamento { get; set; }
         public DbSet<Pessoa> Pessoa { get; set; }
         public DbSet<Genero> Genero { get; set; }
+        public DbSet<Gestao> Gestao { get; set; }
         public DbSet<TipoContato> TipoContato { get; set; }
         public DbSet<Contato> Contato { get; set; }
         public DbSet<Comissao> Comissao { get; set; }
