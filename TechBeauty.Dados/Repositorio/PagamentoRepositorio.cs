@@ -34,7 +34,6 @@ namespace TechBeauty.Dados.Repositorio
             context.Pagamento.FirstOrDefault(x => x.Id == id).FormaPagamento(formaPagamento);
             context.SaveChanges();
         }
-        // falta o método troco(dinheiro)
 
         public Pagamento SelecionarPorId(int id)
         {
