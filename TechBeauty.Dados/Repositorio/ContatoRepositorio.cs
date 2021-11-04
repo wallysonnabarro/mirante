@@ -25,7 +25,7 @@ namespace TechBeauty.Dados.Repositorio
 
         public void Alterar(int id, Contato contato)
         {
-            context.Contato.FirstOrDefault(x => x.Id == id).AlterarContato(contato);
+            context.Contato.Update(contato);
             context.SaveChanges();
         }
 
@@ -36,13 +36,13 @@ namespace TechBeauty.Dados.Repositorio
 
         public void Remover(int id)
         {
-            context.Contato.Remove(context.Contato.FirstOrDefault(x => x.Id == id));
+            context.Contato.Remove(PegarContato(id));
             context.SaveChanges();
         }
 
-        public List<Contato> Tabela()
+        public void Dispose()
         {
-            return context.Contato.ToList();
+            context.Dispose();
         }
     }
 }

@@ -15,7 +15,8 @@ namespace TechBeauty.Controllers
         {
             try
             {
-                return Ok(new GeneroRepositorio().Tabela());
+                //return Ok(new GeneroRepositorio().Tabela());
+                return Ok();
             }
             catch (Exception)
             {
@@ -47,8 +48,9 @@ namespace TechBeauty.Controllers
         {
             try
             {
-                int id = new GeneroRepositorio().Incluir(generoDto);
-                return CreatedAtAction(nameof(Get), new { Id = id}, generoDto);
+                //int id = new GeneroRepositorio().Incluir(generoDto);
+                //return CreatedAtAction(nameof(Get), new { Id = id}, generoDto);
+                return Ok();
             }
             catch (Exception)
             {
@@ -63,7 +65,7 @@ namespace TechBeauty.Controllers
             {
                 if (new GeneroRepositorio().PegarGenero(id) != null)
                 {
-                    new GeneroRepositorio().Alterar(id, generoDto.Valor);
+                    //new GeneroRepositorio().Alterar(id, generoDto.Valor);
                     return NoContent();
                 }
                 return NotFound();

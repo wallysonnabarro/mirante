@@ -18,23 +18,21 @@ namespace TechBeauty.Dados.Repositorio
             _context = new();
         }
 
-        public int IncluirBeneficio(BeneficioDto beneficio)
+        public void IncluirBeneficio(Beneficio beneficio)
         {
-            Beneficio b = beneficio.Converter(beneficio);
-            _context.Beneficio.Add(b);
+            _context.Beneficio.Add(beneficio);
             _context.SaveChanges();
-            return b.Id;
         }
 
-        public void AlterarBeneficio(int id, BeneficioDto beneficio)
+        public void AlterarBeneficio(Beneficio beneficio)
         {
-            _context.Beneficio.FirstOrDefault(x => x.Id == id).AlterarBeneficio(beneficio.Nome, beneficio.Descricao);
+            _context.Beneficio.Update(beneficio);
             _context.SaveChanges();
         }
 
         public void ExcluirBeneficio(int id)
         {
-            _context.Beneficio.Remove(_context.Beneficio.FirstOrDefault(x => x.Id == id));
+            _context.Beneficio.Remove(SelecionarBeneficio(id));
             _context.SaveChanges();
         }
 
@@ -43,15 +41,14 @@ namespace TechBeauty.Dados.Repositorio
             return _context.Beneficio.FirstOrDefault(x => x.Id == id);
         }
 
-        public List<BeneficioReadDto> Tabela()
+        public List<Beneficio> Tabela()
         {
-            List<BeneficioReadDto> beneficiosDto = new();
-            var beneficios = _context.Beneficio.ToList();
-            foreach (var beneficio in beneficios)
-            {
-                beneficiosDto.Add(BeneficioReadDto.CriarBeneficio(beneficio));
-            }
-            return beneficiosDto;
+            return _context.Beneficio.ToList();
+        }
+
+        public void Dispose()
+        {
+            _context.Dispose();
         }
     }
 }

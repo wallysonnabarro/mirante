@@ -23,26 +23,31 @@ namespace TechBeauty.Dados.Repositorio
             context.SaveChanges();
         }
 
-        public void Alterar(int id, Servico servico)
+        public void Alterar(Servico servico)
         {
-            context.Servico.FirstOrDefault(x => x.Id == id).ModificarServico(servico);
+            context.Servico.Update(servico);
             context.SaveChanges();
         }
 
-        public Servico PegarServico(int id)
+        public Servico SelecionarServicoPorID(int id)
         {
             return context.Servico.FirstOrDefault(x => x.Id == id);
         }
 
         public void Remover(int id)
         {
-            context.Remove(context.Servico.FirstOrDefault(x => x.Id == id));
+            context.Remove(SelecionarServicoPorID(id));
             context.SaveChanges();
         }
 
         public List<Servico> Tabela()
         {
             return context.Servico.ToList();
+        }
+
+        public void Dispose()
+        {
+            context.Dispose();
         }
     }
 }

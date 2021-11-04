@@ -52,5 +52,10 @@ namespace TechBeauty.Dados.Repositorio
             }
                 return lista;
         }
+
+        public void Dispose()
+        {
+            _context.Dispose();
+        }
     }
 }

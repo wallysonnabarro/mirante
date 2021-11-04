@@ -23,9 +23,9 @@ namespace TechBeauty.Dados.Repositorio
             context.SaveChanges();
         }
 
-        public void Atualizar(int id, TipoContato tipoContato)
+        public void Atualizar(TipoContato tipoContato)
         {
-            context.TipoContato.FirstOrDefault(x => x.Id == id).AtualizarTipoContato(tipoContato.Valor);
+            context.TipoContato.Update(tipoContato);
             context.SaveChanges();
         }
 
@@ -36,13 +36,13 @@ namespace TechBeauty.Dados.Repositorio
 
         public void Remover(int id)
         {
-            context.Remove(context.TipoContato.FirstOrDefault(x => x.Id == id));
+            context.Remove(PegarTipoContato(id));
             context.SaveChanges();
         }
 
-        public List<TipoContato> Tabela()
+        public void Dispose()
         {
-            return context.TipoContato.ToList();
+            context.Dispose();
         }
     }
 }

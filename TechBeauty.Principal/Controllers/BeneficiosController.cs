@@ -15,8 +15,8 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                int id = new BeneficioRepositorio().IncluirBeneficio(beneficio);
-                return CreatedAtAction(nameof(PegarBenefinio), new { Id = id }, beneficio);
+                //new BeneficioRepositorio().IncluirBeneficio(beneficio);
+                return Ok();
             }
             catch (Exception)
             {
@@ -62,7 +62,7 @@ namespace TechBeauty.Principal.Controllers
             {
                 if (new BeneficioRepositorio().SelecionarBeneficio(id) != null)
                 {
-                    new BeneficioRepositorio().AlterarBeneficio(id, beneficio);
+                    //new BeneficioRepositorio().AlterarBeneficio(id, beneficio);
                     return NoContent();
                 }
                 return NotFound();

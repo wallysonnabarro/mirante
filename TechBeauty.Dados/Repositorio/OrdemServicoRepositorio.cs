@@ -23,9 +23,9 @@ namespace TechBeauty.Dados.Repositorio
             context.SaveChanges();
         }
 
-        public void Alterar(int id, OrdemServico ordemServico)
+        public void Alterar(OrdemServico ordemServico)
         {
-            context.OrdemServico.FirstOrDefault(x => x.Id == id).Alterar(ordemServico);
+            context.OrdemServico.Update(ordemServico);
             context.SaveChanges();
         }
 
@@ -36,7 +36,7 @@ namespace TechBeauty.Dados.Repositorio
 
         public void Remover(int id)
         {
-            context.OrdemServico.Remove(context.OrdemServico.FirstOrDefault(x => x.Id == id));
+            context.OrdemServico.Remove(PegarOrdemServico(id));
             context.SaveChanges();
         }
 
@@ -49,6 +49,11 @@ namespace TechBeauty.Dados.Repositorio
         {
             context.OrdemServico.FirstOrDefault(x => x.Id == id).AlterarPrecoTotal(valor);
             context.SaveChanges();
+        }
+
+        public void Dispose()
+        {
+            context.Dispose();
         }
     }
 }

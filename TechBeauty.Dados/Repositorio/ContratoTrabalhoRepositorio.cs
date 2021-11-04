@@ -23,9 +23,9 @@ namespace TechBeauty.Dados.Repositorio
             context.SaveChanges();
         }
 
-        public void Alterar(int id, ContratoTrabalho contratoTrabalho)
+        public void Alterar(ContratoTrabalho contratoTrabalho)
         {
-            context.ContratoTrabalho.FirstOrDefault(x => x.Id == id).ModificarContrato(contratoTrabalho);
+            context.ContratoTrabalho.Update(contratoTrabalho);
             context.SaveChanges();
         }
 
@@ -49,6 +49,10 @@ namespace TechBeauty.Dados.Repositorio
         public List<ContratoTrabalho> Tabela()
         {
             return context.ContratoTrabalho.ToList();
+        }
+        public void Dispose()
+        {
+            context.Dispose();
         }
     }
 }

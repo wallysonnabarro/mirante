@@ -15,17 +15,15 @@ namespace TechBeauty.Dados.Repositorio
             context = new();
         }
 
-        public int Incluir(GeneroDto generoDto)
+        public void Incluir(Genero genero)
         {
-            Genero genero = Genero.Criar(generoDto.Valor);
             context.Genero.Add(genero);
             context.SaveChanges();
-            return genero.Id;
         }
 
-        public void Alterar(int id, string genero)
+        public void Alterar(Genero genero)
         {
-            context.Genero.FirstOrDefault(x => x.Id == id).Alterar(genero);
+            context.Genero.Update(genero);
             context.SaveChanges();
         }
 
@@ -36,19 +34,13 @@ namespace TechBeauty.Dados.Repositorio
 
         public void Remover(int id)
         {
-            context.Genero.Remove(context.Genero.First(x => x.Id == id));
+            context.Genero.Remove(PegarGenero(id));
             context.SaveChanges();
         }
 
-        public List<GeneroDto> Tabela()
+        public void Dispose()
         {
-            List<Genero> generos = context.Genero.ToList();
-            List<GeneroDto> dtos = new();
-            foreach (var genero in generos)
-            {
-                dtos.Add(GeneroDto.CriarGenero(genero.Valor));
-            }
-            return dtos;
+            context.Dispose();
         }
     }
 }

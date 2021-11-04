@@ -17,39 +17,37 @@ namespace TechBeauty.Dados.Repositorio
         {
             _context = new();
         }
-        
-        public int Incluir(CargoDto cargoDto)
+
+        public void Incluir(Cargo cargo)
         {
-            Cargo cargo = Cargo.criarCargo(cargoDto.Nome, cargoDto.Descricao, cargoDto.Salario);
             _context.Cargo.Add(cargo);
             _context.SaveChanges();
-            return cargo.Id;
         }
 
-        public void Atualizar(int id, CargoDto cargo)
+        public void Atualizar(Cargo cargo)
         {
-            _context.Cargo.FirstOrDefault(x=>x.Id == id).AlterarCargo(cargo.Nome, cargo.Descricao);
+            _context.Cargo.Update(cargo);
             _context.SaveChanges();
         }
 
-        public CargoDto PegarCargo(int id)
+        public Cargo PegarCargo(int id)
         {
-            if (_context.Cargo.FirstOrDefault(x => x.Id == id) != null)
-            {
-                return CargoDto.Criar(_context.Cargo.FirstOrDefault(x => x.Id == id));
-            }
-            return null;
+            return _context.Cargo.FirstOrDefault(x => x.Id == id);
         }
 
         public void Remover(int id)
         {
-            _context.Cargo.Remove(_context.Cargo.FirstOrDefault(x=>x.Id == id));
+            _context.Cargo.Remove(_context.Cargo.FirstOrDefault(x => x.Id == id));
             _context.SaveChanges();
         }
 
         public List<ReadCargoDto> Tabela()
         {
             return ReadCargoDto.Colecao(_context.Cargo.ToList());
+        }
+        public void Dispose()
+        {
+            _context.Dispose();
         }
     }
 }

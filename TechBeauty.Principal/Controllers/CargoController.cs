@@ -14,8 +14,9 @@ namespace TechBeauty.Controllers
         {
             try
             {
-                int id = new CargoRepositorio().Incluir(cargo);
-                return CreatedAtAction(nameof(RecuperarCargoId), new { Id = id }, cargo);
+                //int id = new CargoRepositorio().Incluir(cargo);
+                //return CreatedAtAction(nameof(RecuperarCargoId), new { Id = id }, cargo);
+                return Ok();
             }
             catch (System.Exception)
             {
@@ -41,11 +42,11 @@ namespace TechBeauty.Controllers
         {
             try
             {
-                CargoDto cargoDto = new CargoRepositorio().PegarCargo(id);
-                if (cargoDto != null)
-                {
-                 return Ok(cargoDto);
-                }
+                //CargoDto cargoDto = new CargoRepositorio().PegarCargo(id);
+                //if (cargoDto != null)
+                //{
+                // return Ok(cargoDto);
+                //}
                 return NotFound();
             }
             catch (System.Exception)
@@ -61,7 +62,7 @@ namespace TechBeauty.Controllers
             {
                 if (new CargoRepositorio().PegarCargo(id) != null)
                 {
-                    new CargoRepositorio().Atualizar(id, cargo);
+                   // new CargoRepositorio().Atualizar(id, cargo);
                     return NoContent();
                 }
                 return NotFound();

@@ -10,37 +10,46 @@ namespace TechBeauty.Dados.Repositorio
 {
     public class PagamentoRepositorio
     {
-        public List<Pagamento> TabelaPagamento { get; private set; } = new();
+        private readonly Context context;
 
         public PagamentoRepositorio()
         {
-
+            context = new();
         }
+
         public void Incluir(Pagamento pagamento)
         {
-            TabelaPagamento.Add(pagamento);
+            context.Pagamento.Add(pagamento);
+            context.SaveChanges();
         }
+
         public void AlterarDataHora(int id, DateTime dataHoraPagamento)
         {
-            TabelaPagamento.FirstOrDefault(x => x.Id == id).AlterarDataHora(dataHoraPagamento);
+            context.Pagamento.FirstOrDefault(x => x.Id == id).AlterarDataHora(dataHoraPagamento);
+            context.SaveChanges();
         }
 
         public void AlterarFormaPagamento(int id, FormaPagamento formaPagamento)
         {
-            TabelaPagamento.FirstOrDefault(x => x.Id == id).FormaPagamento(formaPagamento);
+            context.Pagamento.FirstOrDefault(x => x.Id == id).FormaPagamento(formaPagamento);
+            context.SaveChanges();
         }
-
-
-
         // falta o método troco(dinheiro)
 
         public Pagamento SelecionarPorId(int id)
         {
-            return TabelaPagamento.FirstOrDefault(x => x.Id == id);
+            return context.Pagamento.FirstOrDefault(x => x.Id == id);
         }
+
         public void Remover(int id)
         {
-            TabelaPagamento.Remove(SelecionarPorId(id));
+            context.Pagamento.Remove(SelecionarPorId(id));
+            context.SaveChanges();
+        }
+
+        public void Dispose()
+        {
+            context.Dispose();
         }
     }
 }

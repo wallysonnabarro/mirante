@@ -23,9 +23,9 @@ namespace TechBeauty.Dados.Repositorio
             context.SaveChanges();
         }
 
-        public void AlterarUsuario(int id, string usuario)
+        public void AlterarUsuario(Usuario usuario)
         {
-            context.Usuario.FirstOrDefault(x => x.Id == id).AlterarUsuario(usuario);
+            context.Usuario.Update(usuario);
             context.SaveChanges();
         }
 
@@ -43,7 +43,7 @@ namespace TechBeauty.Dados.Repositorio
 
         public void ExcluirUsuario(int id)
         {
-            context.Usuario.Remove(context.Usuario.FirstOrDefault(x => x.Id == id));
+            context.Usuario.Remove(SelecionarUsuario(id));
             context.SaveChanges();
         }
 
@@ -55,6 +55,11 @@ namespace TechBeauty.Dados.Repositorio
         public List<Usuario> Tabela()
         {
             return context.Usuario.ToList();
+        }
+
+        public void Dispose()
+        {
+            context.Dispose();
         }
     }
 }

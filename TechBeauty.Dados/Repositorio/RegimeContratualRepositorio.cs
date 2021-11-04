@@ -23,9 +23,9 @@ namespace TechBeauty.Dados.Repositorio
             context.SaveChanges();
         }
 
-        public void Alterar(int id, RegimeContratual regimeContratual)
+        public void Alterar(RegimeContratual regimeContratual)
         {
-            context.RegimeContratual.FirstOrDefault(x => x.Id == id).AlterarRegimeContratual(regimeContratual.Valor);
+            context.RegimeContratual.Update(regimeContratual);
             context.SaveChanges();
         }
 
@@ -36,13 +36,18 @@ namespace TechBeauty.Dados.Repositorio
 
         public void Remover(int id)
         {
-            context.RegimeContratual.Remove(context.RegimeContratual.FirstOrDefault(x => x.Id == id));
+            context.RegimeContratual.Remove(PegarRegimeContratual(id));
             context.SaveChanges();
         }
 
         public List<RegimeContratual> Tabela()
         {
             return context.RegimeContratual.ToList();
+
+        }
+        public void Dispose()
+        {
+            context.Dispose();
         }
     }
 }

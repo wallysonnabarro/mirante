@@ -23,9 +23,9 @@ namespace TechBeauty.Dados.Repositorio
             context.SaveChanges();
         }
 
-        public void Alterar(int id, Escala escala)
+        public void Alterar(Escala escala)
         {
-            context.Escala.FirstOrDefault(x => x.Id == id).ModificarEscala(escala);
+            context.Escala.Update(escala);
             context.SaveChanges();
         }
 
@@ -36,13 +36,18 @@ namespace TechBeauty.Dados.Repositorio
 
         public void Remover(int id)
         {
-            context.Escala.Remove(context.Escala.FirstOrDefault(x => x.Id == id));
+            context.Escala.Remove(PegarEscala(id));
             context.SaveChanges();
         }
 
         public List<Escala> Tabela()
         {
             return context.Escala.ToList();
+        }
+
+        public void Dispose()
+        {
+            context.Dispose();
         }
     }
 }

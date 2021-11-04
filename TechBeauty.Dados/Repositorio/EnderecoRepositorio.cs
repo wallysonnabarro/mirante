@@ -36,11 +36,8 @@ namespace TechBeauty.Dados.Repositorio
 
         public void Remover(int id)
         {
-            if (context.Endereco.FirstOrDefault(x => x.Id == id) != null)
-            {
-                context.Endereco.Remove(context.Endereco.FirstOrDefault(x => x.Id == id));
-                context.SaveChanges();
-            }
+            context.Endereco.Remove(PegarEndereco(id));
+            context.SaveChanges();
         }
 
         public List<Endereco> Tabela()

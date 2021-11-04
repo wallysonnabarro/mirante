@@ -9,27 +9,37 @@ namespace TechBeauty.Dados.Repositorio
 {
     class EspacoClienteRepositorio
     {
-        public List<EspacoCliente> TabelaEspacoCliente { get; private set; } = new();
+        protected readonly Context context;
 
         public EspacoClienteRepositorio()
         {
-
+            context = new();
         }
+
         public void Incluir(EspacoCliente espacoCliente)
         {
-            TabelaEspacoCliente.Add(espacoCliente);
+            context.Add(espacoCliente);
+            context.SaveChanges();
         }
         public void ValidacaoBeneficio(int id, Beneficio beneficio)
         {
-            TabelaEspacoCliente.FirstOrDefault(x => x.Id == id).ValidarBeneficio(beneficio);
+            context.EspacoCliente.FirstOrDefault(x => x.Id == id).ValidarBeneficio(beneficio);
         }
+
         public EspacoCliente SelecionarPorId(int id)
         {
-            return TabelaEspacoCliente.FirstOrDefault(x => x.Id == id);
+            return context.EspacoCliente.FirstOrDefault(x => x.Id == id);
         }
+
         public void Remover(int id)
         {
-            TabelaEspacoCliente.Remove(SelecionarPorId(id));
+            context.Remove(SelecionarPorId(id));
+            context.SaveChanges();
+        }
+
+        public void Dispose()
+        {
+            context.Dispose();
         }
     }
 }
