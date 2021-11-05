@@ -23,6 +23,15 @@ namespace TechBeauty.Dados.Repositorio
             context.SaveChanges();
         }
 
+        public bool ValidarUsuario(Usuario usuario)
+        {
+            if (context.Usuario.FirstOrDefault(x => x.Nome == usuario.Nome & x.Password == usuario.Password) != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public void AlterarUsuario(Usuario usuario)
         {
             context.Usuario.Update(usuario);

@@ -5,7 +5,8 @@ namespace TechBeauty.Dominio.Modelo
 {
     public class Cliente : Pessoa
     {
-        public List<OrdemServico> OrdensServicos { get; set; }
+        public List<OrdemServico> OrdensServicos { get; set; }//Navegação, não é populada
+        public List<EspacoCliente> EspacoCliente { get; set; }//Navegação, não é populada
              
         public static Cliente Criar(Cliente clienteDto)
         {

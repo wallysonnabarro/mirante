@@ -18,6 +18,7 @@ namespace TechBeauty.Dominio.Modelo
         public List<Pagamento> Pagamentos { get; private set; }//Navegaçãos, não será populada
         public Gestao Gestao { get; private set; }//Será populada
         public decimal LucroDiario { get; private set; }
+        public decimal RetiradasDiarias { get; private set; }
 
         public static Caixa AbrirCaixa(decimal saldoInicial)
         {
@@ -42,9 +43,9 @@ namespace TechBeauty.Dominio.Modelo
             SaldoFinalCaixa = valor + SaldoInicial;
         }
 
-        public decimal ComissaoDiariaColaborador(int id)
+        public void RegistrarRetiradasDiarias(decimal retirada)
         {
-            return 0;
+            RetiradasDiarias += retirada;
         }
     }
 }

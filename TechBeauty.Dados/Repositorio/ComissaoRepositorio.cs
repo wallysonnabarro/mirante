@@ -32,25 +32,23 @@ namespace TechBeauty.Dados.Repositorio
             }
         }
 
-        public List<Comissao> ListagemComissao(Colaborador colaborador)
+        public List<Comissao> ListagemComissao(int colaboradorId)
         {
             List<Comissao> lista = new();
-            if (_context.Colaborador.FirstOrDefault(x => x.Id == colaborador.Id) != null)
+            if (_context.Colaborador.FirstOrDefault(x => x.Id == colaboradorId) != null)
             {
-
-                DateTime dataInicio = new DateTime();//Pegar a data atual e subtrair 30 dias dela
-                
+                DateTime dataInicio = DateTime.Now;//Pegar a data atual e subtrair 30 dias dela                
                 //Data inicio da Agendamento
                 //Data termino da Agendamento
                 //Data status da Agendamento = concluido
                 //Data status da Agendamento = Parcialmente concluido = não existe na enum
-                return _context.Comissao.Where(col => col.Id == colaborador.Id)
+                return _context.Comissao.Where(col => col.Id == colaboradorId)
                     .Where(status => status.Agendamento.Status == StatusAgendamento.Concluido)//status
-                    .Where(dI => dI.Agendamento.DataHoraCriacao == dataInicio)
-                    .Where(dF => dF.Agendamento.DataHoraCriacao == DateTime.Now)//Data fim dia atual
+                    .Where(dI => dI.Agendamento.DataHoraCriacao >= dataInicio)
+                    .Where(dF => dF.Agendamento.DataHoraCriacao <= DateTime.Now)//Data fim dia atual
                     .ToList();
             }
-                return lista;
+            return lista;
         }
 
         public void Dispose()

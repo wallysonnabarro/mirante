@@ -11,7 +11,7 @@ namespace TechBeauty.Dominio.Modelo
         public int Id { get; private set; }
         public string Nome { get; private set; }
         public string Descricao { get; private set; }
-        public List<EspacoCliente> EspacosClientes { get; set; }
+        public List<EspacoCliente> EspacosClientes { get; set; }//Navegação, não será populada
 
         public static Beneficio GerarBeneficio(string nome, string descricao)
         {

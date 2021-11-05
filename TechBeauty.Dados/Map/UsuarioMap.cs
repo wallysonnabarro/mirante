@@ -21,10 +21,6 @@ namespace TechBeauty.Dados.Map
                 .HasColumnType("varchar(15)")
                 .IsRequired();
 
-            builder.HasOne(u => u.Gestao) 
-                .WithMany(g => g.Usuarios) 
-                .IsRequired();
-
             builder.HasOne(u => u.Cargo)
                    .WithMany(c => c.Usuarios)
                    .IsRequired();

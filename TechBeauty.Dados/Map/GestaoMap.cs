@@ -18,8 +18,8 @@ namespace TechBeauty.Dados.Map
                     .WithOne(ec => ec.Gestao)
                     .IsRequired();
 
-            builder.HasMany(g => g.Usuarios)
-                .WithOne(u => u.Gestao)
+            builder.HasOne(g => g.Usuario)
+                .WithMany(u => u.Gestao)
                 .IsRequired();
         }
     }

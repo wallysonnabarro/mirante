@@ -25,13 +25,13 @@ namespace TechBeauty.Dados.Repositorio
 
         public void AlterarDataHora(int id, DateTime dataHoraPagamento)
         {
-            context.Pagamento.FirstOrDefault(x => x.Id == id).AlterarDataHora(dataHoraPagamento);
+            context.Pagamento.FirstOrDefault(x => x.Id == id).AlterarDataHoraPagamento(dataHoraPagamento);
             context.SaveChanges();
         }
 
         public void AlterarFormaPagamento(int id, FormaPagamento formaPagamento)
         {
-            context.Pagamento.FirstOrDefault(x => x.Id == id).FormaPagamento(formaPagamento);
+            context.Pagamento.FirstOrDefault(x => x.Id == id).AlterarFormaPagamento(formaPagamento);
             context.SaveChanges();
         }
 

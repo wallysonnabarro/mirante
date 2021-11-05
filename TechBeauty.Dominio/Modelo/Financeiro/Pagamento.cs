@@ -11,7 +11,7 @@ namespace TechBeauty.Dominio.Modelo
         public DateTime DataHoraPagamento { get; private set; }
         public decimal ValorRecebido { get; private set; }
         public decimal? Troco { get; private set; }
-        public FormaPagamento Forma { get; set; }
+        public FormaPagamento Forma { get; private set; }
 
         public static Pagamento Criar(Pagamento pagamentoDto)
         {
@@ -19,15 +19,16 @@ namespace TechBeauty.Dominio.Modelo
             pagamento.OrdemServico = pagamentoDto.OrdemServico;
             pagamento.DataHoraPagamento = pagamentoDto.DataHoraPagamento;
             pagamento.ValorRecebido = pagamentoDto.ValorRecebido;
+            pagamento.Forma = pagamentoDto.Forma;
             return pagamento;
         }
 
-        public void AlterarDataHora(DateTime dataHoraPagamento)
+        public void AlterarDataHoraPagamento(DateTime dataHoraPagamento)
         {
             DataHoraPagamento = dataHoraPagamento;
         }
 
-        public void FormaPagamento(FormaPagamento formaPagamento)
+        public void AlterarFormaPagamento(FormaPagamento formaPagamento)
         {
             Forma = formaPagamento;
         }

@@ -22,6 +22,10 @@ namespace TechBeauty.Dados.Map
             b.HasOne(ec => ec.Beneficio)
                 .WithMany(ec => ec.EspacosClientes)
                 .IsRequired();
+
+            b.HasOne(ec => ec.Cliente)
+                .WithMany(c => c.EspacoCliente)
+                .IsRequired();
         }
     }
 }

@@ -28,5 +28,11 @@ namespace TechBeauty.Dados.Repositorio
             context.Caixa.FirstOrDefault(x => x.Id == id).FecharCaixa(pagamentos);
             context.SaveChanges();
         }
+
+        public void RegistrarRetiradasDiarias(int id, decimal retirada)
+        {
+            context.Caixa.FirstOrDefault(x => x.Id == id).RegistrarRetiradasDiarias(retirada);
+            context.SaveChanges();
+        }
     }
 }

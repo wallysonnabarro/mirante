@@ -13,7 +13,7 @@ namespace TechBeauty.Dominio.Modelo
         public string Nome { get; private set; }
         public string Password { get; private set; }
         public Cargo Cargo { get; private set; }
-        public Gestao Gestao { get; set; }
+        public List<Gestao> Gestao { get; set; }//Navegação, não será populada
 
         public static Usuario Criar(string nome, string password, Cargo cargo)
         {

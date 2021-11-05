@@ -25,6 +25,8 @@ namespace TechBeauty.Dados.Map
 
             b.Property(c => c.LucroDiario).HasColumnType("smallDateTime").IsRequired();
 
+            b.Property(c => c.RetiradasDiarias).HasColumnType("decimal(6,2)").IsRequired();
+
             b.HasMany(c => c.Pagamentos)
                 .WithOne(p => p.Caixa)
                 .IsRequired();

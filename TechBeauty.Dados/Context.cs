@@ -55,13 +55,16 @@ namespace TechBeauty.Dados
             modelBuilder.ApplyConfiguration(new PessoaMap());
             modelBuilder.ApplyConfiguration(new RegimeContratualMap());
             modelBuilder.ApplyConfiguration(new ServicoMap());
+            modelBuilder.ApplyConfiguration(new EspacoClienteMap());
+            modelBuilder.ApplyConfiguration(new GestaoMap());
+            modelBuilder.ApplyConfiguration(new PagamentoMap());
             modelBuilder.ApplyConfiguration(new TipoContatoMap());
-            
+            modelBuilder.ApplyConfiguration(new UsuarioMap());
+
 
             base.OnModelCreating(modelBuilder);
 
         }
-
 
     }
 }

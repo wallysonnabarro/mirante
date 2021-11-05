@@ -8,32 +8,28 @@ namespace TechBeauty.Dominio.Modelo.Financeiro
 {
     public class Gestao
     {
-        public int Id { get; set; }
-        public List<Usuario> Usuarios { get; set; }
-        public List<EspacoCliente> EspacoClientes { get; set; }
-        public decimal Salario { get; set; }
-        public List<Caixa> Caixas { get; set; }
-        public Colaborador Colaborador { get; set; }
-        public decimal Receita { get; set; }
+        public int Id { get; private set; }
+        public Usuario Usuario { get; private set; }//será populada
+        public List<EspacoCliente> EspacoClientes { get; private set; }
+        public decimal Salario { get; private set; }
+        public List<Caixa> Caixas { get; private set; }
+        public Colaborador Colaborador { get; private set; }
+        public decimal Receita { get; private set; }
 
-        public Gestao Criar(List<Usuario> usuarios, List<EspacoCliente> espacoCliente, decimal salario)
+        public Gestao Criar(Usuario usuario, List<EspacoCliente> espacoCliente, decimal salario)
         {
             Gestao gestao = new();
-            gestao.Usuarios = usuarios;
+            gestao.Usuario = usuario;
             gestao.EspacoClientes = espacoCliente;
             gestao.Salario = salario;
             return gestao;
         }
 
-        public decimal LucroMensal(List<Caixa> caixas)
+        public void RegistrarLucroMensal(decimal lucroMensal)
         {
-            return 0;
+            Receita = lucroMensal;
         }
 
-        public decimal ComissaoTotalColaborador(Colaborador colaborador)
-        {
-            return 0;
-        }
         
         public decimal ReceitaMensal(decimal receita)
         {

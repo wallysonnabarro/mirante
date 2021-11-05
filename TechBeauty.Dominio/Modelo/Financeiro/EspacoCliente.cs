@@ -6,16 +6,19 @@ namespace TechBeauty.Dominio.Modelo
     public class EspacoCliente
     {
         public int Id { get; private set; }
-        public Beneficio Beneficio { get; private set; }
-        public List<OrdemServico> OrdemServicos { get; private set; }
+        public Beneficio Beneficio { get; private set; }//será populado
+        public Cliente Cliente { get; private set; } //Referenciar
         public Gestao Gestao{ get; set; }
 
-        public static EspacoCliente Criar(List<OrdemServico> ordemServicos)
+        public static EspacoCliente CriarBeneficio(Cliente cliente, Gestao gestao, Beneficio beneficio)
         {
-            EspacoCliente espacoCliente = new EspacoCliente();
-            espacoCliente.OrdemServicos = ordemServicos;
+            EspacoCliente espacoCliente = new();
+            espacoCliente.Cliente = cliente;
+            espacoCliente.Gestao = gestao;
+            espacoCliente.Beneficio = beneficio;
             return espacoCliente;
         }
+
         public void ValidarBeneficio(Beneficio beneficio)
         {
             Beneficio = beneficio;

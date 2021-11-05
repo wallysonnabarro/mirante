@@ -26,6 +26,7 @@ namespace TechBeauty.Dados.Repositorio
             context.Gestao.Update(gestao);
             context.SaveChanges();
         }
+
         public Gestao SelecionarPorId(int id)
         {
             return context.Gestao.FirstOrDefault(x => x.Id == id);
@@ -36,12 +37,10 @@ namespace TechBeauty.Dados.Repositorio
             context.Gestao.Remove(SelecionarPorId(id));
         }
 
-
         public List<Gestao> Tabela()
         {
             return context.Gestao.ToList();
         }
-
 
         public void Dispose()
         {
