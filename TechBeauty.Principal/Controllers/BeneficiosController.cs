@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using TechBeauty.Dados.Repositorio;
-using TechBeauty.Dominio.Dtos;
+
 using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Principal.Controllers
@@ -11,11 +11,11 @@ namespace TechBeauty.Principal.Controllers
     public class BeneficiosController : ControllerBase
     {
         [HttpPost]
-        public IActionResult Incluir([FromBody] BeneficioDto beneficio)
+        public IActionResult Incluir([FromBody] Beneficio beneficio)
         {
             try
             {
-                //new BeneficioRepositorio().IncluirBeneficio(beneficio);
+                new BeneficioRepositorio().Incluir(beneficio);
                 return Ok();
             }
             catch (Exception)
@@ -29,10 +29,10 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                Beneficio beneficio = new BeneficioRepositorio().SelecionarBeneficio(id);
+                Dominio.Modelo.Beneficio beneficio = new BeneficioRepositorio().Selecionar(id);
                 if (beneficio != null)
                 {
-                    return Ok(BeneficioDto.CriarBeneficio(beneficio));
+                    return base.Ok(Dominio.Dtos.Beneficio.CriarBeneficio(beneficio));
                 }
                 return NotFound();
             }
@@ -47,7 +47,7 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                return Ok(new BeneficioRepositorio().Tabela());
+                return Ok(new BeneficioRepositorio().SelecionarTudo());
             }
             catch (Exception)
             {
@@ -56,13 +56,13 @@ namespace TechBeauty.Principal.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Atualizar(int id, [FromBody] BeneficioDto beneficio)
+        public IActionResult Atualizar(int id, [FromBody] Beneficio beneficio)
         {
             try
             {
-                if (new BeneficioRepositorio().SelecionarBeneficio(id) != null)
+                if (new BeneficioRepositorio().Selecionar(id) != null)
                 {
-                    //new BeneficioRepositorio().AlterarBeneficio(id, beneficio);
+                    new BeneficioRepositorio().Alterar(beneficio);
                     return NoContent();
                 }
                 return NotFound();
@@ -78,9 +78,9 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                if (new BeneficioRepositorio().SelecionarBeneficio(id) != null)
+                if (new BeneficioRepositorio().Selecionar(id) != null)
                 {
-                    new BeneficioRepositorio().ExcluirBeneficio(id);
+                    new BeneficioRepositorio().Excluir(id);
                     return NoContent();
                 }
                 return NotFound();

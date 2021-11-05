@@ -8,46 +8,8 @@ using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dados.Repositorio
 {
-    public class EnderecoRepositorio
+    public class EnderecoRepositorio : RepositorioBase<Endereco>
     {
-        private readonly Context context;
-
-        public EnderecoRepositorio()
-        {
-            context = new();
-        }
-
-        public void Incluir(Endereco endereco)
-        {
-            context.Endereco.Add(endereco);
-            context.SaveChanges();
-        }
-
-        public void Alterar(Endereco endereco)
-        {
-            context.Endereco.Update(endereco);
-            context.SaveChanges();
-        }
-
-        public Endereco PegarEndereco(int id)
-        {
-            return context.Endereco.FirstOrDefault(x => x.Id == id);
-        }
-
-        public void Remover(int id)
-        {
-            context.Endereco.Remove(PegarEndereco(id));
-            context.SaveChanges();
-        }
-
-        public List<Endereco> Tabela()
-        {
-            return context.Endereco.ToList();
-        }
-
-        public void Dispose()
-        {
-            context.Dispose();
-        }
+   
     }
 }

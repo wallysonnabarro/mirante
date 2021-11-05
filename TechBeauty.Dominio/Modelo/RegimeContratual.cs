@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
 {
-    public class RegimeContratual
+    public class RegimeContratual : IEntity
     {
         public int Id { get; private set; }
         public string Valor { get; private set; }

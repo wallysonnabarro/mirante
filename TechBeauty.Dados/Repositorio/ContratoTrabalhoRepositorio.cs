@@ -8,51 +8,10 @@ using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dados.Repositorio
 {
-    public class ContratoTrabalhoRepositorio
+    public class ContratoTrabalhoRepositorio : RepositorioBase<ContratoTrabalho>
     {
-        private readonly Context context;
+     
 
-        public ContratoTrabalhoRepositorio()
-        {
-            context = new();
-        }
-
-        public void Incluir(ContratoTrabalho contratoTrabalho)
-        {
-            context.ContratoTrabalho.Add(contratoTrabalho);
-            context.SaveChanges();
-        }
-
-        public void Alterar(ContratoTrabalho contratoTrabalho)
-        {
-            context.ContratoTrabalho.Update(contratoTrabalho);
-            context.SaveChanges();
-        }
-
-        public void EncerramentoContrato(int id, DateTime dataDesligamento)
-        {
-            context.ContratoTrabalho.FirstOrDefault(x => x.Id == id).EncerrarContrato(dataDesligamento);
-            context.SaveChanges();
-        }
-
-        public ContratoTrabalho PegarContratoTrabalho(int id)
-        {
-            return context.ContratoTrabalho.FirstOrDefault(x => x.Id == id);
-        }
-
-        public void Remover(int id)
-        {
-            context.ContratoTrabalho.Remove(context.ContratoTrabalho.FirstOrDefault(x => x.Id == id));
-            context.SaveChanges();
-        }
-
-        public List<ContratoTrabalho> Tabela()
-        {
-            return context.ContratoTrabalho.ToList();
-        }
-        public void Dispose()
-        {
-            context.Dispose();
-        }
+          
     }
 }

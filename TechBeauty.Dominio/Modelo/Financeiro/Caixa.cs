@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using TechBeauty.Dominio.Modelo.Enumeradores;
 using TechBeauty.Dominio.Modelo.Financeiro;
+using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
 {
-    public class Caixa
+    public class Caixa : IEntity
     {
         public int Id { get; private set; }
         public decimal SaldoInicial { get; private set; }

@@ -7,35 +7,9 @@ using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dados.Repositorio
 {
-    public class LogAgendamentoRepositorio
+    public class LogAgendamentoRepositorio : RepositorioBase<LogAgendamento>
     {
-        protected readonly Context context;
-
-        public LogAgendamentoRepositorio()
-        {
-            context = new();
-        }
-
-        public void CriarLog(LogAgendamento logAgendamento)
-        {
-            context.LogAgendamento.Add(logAgendamento);
-            context.SaveChanges();
-        }
-
-        public List<LogAgendamento> agendamentos()
-        {
-            return context.LogAgendamento.ToList();
-        }
-
-        public LogAgendamento SelecionarLog(int id)
-        {
-            return context.LogAgendamento.FirstOrDefault(x => x.Id == id);
-        }
-
-        public void Dispose()
-        {
-            context.Dispose();
-        }
+   
 
     }
 }

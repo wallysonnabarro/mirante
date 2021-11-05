@@ -8,20 +8,11 @@ using TechBeauty.Dominio.Modelo.Enumeradores;
 
 namespace TechBeauty.Dados.Repositorio
 {
-    public class PagamentoRepositorio
+    public class PagamentoRepositorio : RepositorioBase<Pagamento>
     {
-        private readonly Context context;
+     
 
-        public PagamentoRepositorio()
-        {
-            context = new();
-        }
-
-        public void Incluir(Pagamento pagamento)
-        {
-            context.Pagamento.Add(pagamento);
-            context.SaveChanges();
-        }
+      
 
         public void AlterarDataHora(int id, DateTime dataHoraPagamento)
         {
@@ -35,20 +26,5 @@ namespace TechBeauty.Dados.Repositorio
             context.SaveChanges();
         }
 
-        public Pagamento SelecionarPorId(int id)
-        {
-            return context.Pagamento.FirstOrDefault(x => x.Id == id);
-        }
-
-        public void Remover(int id)
-        {
-            context.Pagamento.Remove(SelecionarPorId(id));
-            context.SaveChanges();
-        }
-
-        public void Dispose()
-        {
-            context.Dispose();
-        }
     }
 }

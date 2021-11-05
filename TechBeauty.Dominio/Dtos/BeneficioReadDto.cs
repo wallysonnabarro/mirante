@@ -13,7 +13,7 @@ namespace TechBeauty.Dominio.Dtos
         public string Nome { get; set; }
         public string Descricao { get; set; }
 
-        public static BeneficioReadDto CriarBeneficio(Beneficio beneficio)
+        public static BeneficioReadDto CriarBeneficio(Modelo.Beneficio beneficio)
         {
             BeneficioReadDto dto = new();
             dto.Id = beneficio.Id;

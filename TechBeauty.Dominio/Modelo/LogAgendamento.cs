@@ -1,9 +1,10 @@
 ﻿using System;
 using TechBeauty.Dominio.Modelo.Enumeradores;
+using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
 {
-    public class LogAgendamento
+    public class LogAgendamento : IEntity
     {
         public int Id { get; private set; }
         public DateTime DataCriacao { get; private set; }

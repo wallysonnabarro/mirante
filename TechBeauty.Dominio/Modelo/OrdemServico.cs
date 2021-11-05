@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using TechBeauty.Dominio.Modelo.Enumeradores;
+using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
 {
-    public class OrdemServico
+    public class OrdemServico : IEntity
     {
         public int Id { get; private set; }
         public decimal PrecoTotal { get; private set; }

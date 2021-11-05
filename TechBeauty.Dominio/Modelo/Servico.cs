@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
 {
-    public class Servico
+    public class Servico : IEntity
     {
         public int Id { get; private set; }
         public string Nome { get; private set; }

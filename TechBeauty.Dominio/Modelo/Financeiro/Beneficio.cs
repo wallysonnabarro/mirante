@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
 {
-    public class Beneficio
+    public class Beneficio : IEntity
     {
         public int Id { get; private set; }
         public string Nome { get; private set; }

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
 {
-    public class ContratoTrabalho
+    public class ContratoTrabalho : IEntity
     {
         public int Id { get; private set; }
         public Colaborador Colaborador { get; set; }

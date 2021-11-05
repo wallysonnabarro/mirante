@@ -8,46 +8,8 @@ using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dados.Repositorio
 {
-    public class RegimeContratualRepositorio
+    public class RegimeContratualRepositorio : RepositorioBase<RegimeContratual>
     {
-        private readonly Context context;
-
-        public RegimeContratualRepositorio()
-        {
-            context = new();
-        }
-
-        public void Incluir(RegimeContratual regimeContratual)
-        {
-            context.RegimeContratual.Add(regimeContratual);
-            context.SaveChanges();
-        }
-
-        public void Alterar(RegimeContratual regimeContratual)
-        {
-            context.RegimeContratual.Update(regimeContratual);
-            context.SaveChanges();
-        }
-
-        public RegimeContratual PegarRegimeContratual(int id)
-        {
-            return context.RegimeContratual.FirstOrDefault(x => x.Id == id);
-        }
-
-        public void Remover(int id)
-        {
-            context.RegimeContratual.Remove(PegarRegimeContratual(id));
-            context.SaveChanges();
-        }
-
-        public List<RegimeContratual> Tabela()
-        {
-            return context.RegimeContratual.ToList();
-
-        }
-        public void Dispose()
-        {
-            context.Dispose();
-        }
+       
     }
 }

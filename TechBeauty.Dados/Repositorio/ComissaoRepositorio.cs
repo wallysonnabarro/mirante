@@ -9,14 +9,9 @@ using TechBeauty.Dominio.Modelo.Financeiro;
 
 namespace TechBeauty.Dados.Repositorio
 {
-    class ComissaoRepositorio
+    class ComissaoRepositorio : RepositorioBase<Comissao>
     {
-        private readonly Context _context;
-
-        public ComissaoRepositorio()
-        {
-            _context = new();
-        }
+        
 
         public void GerarComissao(Agendamento agendamento)
         {
@@ -35,14 +30,14 @@ namespace TechBeauty.Dados.Repositorio
         public List<Comissao> ListagemComissao(int colaboradorId)
         {
             List<Comissao> lista = new();
-            if (_context.Colaborador.FirstOrDefault(x => x.Id == colaboradorId) != null)
+            if (context.Colaborador.FirstOrDefault(x => x.Id == colaboradorId) != null)
             {
                 DateTime dataInicio = DateTime.Now;//Pegar a data atual e subtrair 30 dias dela                
                 //Data inicio da Agendamento
                 //Data termino da Agendamento
                 //Data status da Agendamento = concluido
                 //Data status da Agendamento = Parcialmente concluido = não existe na enum
-                return _context.Comissao.Where(col => col.Id == colaboradorId)
+                return context.Comissao.Where(col => col.Id == colaboradorId)
                     .Where(status => status.Agendamento.Status == StatusAgendamento.Concluido)//status
                     .Where(dI => dI.Agendamento.DataHoraCriacao >= dataInicio)
                     .Where(dF => dF.Agendamento.DataHoraCriacao <= DateTime.Now)//Data fim dia atual
@@ -51,9 +46,5 @@ namespace TechBeauty.Dados.Repositorio
             return lista;
         }
 
-        public void Dispose()
-        {
-            _context.Dispose();
-        }
     }
 }

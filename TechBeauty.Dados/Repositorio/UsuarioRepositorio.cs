@@ -8,20 +8,9 @@ using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dados.Repositorio
 {
-    class UsuarioRepositorio
+    class UsuarioRepositorio : RepositorioBase<Usuario>
     {
-        private readonly Context context;
-
-        public UsuarioRepositorio()
-        {
-            context = new();
-        }
-
-        public void IncluirUsuario(Usuario usuario)
-        {
-            context.Usuario.Add(usuario);
-            context.SaveChanges();
-        }
+        
 
         public bool ValidarUsuario(Usuario usuario)
         {
@@ -32,11 +21,7 @@ namespace TechBeauty.Dados.Repositorio
             return false;
         }
 
-        public void AlterarUsuario(Usuario usuario)
-        {
-            context.Usuario.Update(usuario);
-            context.SaveChanges();
-        }
+        
 
         public void AlterarSenhaUsuario(int id, string senha)
         {
@@ -50,25 +35,10 @@ namespace TechBeauty.Dados.Repositorio
             context.SaveChanges();
         }
 
-        public void ExcluirUsuario(int id)
-        {
-            context.Usuario.Remove(SelecionarUsuario(id));
-            context.SaveChanges();
-        }
+        
 
-        public Usuario SelecionarUsuario(int id)
-        {
-            return context.Usuario.FirstOrDefault(x => x.Id == id);
-        }
+   
 
-        public List<Usuario> Tabela()
-        {
-            return context.Usuario.ToList();
-        }
-
-        public void Dispose()
-        {
-            context.Dispose();
-        }
+  
     }
 }

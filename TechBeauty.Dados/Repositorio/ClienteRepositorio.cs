@@ -8,46 +8,8 @@ using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dados.Repositorio
 {
-    public class ClienteRepositorio
+    public class ClienteRepositorio : RepositorioBase<Cliente>
     {
-        private readonly Context context;
-
-        public ClienteRepositorio()
-        {
-            context = new();
-        }
-
-        public void Incluir(Cliente cliente)
-        {
-            context.Cliente.Add(cliente);
-            context.SaveChanges();
-        }
-
-        public void Alterar(Cliente cliente)
-        {
-            context.Cliente.Update(cliente);
-            context.SaveChanges();
-        }
-
-        public Cliente PegarCliente(int id)
-        {
-            return context.Cliente.FirstOrDefault(x => x.Id == id);
-        }
-
-        public void Remover(int id)
-        {
-            context.Cliente.Remove(PegarCliente(id));
-            context.SaveChanges();
-        }
-
-        public List<Cliente> Tabela()
-        {
-            return context.Cliente.ToList();
-        }
         
-        public void Dispose()
-        {
-            context.Dispose();
-        }
     }
 }

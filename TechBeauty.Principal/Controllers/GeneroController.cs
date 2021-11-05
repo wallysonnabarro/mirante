@@ -15,7 +15,7 @@ namespace TechBeauty.Controllers
         {
             try
             {
-                //return Ok(new GeneroRepositorio().Tabela());
+                new GeneroRepositorio().SelecionarTudo();
                 return Ok();
             }
             catch (Exception)
@@ -29,7 +29,7 @@ namespace TechBeauty.Controllers
         {
             try
             {
-                Genero genero = new GeneroRepositorio().PegarGenero(id);
+                Genero genero = new GeneroRepositorio().Selecionar(id);
                 if (genero != null)
                 {
                     return Ok(GeneroDto.CriarGenero(genero.Valor));
@@ -44,12 +44,12 @@ namespace TechBeauty.Controllers
 
 
         [HttpPost]
-        public IActionResult Post([FromBody] GeneroDto generoDto)
+        public IActionResult Post([FromBody] Genero genero)
         {
             try
             {
-                //int id = new GeneroRepositorio().Incluir(generoDto);
-                //return CreatedAtAction(nameof(Get), new { Id = id}, generoDto);
+                 new GeneroRepositorio().Incluir(genero);
+                    
                 return Ok();
             }
             catch (Exception)
@@ -59,13 +59,13 @@ namespace TechBeauty.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] GeneroDto generoDto)
+        public IActionResult Put(int id, [FromBody] Genero genero)
         {
             try
             {
-                if (new GeneroRepositorio().PegarGenero(id) != null)
+                if (new GeneroRepositorio().Selecionar(id) != null)
                 {
-                    //new GeneroRepositorio().Alterar(id, generoDto.Valor);
+                    new GeneroRepositorio().Alterar(genero);
                     return NoContent();
                 }
                 return NotFound();
@@ -81,9 +81,9 @@ namespace TechBeauty.Controllers
         {
             try
             {
-                if (new GeneroRepositorio().PegarGenero(id) != null)
+                if (new GeneroRepositorio().Selecionar(id) != null)
                 {
-                    new GeneroRepositorio().Remover(id);
+                    new GeneroRepositorio().Excluir(id);
                     return NoContent();
                 }
                 return NotFound();

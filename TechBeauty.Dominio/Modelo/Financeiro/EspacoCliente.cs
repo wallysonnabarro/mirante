@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using TechBeauty.Dominio.Modelo.Financeiro;
+using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
 {
-    public class EspacoCliente
+    public class EspacoCliente : IEntity
     {
         public int Id { get; private set; }
         public Beneficio Beneficio { get; private set; }//será populado

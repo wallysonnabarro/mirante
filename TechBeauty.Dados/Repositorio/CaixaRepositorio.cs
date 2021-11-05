@@ -7,20 +7,9 @@ using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dados.Repositorio
 {
-    public class CaixaRepositorio
+    public class CaixaRepositorio : RepositorioBase<Caixa>
     {
-        private readonly Context context;
-
-        public CaixaRepositorio()
-        {
-            context = new();
-        }
-
-        public void AbrirCaixa(Caixa caixa)
-        {
-            context.Caixa.Add(caixa);
-            context.SaveChanges();
-        }
+        
 
         public void FecharCaixa(int id)
         {

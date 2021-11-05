@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
 {
-    public class Genero
+    public class Genero : IEntity
     {
         public int Id { get;  private set; }
         public string Valor { get; private set; }

@@ -2,6 +2,7 @@
 using System;
 using TechBeauty.Dominio.Dtos;
 using TechBeauty.Dados.Repositorio;
+using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Controllers
 {
@@ -10,12 +11,13 @@ namespace TechBeauty.Controllers
     public class CargoController : ControllerBase
     {
         [HttpPost]
-        public IActionResult Incluir([FromBody] CargoDto cargo)
+        public IActionResult Incluir([FromBody] Cargo cargo)
         {
             try
             {
                 //int id = new CargoRepositorio().Incluir(cargo);
                 //return CreatedAtAction(nameof(RecuperarCargoId), new { Id = id }, cargo);
+                new CargoRepositorio().Incluir(cargo);
                 return Ok();
             }
             catch (System.Exception)
@@ -29,7 +31,7 @@ namespace TechBeauty.Controllers
         {
             try
             {
-                return Ok(new CargoRepositorio().Tabela());
+                return Ok(new CargoRepositorio().SelecionarTudo());
             }
             catch (System.Exception)
             {
@@ -42,11 +44,11 @@ namespace TechBeauty.Controllers
         {
             try
             {
-                //CargoDto cargoDto = new CargoRepositorio().PegarCargo(id);
-                //if (cargoDto != null)
-                //{
-                // return Ok(cargoDto);
-                //}
+                Cargo cargo = new CargoRepositorio().Selecionar(id);
+                if (cargo != null)
+                {
+                    return Ok(cargo);
+                }
                 return NotFound();
             }
             catch (System.Exception)
@@ -56,13 +58,13 @@ namespace TechBeauty.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult AtualizarCargo(int id, [FromBody] CargoDto cargo)
+        public IActionResult AtualizarCargo(int id, [FromBody] Cargo cargo)
         {
             try
             {
-                if (new CargoRepositorio().PegarCargo(id) != null)
+                if (new CargoRepositorio().Selecionar(id) != null)
                 {
-                   // new CargoRepositorio().Atualizar(id, cargo);
+                    new CargoRepositorio().Alterar(cargo);
                     return NoContent();
                 }
                 return NotFound();
@@ -78,9 +80,9 @@ namespace TechBeauty.Controllers
         {
             try
             {
-                if (new CargoRepositorio().PegarCargo(id) != null)
+                if (new CargoRepositorio().Selecionar(id) != null)
                 {
-                    new CargoRepositorio().Remover(id);
+                    new CargoRepositorio().Excluir(id);
                     return NoContent();
                 }
                 return NotFound();

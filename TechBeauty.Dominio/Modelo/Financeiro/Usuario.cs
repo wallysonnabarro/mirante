@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TechBeauty.Dominio.Modelo.Financeiro;
+using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
 {
-    public class Usuario
+    public class Usuario : IEntity
     {
         public int Id { get; private set; }
         public string Nome { get; private set; }

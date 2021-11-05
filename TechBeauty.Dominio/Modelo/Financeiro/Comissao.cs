@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo.Financeiro
 {
-    public class Comissao
+    public class Comissao : IEntity
     {
         public int Id { get; private set; }
         public decimal Valor { get; private set; }

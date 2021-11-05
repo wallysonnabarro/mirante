@@ -1,9 +1,10 @@
 ﻿using System;
 using TechBeauty.Dominio.Modelo.Enumeradores;
+using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
 {
-    public class Pagamento
+    public class Pagamento : IEntity
     {
         public int Id { get; private set; }
         public OrdemServico OrdemServico { get; private set; } //Será populada 

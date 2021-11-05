@@ -7,19 +7,19 @@ using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dominio.Dtos
 {
-    public class BeneficioDto
+    public class Beneficio
     {
         public string Nome { get; set; }
         public string Descricao { get; set; }
 
-        public Beneficio Converter(BeneficioDto beneficio)
+        public Modelo.Beneficio Converter(Beneficio beneficio)
         {
-            return Beneficio.GerarBeneficio(beneficio.Nome, beneficio.Descricao);
+            return Modelo.Beneficio.GerarBeneficio(beneficio.Nome, beneficio.Descricao);
         }
 
-        public static BeneficioDto CriarBeneficio(Beneficio beneficio)
+        public static Beneficio CriarBeneficio(Modelo.Beneficio beneficio)
         {
-            BeneficioDto dto = new();
+            Beneficio dto = new();
             dto.Nome = beneficio.Nome;
             dto.Descricao = beneficio.Descricao;
             return dto;

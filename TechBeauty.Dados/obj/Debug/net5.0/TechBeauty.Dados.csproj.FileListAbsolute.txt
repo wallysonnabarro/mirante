@@ -55,3 +55,21 @@ C:\Users\Pedro Gutierrez\source\repos\TechSolution\Mirante.TechBeauty\TechBeauty
 C:\Users\Pedro Gutierrez\source\repos\TechSolution\Mirante.TechBeauty\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.pdb
 C:\Users\Pedro Gutierrez\source\repos\TechSolution\Mirante.TechBeauty\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.genruntimeconfig.cache
 C:\Users\Wallyson Nabarro\source\repos\TechBeauty_s\TechBeauty_solution\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.csproj.CopyComplete
+C:\Users\pedro\OneDrive\Área de Trabalho\mirante\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dados.deps.json
+C:\Users\pedro\OneDrive\Área de Trabalho\mirante\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dados.runtimeconfig.json
+C:\Users\pedro\OneDrive\Área de Trabalho\mirante\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dados.runtimeconfig.dev.json
+C:\Users\pedro\OneDrive\Área de Trabalho\mirante\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dados.dll
+C:\Users\pedro\OneDrive\Área de Trabalho\mirante\TechBeauty.Dados\bin\Debug\net5.0\ref\TechBeauty.Dados.dll
+C:\Users\pedro\OneDrive\Área de Trabalho\mirante\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dados.pdb
+C:\Users\pedro\OneDrive\Área de Trabalho\mirante\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dominio.dll
+C:\Users\pedro\OneDrive\Área de Trabalho\mirante\TechBeauty.Dados\bin\Debug\net5.0\TechBeauty.Dominio.pdb
+C:\Users\pedro\OneDrive\Área de Trabalho\mirante\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.csproj.AssemblyReference.cache
+C:\Users\pedro\OneDrive\Área de Trabalho\mirante\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pedro\OneDrive\Área de Trabalho\mirante\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.AssemblyInfoInputs.cache
+C:\Users\pedro\OneDrive\Área de Trabalho\mirante\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.AssemblyInfo.cs
+C:\Users\pedro\OneDrive\Área de Trabalho\mirante\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.csproj.CoreCompileInputs.cache
+C:\Users\pedro\OneDrive\Área de Trabalho\mirante\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.csproj.CopyComplete
+C:\Users\pedro\OneDrive\Área de Trabalho\mirante\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.dll
+C:\Users\pedro\OneDrive\Área de Trabalho\mirante\TechBeauty.Dados\obj\Debug\net5.0\ref\TechBeauty.Dados.dll
+C:\Users\pedro\OneDrive\Área de Trabalho\mirante\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.pdb
+C:\Users\pedro\OneDrive\Área de Trabalho\mirante\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.genruntimeconfig.cache

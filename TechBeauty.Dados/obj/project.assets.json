@@ -5999,19 +5999,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Wallyson Nabarro\\.nuget\\packages\\": {}
+    "C:\\Users\\pedro\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Wallyson Nabarro\\source\\repos\\TechBeauty_s\\TechBeauty_solution\\TechBeauty.Dados\\TechBeauty.Dados.csproj",
+      "projectUniqueName": "C:\\Users\\pedro\\OneDrive\\Área de Trabalho\\mirante\\TechBeauty.Dados\\TechBeauty.Dados.csproj",
       "projectName": "TechBeauty.Dados",
-      "projectPath": "C:\\Users\\Wallyson Nabarro\\source\\repos\\TechBeauty_s\\TechBeauty_solution\\TechBeauty.Dados\\TechBeauty.Dados.csproj",
-      "packagesPath": "C:\\Users\\Wallyson Nabarro\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Wallyson Nabarro\\source\\repos\\TechBeauty_s\\TechBeauty_solution\\TechBeauty.Dados\\obj\\",
+      "projectPath": "C:\\Users\\pedro\\OneDrive\\Área de Trabalho\\mirante\\TechBeauty.Dados\\TechBeauty.Dados.csproj",
+      "packagesPath": "C:\\Users\\pedro\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\pedro\\OneDrive\\Área de Trabalho\\mirante\\TechBeauty.Dados\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Wallyson Nabarro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\pedro\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6019,14 +6019,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "http://packages.nuget.org/v1/FeedService.svc/": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\Wallyson Nabarro\\source\\repos\\TechBeauty_s\\TechBeauty_solution\\TechBeauty.Dominio\\TechBeauty.Dominio.csproj": {
-              "projectPath": "C:\\Users\\Wallyson Nabarro\\source\\repos\\TechBeauty_s\\TechBeauty_solution\\TechBeauty.Dominio\\TechBeauty.Dominio.csproj"
+            "C:\\Users\\pedro\\OneDrive\\Área de Trabalho\\mirante\\TechBeauty.Dominio\\TechBeauty.Dominio.csproj": {
+              "projectPath": "C:\\Users\\pedro\\OneDrive\\Área de Trabalho\\mirante\\TechBeauty.Dominio\\TechBeauty.Dominio.csproj"
             }
           }
         }
