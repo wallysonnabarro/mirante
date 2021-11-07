@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TechBeauty.Dominio.Dtos;
 using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
@@ -13,12 +14,12 @@ namespace TechBeauty.Dominio.Modelo
         public List<ContratoTrabalho> ContratosTrabalhos { get; set; }
 
 
-        public static Cargo criarCargo(string nome, string descricao, decimal salario)
+        public static Cargo CriarCargo(CargoDto dto)
         {
             Cargo cargo = new();
-            cargo.Nome = nome;
-            cargo.Descricao = descricao;
-            cargo.Salario = salario;
+            cargo.Nome = dto.Nome;
+            cargo.Descricao = dto.Descricao;
+            cargo.Salario = dto.Salario;
             return cargo;
         }
         public void AlterarCargo(string nome, string descricao)

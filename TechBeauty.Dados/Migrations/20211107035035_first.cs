@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TechBeauty.Dados.Migrations
 {
-    public partial class dbinicio : Migration
+    public partial class first : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -140,67 +140,24 @@ namespace TechBeauty.Dados.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Caixa",
+                name: "Usuarios",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SaldoInicial = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    SaldoFinalCaixa = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    DataHoraCriacao = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DataHoraFechamento = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    BeneficioId = table.Column<int>(type: "int", nullable: true),
-                    LucroDiario = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Nome = table.Column<string>(type: "varchar(30)", nullable: false),
+                    Password = table.Column<string>(type: "varchar(15)", nullable: false),
+                    CargoId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Caixa", x => x.Id);
+                    table.PrimaryKey("PK_Usuarios", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Caixa_Beneficio_BeneficioId",
-                        column: x => x.BeneficioId,
-                        principalTable: "Beneficio",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "EspacoCliente",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    BeneficioId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EspacoCliente", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_EspacoCliente_Beneficio_BeneficioId",
-                        column: x => x.BeneficioId,
-                        principalTable: "Beneficio",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Usuario",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CargoId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Usuario", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Usuario_Cargo_CargoId",
+                        name: "FK_Usuarios_Cargo_CargoId",
                         column: x => x.CargoId,
                         principalTable: "Cargo",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -296,8 +253,7 @@ namespace TechBeauty.Dados.Migrations
                     PrecoTotal = table.Column<decimal>(type: "decimal(6,2)", nullable: false),
                     DuracaoTotal = table.Column<int>(type: "int", nullable: false),
                     ClienteId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false),
-                    EspacoClienteId = table.Column<int>(type: "int", nullable: true)
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -308,12 +264,6 @@ namespace TechBeauty.Dados.Migrations
                         principalTable: "Cliente",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_OrdemServico_EspacoCliente_EspacoClienteId",
-                        column: x => x.EspacoClienteId,
-                        principalTable: "EspacoCliente",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -370,6 +320,34 @@ namespace TechBeauty.Dados.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Gestoes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UsuarioId = table.Column<int>(type: "int", nullable: false),
+                    Salario = table.Column<decimal>(type: "decimal(6,2)", nullable: false),
+                    ColaboradorId = table.Column<int>(type: "int", nullable: true),
+                    Receita = table.Column<decimal>(type: "decimal(6,2)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Gestoes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Gestoes_Colaborador_ColaboradorId",
+                        column: x => x.ColaboradorId,
+                        principalTable: "Colaborador",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Gestoes_Usuarios_UsuarioId",
+                        column: x => x.UsuarioId,
+                        principalTable: "Usuarios",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Agendamentos",
                 columns: table => new
                 {
@@ -408,36 +386,6 @@ namespace TechBeauty.Dados.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Pagamento",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FormaPagamento = table.Column<int>(type: "int", nullable: false),
-                    OrdemServicoId = table.Column<int>(type: "int", nullable: true),
-                    DataHoraPagamento = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ValorRecebido = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Troco = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    CaixaId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Pagamento", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Pagamento_Caixa_CaixaId",
-                        column: x => x.CaixaId,
-                        principalTable: "Caixa",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Pagamento_OrdemServico_OrdemServicoId",
-                        column: x => x.OrdemServicoId,
-                        principalTable: "OrdemServico",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "CargoContratoTrabalho",
                 columns: table => new
                 {
@@ -462,6 +410,84 @@ namespace TechBeauty.Dados.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Caixa",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SaldoInicial = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    SaldoFinalCaixa = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    DataHoraCriacao = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DataHoraFechamento = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    GestaoId = table.Column<int>(type: "int", nullable: true),
+                    LucroDiario = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    RetiradasDiarias = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Caixa", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Caixa_Gestoes_GestaoId",
+                        column: x => x.GestaoId,
+                        principalTable: "Gestoes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Espaco_clientes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BeneficioId = table.Column<int>(type: "int", nullable: false),
+                    ClienteId = table.Column<int>(type: "int", nullable: false),
+                    GestaoId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Espaco_clientes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Espaco_clientes_Beneficio_BeneficioId",
+                        column: x => x.BeneficioId,
+                        principalTable: "Beneficio",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Espaco_clientes_Cliente_ClienteId",
+                        column: x => x.ClienteId,
+                        principalTable: "Cliente",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Espaco_clientes_Gestoes_GestaoId",
+                        column: x => x.GestaoId,
+                        principalTable: "Gestoes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Comissao",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Valor = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    AgendamentoId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comissao", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Comissao_Agendamentos_AgendamentoId",
+                        column: x => x.AgendamentoId,
+                        principalTable: "Agendamentos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Logs_Agendamentos",
                 columns: table => new
                 {
@@ -482,6 +508,36 @@ namespace TechBeauty.Dados.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Pagamentos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OrdemServicoId = table.Column<int>(type: "int", nullable: false),
+                    CaixaId = table.Column<int>(type: "int", nullable: false),
+                    DataHoraPagamento = table.Column<DateTime>(type: "smallDateTime", nullable: false),
+                    ValorRecebido = table.Column<decimal>(type: "decimal(6,2)", nullable: false),
+                    Troco = table.Column<decimal>(type: "decimal(6,2)", nullable: false),
+                    Forma = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pagamentos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Pagamentos_Caixa_CaixaId",
+                        column: x => x.CaixaId,
+                        principalTable: "Caixa",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Pagamentos_OrdemServico_OrdemServicoId",
+                        column: x => x.OrdemServicoId,
+                        principalTable: "OrdemServico",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Agendamentos_ColaboradorId",
                 table: "Agendamentos",
@@ -498,9 +554,9 @@ namespace TechBeauty.Dados.Migrations
                 column: "ServicoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Caixa_BeneficioId",
+                name: "IX_Caixa_GestaoId",
                 table: "Caixa",
-                column: "BeneficioId");
+                column: "GestaoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CargoContratoTrabalho_ContratosTrabalhosId",
@@ -528,6 +584,11 @@ namespace TechBeauty.Dados.Migrations
                 column: "ServicosId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Comissao_AgendamentoId",
+                table: "Comissao",
+                column: "AgendamentoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Contato_PessoaId",
                 table: "Contato",
                 column: "PessoaId");
@@ -548,9 +609,29 @@ namespace TechBeauty.Dados.Migrations
                 column: "RegimeContratualId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EspacoCliente_BeneficioId",
-                table: "EspacoCliente",
+                name: "IX_Espaco_clientes_BeneficioId",
+                table: "Espaco_clientes",
                 column: "BeneficioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Espaco_clientes_ClienteId",
+                table: "Espaco_clientes",
+                column: "ClienteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Espaco_clientes_GestaoId",
+                table: "Espaco_clientes",
+                column: "GestaoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Gestoes_ColaboradorId",
+                table: "Gestoes",
+                column: "ColaboradorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Gestoes_UsuarioId",
+                table: "Gestoes",
+                column: "UsuarioId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Logs_Agendamentos_AgendamentoId",
@@ -563,23 +644,18 @@ namespace TechBeauty.Dados.Migrations
                 column: "ClienteId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrdemServico_EspacoClienteId",
-                table: "OrdemServico",
-                column: "EspacoClienteId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Pagamento_CaixaId",
-                table: "Pagamento",
+                name: "IX_Pagamentos_CaixaId",
+                table: "Pagamentos",
                 column: "CaixaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pagamento_OrdemServicoId",
-                table: "Pagamento",
+                name: "IX_Pagamentos_OrdemServicoId",
+                table: "Pagamentos",
                 column: "OrdemServicoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Usuario_CargoId",
-                table: "Usuario",
+                name: "IX_Usuarios_CargoId",
+                table: "Usuarios",
                 column: "CargoId");
         }
 
@@ -592,16 +668,19 @@ namespace TechBeauty.Dados.Migrations
                 name: "ColaboradorServico");
 
             migrationBuilder.DropTable(
+                name: "Comissao");
+
+            migrationBuilder.DropTable(
                 name: "Contato");
+
+            migrationBuilder.DropTable(
+                name: "Espaco_clientes");
 
             migrationBuilder.DropTable(
                 name: "Logs_Agendamentos");
 
             migrationBuilder.DropTable(
-                name: "Pagamento");
-
-            migrationBuilder.DropTable(
-                name: "Usuario");
+                name: "Pagamentos");
 
             migrationBuilder.DropTable(
                 name: "ContratoTrabalho");
@@ -610,25 +689,34 @@ namespace TechBeauty.Dados.Migrations
                 name: "TipoContato");
 
             migrationBuilder.DropTable(
+                name: "Beneficio");
+
+            migrationBuilder.DropTable(
                 name: "Agendamentos");
 
             migrationBuilder.DropTable(
                 name: "Caixa");
 
             migrationBuilder.DropTable(
-                name: "Cargo");
-
-            migrationBuilder.DropTable(
                 name: "RegimeContratual");
-
-            migrationBuilder.DropTable(
-                name: "Colaborador");
 
             migrationBuilder.DropTable(
                 name: "OrdemServico");
 
             migrationBuilder.DropTable(
                 name: "Servico");
+
+            migrationBuilder.DropTable(
+                name: "Gestoes");
+
+            migrationBuilder.DropTable(
+                name: "Cliente");
+
+            migrationBuilder.DropTable(
+                name: "Colaborador");
+
+            migrationBuilder.DropTable(
+                name: "Usuarios");
 
             migrationBuilder.DropTable(
                 name: "Endereco");
@@ -640,16 +728,10 @@ namespace TechBeauty.Dados.Migrations
                 name: "Genero");
 
             migrationBuilder.DropTable(
-                name: "Cliente");
-
-            migrationBuilder.DropTable(
-                name: "EspacoCliente");
-
-            migrationBuilder.DropTable(
                 name: "Pessoa");
 
             migrationBuilder.DropTable(
-                name: "Beneficio");
+                name: "Cargo");
         }
     }
 }

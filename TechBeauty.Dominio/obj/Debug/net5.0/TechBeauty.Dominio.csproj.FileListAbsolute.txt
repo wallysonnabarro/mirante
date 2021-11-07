@@ -73,3 +73,18 @@ C:\Users\pedro\OneDrive\Área de Trabalho\mirante\TechBeauty.Dominio\obj\Debug\n
 C:\Users\pedro\OneDrive\Área de Trabalho\mirante\TechBeauty.Dominio\obj\Debug\net5.0\ref\TechBeauty.Dominio.dll
 C:\Users\pedro\OneDrive\Área de Trabalho\mirante\TechBeauty.Dominio\obj\Debug\net5.0\TechBeauty.Dominio.pdb
 C:\Users\pedro\OneDrive\Área de Trabalho\mirante\TechBeauty.Dominio\obj\Debug\net5.0\TechBeauty.Dominio.genruntimeconfig.cache
+C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Dominio\bin\Debug\net5.0\TechBeauty.Dominio.deps.json
+C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Dominio\bin\Debug\net5.0\TechBeauty.Dominio.runtimeconfig.json
+C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Dominio\bin\Debug\net5.0\TechBeauty.Dominio.runtimeconfig.dev.json
+C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Dominio\bin\Debug\net5.0\TechBeauty.Dominio.dll
+C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Dominio\bin\Debug\net5.0\ref\TechBeauty.Dominio.dll
+C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Dominio\bin\Debug\net5.0\TechBeauty.Dominio.pdb
+C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Dominio\obj\Debug\net5.0\TechBeauty.Dominio.csproj.AssemblyReference.cache
+C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Dominio\obj\Debug\net5.0\TechBeauty.Dominio.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Dominio\obj\Debug\net5.0\TechBeauty.Dominio.AssemblyInfoInputs.cache
+C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Dominio\obj\Debug\net5.0\TechBeauty.Dominio.AssemblyInfo.cs
+C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Dominio\obj\Debug\net5.0\TechBeauty.Dominio.csproj.CoreCompileInputs.cache
+C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Dominio\obj\Debug\net5.0\TechBeauty.Dominio.dll
+C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Dominio\obj\Debug\net5.0\ref\TechBeauty.Dominio.dll
+C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Dominio\obj\Debug\net5.0\TechBeauty.Dominio.pdb
+C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Dominio\obj\Debug\net5.0\TechBeauty.Dominio.genruntimeconfig.cache

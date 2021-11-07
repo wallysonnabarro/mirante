@@ -10,10 +10,6 @@ namespace TechBeauty.Dados.Repositorio
 {
     public class PagamentoRepositorio : RepositorioBase<Pagamento>
     {
-     
-
-      
-
         public void AlterarDataHora(int id, DateTime dataHoraPagamento)
         {
             context.Pagamento.FirstOrDefault(x => x.Id == id).AlterarDataHoraPagamento(dataHoraPagamento);

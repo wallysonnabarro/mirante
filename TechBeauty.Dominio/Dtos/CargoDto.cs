@@ -14,6 +14,7 @@ namespace TechBeauty.Dominio.Dtos
         [Required(ErrorMessage = "O campo Nome do cargo é obrigatório!")]
         public string Nome { get; set; }
 
+
         [StringLength(150, ErrorMessage = "Quantidade máximo de caracteres = 150")]
         [Required(ErrorMessage = "O campo descrição do cargo é obrigatório!")]
         public string Descricao { get; set; }
@@ -21,13 +22,5 @@ namespace TechBeauty.Dominio.Dtos
         public decimal Salario { get; set; }
 
 
-        public static CargoDto Criar(Cargo cargo)
-        {
-            CargoDto cargoDto = new();
-            cargoDto.Nome = cargo.Nome;
-            cargoDto.Descricao = cargo.Descricao;
-            cargoDto.Salario = cargo.Salario;
-            return cargoDto;
-        }
     }
 }

@@ -11,8 +11,6 @@ namespace TechBeauty.Dados.Repositorio
 {
     class ComissaoRepositorio : RepositorioBase<Comissao>
     {
-        
-
         public void GerarComissao(Agendamento agendamento)
         {
             var contratoTrabalho = agendamento.Colaborador.Contratos.FirstOrDefault(x => x.Id == agendamento.Colaborador.Id);

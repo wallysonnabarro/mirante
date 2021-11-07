@@ -5979,19 +5979,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\pedro\\.nuget\\packages\\": {}
+    "C:\\Users\\Wallyson Nabarro\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pedro\\OneDrive\\Área de Trabalho\\mirante\\TechBeauty.Dominio\\TechBeauty.Dominio.csproj",
+      "projectUniqueName": "C:\\Users\\Wallyson Nabarro\\source\\repos\\mirante\\TechBeauty.Dominio\\TechBeauty.Dominio.csproj",
       "projectName": "TechBeauty.Dominio",
-      "projectPath": "C:\\Users\\pedro\\OneDrive\\Área de Trabalho\\mirante\\TechBeauty.Dominio\\TechBeauty.Dominio.csproj",
-      "packagesPath": "C:\\Users\\pedro\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pedro\\OneDrive\\Área de Trabalho\\mirante\\TechBeauty.Dominio\\obj\\",
+      "projectPath": "C:\\Users\\Wallyson Nabarro\\source\\repos\\mirante\\TechBeauty.Dominio\\TechBeauty.Dominio.csproj",
+      "packagesPath": "C:\\Users\\Wallyson Nabarro\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Wallyson Nabarro\\source\\repos\\mirante\\TechBeauty.Dominio\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\pedro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Wallyson Nabarro\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5999,7 +5999,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://packages.nuget.org/v1/FeedService.svc/": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {

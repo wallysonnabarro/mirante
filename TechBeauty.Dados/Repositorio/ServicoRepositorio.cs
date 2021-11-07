@@ -10,8 +10,6 @@ namespace TechBeauty.Dados.Repositorio
 {
     public class ServicoRepositorio : RepositorioBase<Servico>
     {
-      
-
    
     }
 }

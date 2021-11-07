@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dados.Repositorio
@@ -31,15 +28,20 @@ namespace TechBeauty.Dados.Repositorio
         public T Selecionar(int id)
         {
             return context.Set<T>().FirstOrDefault(x => x.Id == id);
-            
-
         }
 
-        public List<T> SelecionarTudo()
+        public List<T> Paginar(int skip)
         {
-            return context.Set<T>().ToList();
-            
+            int take = 25;
+
+            if (skip >= 1)
+            {
+                skip *= take;
+            }
+
+            return context.Set<T>().OrderBy(c => c.Id).Skip(skip).Take(take).ToList();
         }
+
 
         public void Excluir(int id)
         {

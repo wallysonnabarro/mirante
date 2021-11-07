@@ -35,7 +35,7 @@ namespace TechBeauty.Dados
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=MIR-0536\SQLEXPRESS; Database=OTecDB; Trusted_Connection=True");
+            optionsBuilder.UseSqlServer("Server=MIR-0550; Database=OTecDB; Trusted_Connection=True");
             base.OnConfiguring(optionsBuilder);
         }
 

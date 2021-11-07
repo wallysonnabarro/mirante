@@ -11,7 +11,5 @@ namespace TechBeauty.Dados.Repositorio
     public class ContratoTrabalhoRepositorio : RepositorioBase<ContratoTrabalho>
     {
      
-
-          
     }
 }

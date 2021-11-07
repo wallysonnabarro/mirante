@@ -42,12 +42,12 @@ namespace TechBeauty.Principal.Controllers
             }
         }
 
-        [HttpGet]
-        public IActionResult Tabela()
+        [HttpGet("paginar")]
+        public IActionResult Tabela(int skip = 0)
         {
             try
             {
-                return Ok(new BeneficioRepositorio().SelecionarTudo());
+                return Ok(new BeneficioRepositorio().Paginar(skip));
             }
             catch (Exception)
             {

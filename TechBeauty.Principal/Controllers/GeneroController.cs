@@ -10,12 +10,12 @@ namespace TechBeauty.Controllers
     [ApiController]
     public class GeneroController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult Get()
+        [HttpGet("paginar")]
+        public IActionResult GetPagina(int skip)
         {
             try
             {
-                new GeneroRepositorio().SelecionarTudo();
+                new GeneroRepositorio().Paginar(skip);
                 return Ok();
             }
             catch (Exception)
@@ -48,8 +48,8 @@ namespace TechBeauty.Controllers
         {
             try
             {
-                 new GeneroRepositorio().Incluir(genero);
-                    
+                new GeneroRepositorio().Incluir(genero);
+
                 return Ok();
             }
             catch (Exception)

@@ -11,13 +11,11 @@ namespace TechBeauty.Controllers
     public class CargoController : ControllerBase
     {
         [HttpPost]
-        public IActionResult Incluir([FromBody] Cargo cargo)
+        public IActionResult Incluir([FromBody] CargoDto cargo)
         {
             try
             {
-                //int id = new CargoRepositorio().Incluir(cargo);
-                //return CreatedAtAction(nameof(RecuperarCargoId), new { Id = id }, cargo);
-                new CargoRepositorio().Incluir(cargo);
+                new CargoRepositorio().Incluir(Cargo.CriarCargo(cargo));
                 return Ok();
             }
             catch (System.Exception)
@@ -26,12 +24,12 @@ namespace TechBeauty.Controllers
             }
         }
 
-        [HttpGet]
-        public IActionResult ColecaoCargos()
+        [HttpGet("paginar")]
+        public IActionResult ColecaoCargos(int skip = 0)
         {
             try
             {
-                return Ok(new CargoRepositorio().SelecionarTudo());
+                return Ok(new CargoRepositorio().Paginar(skip));
             }
             catch (System.Exception)
             {

@@ -10,8 +10,5 @@ namespace TechBeauty.Dados.Repositorio
     class EspacoClienteRepositorio : RepositorioBase<EspacoCliente>
     {
 
-
-  
-
     }
 }
