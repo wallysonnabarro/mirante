@@ -10,6 +10,14 @@ namespace TechBeauty.Dados.Repositorio
 {
     class UsuarioRepositorio : RepositorioBase<Usuario>
     {
+        public override void Incluir(Usuario entity)
+        {
+            if (!context.Usuario.All(u => u.Nome.Equals(entity.Nome)))
+            {
+                base.Incluir(entity);
+            }
+        }
+
         public bool ValidarUsuario(Usuario usuario)
         {
             if (context.Usuario.FirstOrDefault(x => x.Nome == usuario.Nome & x.Password == usuario.Password) != null)
@@ -18,7 +26,7 @@ namespace TechBeauty.Dados.Repositorio
             }
             return false;
         }
-        
+
 
         public void AlterarSenhaUsuario(int id, string senha)
         {
@@ -31,6 +39,6 @@ namespace TechBeauty.Dados.Repositorio
             context.Usuario.FirstOrDefault(x => x.Id == id).AlterarCargo(cargo);
             context.SaveChanges();
         }
-  
+
     }
 }

@@ -10,6 +10,12 @@ namespace TechBeauty.Dados.Repositorio
 {
     public class ServicoRepositorio : RepositorioBase<Servico>
     {
-   
+        public override void Incluir(Servico entity)
+        {
+            if (!context.Servico.All(s => s.Nome.Equals(entity.Nome)))
+            {
+                base.Incluir(entity);
+            }
+        }
     }
 }

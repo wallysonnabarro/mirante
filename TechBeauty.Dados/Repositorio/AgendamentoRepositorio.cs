@@ -13,7 +13,7 @@ namespace TechBeauty.Dados.Repositorio
         public List<Agendamento> AgendamentosPorOrdemServico(int idOrdem)
         {
             return context.Agendamento.Where(
-                x => x.Id == idOrdem).ToList();
+                x => x.Id == idOrdem).OrderBy(x => x.Id).ToList();
         }
     }
 }

@@ -30,15 +30,16 @@ namespace TechBeauty.Dados.Repositorio
             List<Comissao> lista = new();
             if (context.Colaborador.FirstOrDefault(x => x.Id == colaboradorId) != null)
             {
-                DateTime dataInicio = DateTime.Now;//Pegar a data atual e subtrair 30 dias dela                
+                //Pegar a data atual e subtrair 30 dias dela                
                 //Data inicio da Agendamento
                 //Data termino da Agendamento
                 //Data status da Agendamento = concluido
                 //Data status da Agendamento = Parcialmente concluido = não existe na enum
                 return context.Comissao.Where(col => col.Id == colaboradorId)
-                    .Where(status => status.Agendamento.Status == StatusAgendamento.Concluido)//status
-                    .Where(dI => dI.Agendamento.DataHoraCriacao >= dataInicio)
-                    .Where(dF => dF.Agendamento.DataHoraCriacao <= DateTime.Now)//Data fim dia atual
+                    .Where(c => c.Agendamento.Status == StatusAgendamento.Concluido
+                    && c.Agendamento.DataHoraCriacao >= DateTime.Now.AddDays(-30)
+                    && c.Agendamento.DataHoraCriacao <= DateTime.Now)
+                    .OrderBy(x => x.Id)
                     .ToList();
             }
             return lista;

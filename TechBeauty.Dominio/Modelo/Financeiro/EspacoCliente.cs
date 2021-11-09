@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿
+
 using TechBeauty.Dominio.Modelo.Financeiro;
 using TechBeauty.Dominio.Repositorio;
 

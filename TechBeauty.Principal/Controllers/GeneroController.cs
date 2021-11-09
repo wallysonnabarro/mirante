@@ -15,12 +15,11 @@ namespace TechBeauty.Controllers
         {
             try
             {
-                new GeneroRepositorio().Paginar(skip);
-                return Ok();
+                return Ok(GeneroReadDto.Paginar(new GeneroRepositorio().Paginar(skip)));
             }
             catch (Exception)
             {
-                return BadRequest();
+                return NotFound();
             }
         }
 
@@ -29,32 +28,25 @@ namespace TechBeauty.Controllers
         {
             try
             {
-                Genero genero = new GeneroRepositorio().Selecionar(id);
-                if (genero != null)
-                {
-                    return Ok(GeneroDto.CriarGenero(genero.Valor));
-                }
-                return NotFound();
+                return Ok(new GeneroRepositorio().Selecionar(id));
             }
             catch (Exception)
             {
-                return BadRequest();
+                return NotFound();
             }
         }
 
-
         [HttpPost]
-        public IActionResult Post([FromBody] Genero genero)
+        public IActionResult Post([FromBody] GeneroDto genero)
         {
             try
             {
-                new GeneroRepositorio().Incluir(genero);
-
+                new GeneroRepositorio().Incluir(Genero.Criar(genero.Valor));
                 return Ok();
             }
             catch (Exception)
             {
-                return BadRequest();
+                return Accepted();
             }
         }
 
@@ -63,16 +55,12 @@ namespace TechBeauty.Controllers
         {
             try
             {
-                if (new GeneroRepositorio().Selecionar(id) != null)
-                {
-                    new GeneroRepositorio().Alterar(genero);
-                    return NoContent();
-                }
-                return NotFound();
+                new GeneroRepositorio().Alterar(Genero.Alterar(genero.Valor, id));
+                return NoContent();
             }
             catch (Exception)
             {
-                return BadRequest();
+                return NotFound();
             }
         }
 
@@ -81,16 +69,12 @@ namespace TechBeauty.Controllers
         {
             try
             {
-                if (new GeneroRepositorio().Selecionar(id) != null)
-                {
-                    new GeneroRepositorio().Excluir(id);
-                    return NoContent();
-                }
-                return NotFound();
+                new GeneroRepositorio().Excluir(id);
+                return NoContent();
             }
             catch (Exception)
             {
-                return BadRequest();
+                return NotFound();
             }
         }
     }

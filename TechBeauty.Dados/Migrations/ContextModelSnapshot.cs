@@ -91,24 +91,6 @@ namespace TechBeauty.Dados.Migrations
                     b.ToTable("Agendamentos");
                 });
 
-            modelBuilder.Entity("TechBeauty.Dominio.Modelo.Beneficio", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Descricao")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Nome")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Beneficio");
-                });
-
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Caixa", b =>
                 {
                     b.Property<int>("Id")
@@ -308,6 +290,24 @@ namespace TechBeauty.Dados.Migrations
                     b.HasIndex("GestaoId");
 
                     b.ToTable("Espaco_clientes");
+                });
+
+            modelBuilder.Entity("TechBeauty.Dominio.Modelo.Financeiro.Beneficio", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Descricao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Beneficio");
                 });
 
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Financeiro.Comissao", b =>
@@ -705,7 +705,7 @@ namespace TechBeauty.Dados.Migrations
 
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.EspacoCliente", b =>
                 {
-                    b.HasOne("TechBeauty.Dominio.Modelo.Beneficio", "Beneficio")
+                    b.HasOne("TechBeauty.Dominio.Modelo.Financeiro.Beneficio", "Beneficio")
                         .WithMany("EspacosClientes")
                         .HasForeignKey("BeneficioId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -855,11 +855,6 @@ namespace TechBeauty.Dados.Migrations
                     b.Navigation("LogAgendamentos");
                 });
 
-            modelBuilder.Entity("TechBeauty.Dominio.Modelo.Beneficio", b =>
-                {
-                    b.Navigation("EspacosClientes");
-                });
-
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Caixa", b =>
                 {
                     b.Navigation("Pagamentos");
@@ -878,6 +873,11 @@ namespace TechBeauty.Dados.Migrations
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Escala", b =>
                 {
                     b.Navigation("Colaboradores");
+                });
+
+            modelBuilder.Entity("TechBeauty.Dominio.Modelo.Financeiro.Beneficio", b =>
+                {
+                    b.Navigation("EspacosClientes");
                 });
 
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Financeiro.Gestao", b =>

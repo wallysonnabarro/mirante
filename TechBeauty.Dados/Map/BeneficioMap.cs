@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TechBeauty.Dominio.Modelo;
+using TechBeauty.Dominio.Modelo.Financeiro;
 
 namespace TechBeauty.Dados.Map
 {
@@ -18,7 +13,6 @@ namespace TechBeauty.Dados.Map
             builder.Property(b => b.Nome).HasColumnType("varchar(50)").IsRequired();
             
             builder.Property(b => b.Descricao).HasColumnType("varchar(150)").IsRequired();
-
         }
     }
 }

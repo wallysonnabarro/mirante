@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TechBeauty.Dominio.Modelo;
+using TechBeauty.Dominio.Modelo.Financeiro;
 
 namespace TechBeauty.Dominio.Dtos
 {
@@ -13,12 +14,17 @@ namespace TechBeauty.Dominio.Dtos
         public string Nome { get; set; }
         public string Descricao { get; set; }
 
-        public static BeneficioReadDto CriarBeneficio(Modelo.Beneficio beneficio)
+        public static object Paginar(List<Beneficio> beneficios)
         {
-            BeneficioReadDto dto = new();
-            dto.Id = beneficio.Id;
-            dto.Nome = beneficio.Nome;
-            dto.Descricao = beneficio.Descricao;
+            List<BeneficioReadDto> dto = new();
+            foreach (var beneficio in beneficios)
+            {
+                BeneficioReadDto beneficioRead = new();
+                beneficioRead.Id = beneficio.Id;
+                beneficioRead.Nome = beneficio.Nome;
+                beneficioRead.Descricao = beneficio.Descricao;
+                dto.Add(beneficioRead);
+            }
             return dto;
         }
     }

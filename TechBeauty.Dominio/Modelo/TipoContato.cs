@@ -17,9 +17,11 @@ namespace TechBeauty.Dominio.Modelo
 
             return tipoContato;
         }
-        public void AtualizarTipoContato(string valor)
+        public static TipoContato AtualizarTipoContato(string valor, int id)
         {
-            Valor = valor;
+            TipoContato tipo = Criar(valor);
+            tipo.Id = id;
+            return tipo;
         }
 
     }

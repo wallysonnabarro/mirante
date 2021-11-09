@@ -312,7 +312,6 @@ C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Principal\obj\Debug\ne
 C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Principal\obj\Debug\net5.0\TechBeauty.Principal.AssemblyInfoInputs.cache
 C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Principal\obj\Debug\net5.0\TechBeauty.Principal.AssemblyInfo.cs
 C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Principal\obj\Debug\net5.0\TechBeauty.Principal.csproj.CoreCompileInputs.cache
-C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Principal\obj\Debug\net5.0\TechBeauty.Principal.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Principal\obj\Debug\net5.0\TechBeauty.Principal.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Principal\obj\Debug\net5.0\staticwebassets\TechBeauty.Principal.StaticWebAssets.Manifest.cache
 C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Principal\obj\Debug\net5.0\staticwebassets\TechBeauty.Principal.StaticWebAssets.xml
@@ -322,4 +321,5 @@ C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Principal\obj\Debug\ne
 C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Principal\obj\Debug\net5.0\ref\TechBeauty.Principal.dll
 C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Principal\obj\Debug\net5.0\TechBeauty.Principal.pdb
 C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Principal\obj\Debug\net5.0\TechBeauty.Principal.genruntimeconfig.cache
+C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Principal\obj\Debug\net5.0\TechBeauty.Principal.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Principal\obj\Debug\net5.0\TechBeauty.Principal.csproj.CopyComplete

@@ -22,10 +22,12 @@ namespace TechBeauty.Dominio.Modelo
             cargo.Salario = dto.Salario;
             return cargo;
         }
-        public void AlterarCargo(string nome, string descricao)
+
+        public static Cargo AlterarCargo(CargoDto dto, int id)
         {
-            Nome = nome;
-            Descricao = descricao;
+            Cargo cargo = CriarCargo(dto);
+            cargo.Id = id;
+            return cargo;
         }
 
     }

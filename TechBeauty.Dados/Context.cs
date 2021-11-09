@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using TechBeauty.Dados.Map;
 using TechBeauty.Dominio.Modelo;
 using TechBeauty.Dominio.Modelo.Financeiro;
@@ -35,7 +33,7 @@ namespace TechBeauty.Dados
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=MIR-0550; Database=OTecDB; Trusted_Connection=True");
+            optionsBuilder.UseSqlServer("Server=MIR-0550; Database=XTecDB; Trusted_Connection=True");
             base.OnConfiguring(optionsBuilder);
         }
 

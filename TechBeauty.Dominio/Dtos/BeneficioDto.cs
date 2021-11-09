@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,19 +8,20 @@ using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dominio.Dtos
 {
-    public class Beneficio
+    public class BeneficioDto
     {
+        [StringLength(50, ErrorMessage = "Quantidade máximo de caracteres = 50")]
+        [Required(ErrorMessage = "O campo Nome do beneficio é obrigatório!")]
         public string Nome { get; set; }
+
+        [StringLength(150, ErrorMessage = "Quantidade máximo de caracteres = 150")]
+        [Required(ErrorMessage = "O campo descrição do beneficio é obrigatório!")]
         public string Descricao { get; set; }
 
-        public Modelo.Beneficio Converter(Beneficio beneficio)
-        {
-            return Modelo.Beneficio.GerarBeneficio(beneficio.Nome, beneficio.Descricao);
-        }
 
-        public static Beneficio CriarBeneficio(Modelo.Beneficio beneficio)
+        public static BeneficioDto CriarBeneficio(BeneficioDto beneficio)
         {
-            Beneficio dto = new();
+            BeneficioDto dto = new();
             dto.Nome = beneficio.Nome;
             dto.Descricao = beneficio.Descricao;
             return dto;

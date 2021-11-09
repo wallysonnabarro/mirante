@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TechBeauty.Dominio.Dtos;
 using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
@@ -17,9 +18,12 @@ namespace TechBeauty.Dominio.Modelo
 
             return genero;
         }
-        public void Alterar(string valor)
+        public static Genero Alterar(string valor, int id)
         {
-            Valor = valor;
+            Genero genero = new();
+            genero.Valor = valor;
+            genero.Id = id;
+            return genero;
         }
     }
 }

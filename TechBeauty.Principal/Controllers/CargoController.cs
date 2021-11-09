@@ -18,23 +18,16 @@ namespace TechBeauty.Controllers
                 new CargoRepositorio().Incluir(Cargo.CriarCargo(cargo));
                 return Ok();
             }
-            catch (System.Exception)
+            catch (Exception)
             {
-                return BadRequest();
+                return Accepted();
             }
         }
 
         [HttpGet("paginar")]
         public IActionResult ColecaoCargos(int skip = 0)
         {
-            try
-            {
-                return Ok(new CargoRepositorio().Paginar(skip));
-            }
-            catch (System.Exception)
-            {
-                return BadRequest();
-            }
+            return Ok(new CargoRepositorio().Paginar(skip));
         }
 
         [HttpGet("{id}")]
@@ -42,34 +35,25 @@ namespace TechBeauty.Controllers
         {
             try
             {
-                Cargo cargo = new CargoRepositorio().Selecionar(id);
-                if (cargo != null)
-                {
-                    return Ok(cargo);
-                }
-                return NotFound();
+                return Ok(new CargoRepositorio().Selecionar(id));
             }
-            catch (System.Exception)
+            catch (Exception)
             {
-                return BadRequest();
+                return NotFound();
             }
         }
 
         [HttpPut("{id}")]
-        public IActionResult AtualizarCargo(int id, [FromBody] Cargo cargo)
+        public IActionResult AtualizarCargo(int id, [FromBody] CargoDto cargo)
         {
             try
             {
-                if (new CargoRepositorio().Selecionar(id) != null)
-                {
-                    new CargoRepositorio().Alterar(cargo);
-                    return NoContent();
-                }
-                return NotFound();
+                new CargoRepositorio().Alterar(Cargo.AlterarCargo(cargo, id));
+                return NoContent();
             }
-            catch (System.Exception)
+            catch (Exception)
             {
-                return BadRequest();
+                return NotFound();
             }
         }
 
@@ -78,16 +62,12 @@ namespace TechBeauty.Controllers
         {
             try
             {
-                if (new CargoRepositorio().Selecionar(id) != null)
-                {
-                    new CargoRepositorio().Excluir(id);
-                    return NoContent();
-                }
-                return NotFound();
+                new CargoRepositorio().Excluir(id);
+                return NoContent();
             }
-            catch (System.Exception)
+            catch (Exception)
             {
-                return BadRequest();
+                return NotFound();
             }
         }
     }
