@@ -55,14 +55,48 @@ namespace TechBeauty.Principal.Controllers
 
         // PUT api/<ContratoTrabalhoController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromBody] ContratoTrabalhoDTO dto)
         {
+            try
+            {
+                var regime = new RegimeContratualRepositorio().Selecionar(dto.RegimeId);
+                var cargos = new CargoRepositorio().SelecionarCargos(dto.CargosId);
+                var colaborador = new ColaboradorRepositorio().Selecionar(dto.ColaboradorId);
+                new ContratoTrabalhoRepositorio().Alterar(ContratoTrabalho.Atualizar(dto, regime, cargos, colaborador, id));
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
         }
 
         // DELETE api/<ContratoTrabalhoController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            try
+            {
+                new ContratoTrabalhoRepositorio().Excluir(id);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult EncerramentoContrato(int id, DateTime dataEncerramento)
+        {
+            try
+            {
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
         }
     }
 }

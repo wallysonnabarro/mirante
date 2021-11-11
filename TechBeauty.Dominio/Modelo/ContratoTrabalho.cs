@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TechBeauty.Dominio.Dtos;
 using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
@@ -39,6 +40,18 @@ namespace TechBeauty.Dominio.Modelo
         public void EncerrarContrato(DateTime dataDesligamento)
         {
             DataDesligamento = dataDesligamento;
+        }
+
+        public static ContratoTrabalho Atualizar(ContratoTrabalhoDTO dto, RegimeContratual regime, List<Cargo> cargos, Colaborador colaborador, int id)
+        {
+            ContratoTrabalho contrato = new();
+            contrato.Id = id;
+            contrato.RegimeContratual = regime;
+            contrato.Cargos = cargos;
+            contrato.Colaborador = colaborador;
+            contrato.CnpjCTPS = dto.CnpjCtps;
+            contrato.DataEntrada = dto.DataEntrada;
+            return contrato;
         }
     }
 }

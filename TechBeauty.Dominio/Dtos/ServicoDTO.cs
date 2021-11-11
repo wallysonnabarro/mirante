@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dominio.Dtos
 {
@@ -26,7 +27,7 @@ namespace TechBeauty.Dominio.Dtos
         public int DuracaoEmMin { get; set; }
 
 
-        public static ServicoDTO CriarServico(ServicoDTO servico)
+        public static ServicoDTO CriarServico(Servico servico)
         {
             ServicoDTO dto = new();
             dto.Nome = servico.Nome;

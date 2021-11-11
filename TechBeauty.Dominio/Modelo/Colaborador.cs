@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using TechBeauty.Dominio.Dtos;
 using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
@@ -11,19 +12,19 @@ namespace TechBeauty.Dominio.Modelo
         public Endereco Endereco { get; private set; }
         public Genero Genero { get; private set; }
         public string NomeSocial { get; private set; }
-        public Collection<ContratoTrabalho> Contratos { get; private set; }
+        public Collection<ContratoTrabalho> Contratos { get; private set; }// navegação
         public Escala Escala { get; private set; }
-        public List<Agendamento> Agendamentos { get; set; }
+        public List<Agendamento> Agendamentos { get; set; }// navegação
 
-        public static Colaborador Criar(Colaborador colaboradorDto)
+        public static Colaborador Criar(ColaboradorDTO colaboradorDto)
         {
             Colaborador colaborador = new();
             colaborador.CarteiraTrabalho = colaboradorDto.CarteiraTrabalho;
-            colaborador.Servicos = colaboradorDto.Servicos;
-            colaborador.Endereco = colaboradorDto.Endereco;
-            colaborador.Genero = colaboradorDto.Genero;
-            colaborador.NomeSocial = colaboradorDto.NomeSocial;
-            colaborador.Escala = colaboradorDto.Escala;
+            //colaborador.Servicos = colaboradorDto.Servicos;
+            //colaborador.Endereco = colaboradorDto.Endereco;
+            //colaborador.Genero = colaboradorDto.Genero;
+            //colaborador.NomeSocial = colaboradorDto.NomeSocial;
+            //colaborador.Escala = colaboradorDto.Escala;
 
             return colaborador;
         }

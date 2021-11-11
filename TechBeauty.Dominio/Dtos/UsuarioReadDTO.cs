@@ -10,21 +10,14 @@ namespace TechBeauty.Dominio.Dtos
     class UsuarioReadDTO
     {
         public int Id { get; set; }
-        public string Nome { get;  set; }
-        public string Password { get; set; }
+        public string Nome { get; set; }
 
-        public static object Paginar(List<Usuario> usuarios)
+        public static UsuarioReadDTO Convert(Usuario usuario)
         {
-            List<UsuarioReadDTO> dto = new();
-            foreach (var item in usuarios)
-            {
-                UsuarioReadDTO usuarioRead = new();
-                usuarioRead.Id = item.Id;
-                usuarioRead.Nome = item.Nome;
-                usuarioRead.Password = item.Password;
-                dto.Add(usuarioRead);
-            }
-            return dto;
+            UsuarioReadDTO usuarioRead = new();
+            usuarioRead.Id = usuario.Id;
+            usuarioRead.Nome = usuario.Nome;
+            return usuarioRead;
         }
     }
 }

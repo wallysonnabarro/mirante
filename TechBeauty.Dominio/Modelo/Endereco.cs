@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TechBeauty.Dominio.Dtos;
 using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
@@ -16,18 +17,16 @@ namespace TechBeauty.Dominio.Modelo
         public ICollection<Colaborador> Colaboradores { get; set; }
 
 
-        public static Endereco Criar(int id, string logradouro, string cidade, 
-            string uf, string numero, string complemento, string cep, string bairro)
+        public static Endereco Criar(ColaboradorDTO dto)
         {
-            Endereco endereco = new Endereco();
-            endereco.Id = id;
-            endereco.Logradouro = logradouro;
-            endereco.Cidade = cidade;
-            endereco.UF = uf;
-            endereco.Numero = numero;
-            endereco.Complemento = complemento;
-            endereco.Cep = cep;
-            endereco.Bairro = bairro;
+            Endereco endereco = new();
+            endereco.Logradouro = dto.Logradouro;
+            endereco.Cidade = dto.Cidade;
+            endereco.UF = dto.UF;
+            endereco.Numero = dto.Numero;
+            endereco.Complemento = dto.Complemento;
+            endereco.Cep = dto.Cep;
+            endereco.Bairro = dto.Bairro;
             return endereco;
         }
         public void AlterarEndereco(Endereco endereco)

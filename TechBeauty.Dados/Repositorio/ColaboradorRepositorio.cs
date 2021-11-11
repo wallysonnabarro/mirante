@@ -10,12 +10,13 @@ namespace TechBeauty.Dados.Repositorio
 {
     public class ColaboradorRepositorio : RepositorioBase<Colaborador>
     {
-        public override void Incluir(Colaborador entity)
+        public override int Incluir(Colaborador entity)
         {
-            if (!context.Colaborador.All(c => c.CPF.Equals(entity.CPF)))
+            if (!context.Colaborador.Any(c => c.CPF.Equals(entity.CPF)))
             {
-                base.Incluir(entity);
+                return base.Incluir(entity);
             }
+            throw new ArgumentException();
         }
     }
 }

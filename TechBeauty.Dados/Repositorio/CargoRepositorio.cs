@@ -7,11 +7,11 @@ namespace TechBeauty.Dados.Repositorio
 {
     public class CargoRepositorio : RepositorioBase<Cargo>
     {
-        public override void Incluir(Cargo entity)
+        public override int Incluir(Cargo entity)
         {
             if (!context.Cargo.Any(x => x.Nome == entity.Nome))
             {
-                base.Incluir(entity);
+                return base.Incluir(entity);
             }
             else
             {

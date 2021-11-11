@@ -1,47 +1,115 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using TechBeauty.Dados.Repositorio;
+using TechBeauty.Dominio.Dtos;
+using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Principal.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
-    public class UsuarioController : ControllerBase
+    [Route("[controlller]")]
+    public class UsuarioController : Controller
     {
-        // GET: api/<UsuarioController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<UsuarioController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<UsuarioController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult Criar([FromBody] UsuarioDTO usuario)
         {
+            try
+            {
+                var cargo = new CargoRepositorio().Selecionar(usuario.CargoId);
+                new UsuarioRepositorio().Incluir(Usuario.Criar(usuario, cargo));
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
+
         }
 
-        // PUT api/<UsuarioController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpGet("paginar")]
+        public IActionResult Tabela(int skip = 0, int take = 25)
         {
+            try
+            {
+                return Ok(UsuarioDTO.Paginar(new UsuarioRepositorio().Paginar(skip, take)));
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
         }
 
-        // DELETE api/<UsuarioController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpPost("validar")]
+        public IActionResult ValidarUsuario([FromBody] UsuarioDTO dto)
         {
+            try
+            {
+                return Ok(new UsuarioRepositorio().ValidarUsuario(dto));
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
+        }
+
+        [HttpPut("atualizarUser/{id}")]
+        public IActionResult AtualizarUser(int id, string user)
+        {
+            try
+            {
+                new UsuarioRepositorio().AtualizarUsuario(id, user);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
+        }
+
+        [HttpPut("atualizarPassw/{id}")]
+        public IActionResult AtualizarPassword(int id, string password)
+        {
+            try
+            {
+                new UsuarioRepositorio().AlterarSenha(id, password);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
+        }
+
+        [HttpPut("atualizarCarg/{id}")]
+        public IActionResult AtualizarCargo(int id, int cargoId)
+        {
+            try
+            {
+                new UsuarioRepositorio().AlterarCargoUsuario(id, cargoId);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
+        }
+
+        [HttpDelete]
+        public IActionResult Deletar(int id)
+        {
+            try
+            {
+                new UsuarioRepositorio().Excluir(id);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
         }
     }
 }

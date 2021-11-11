@@ -27,7 +27,7 @@ namespace TechBeauty.Controllers
         [HttpGet("paginar")]
         public IActionResult ColecaoCargos(int skip = 0, int take = 25)
         {
-            return Ok(new CargoRepositorio().Paginar(skip, take));
+            return Ok(CargoReadDto.Paginar(new CargoRepositorio().Paginar(skip, take)));
         }
 
         [HttpGet("{id}")]

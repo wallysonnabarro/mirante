@@ -10,16 +10,13 @@ namespace TechBeauty.Dados.Repositorio
 {
     public class TipoContatoRepositorio : RepositorioBase<TipoContato>
     {
-        public override void Incluir(TipoContato entity)
+        public override int Incluir(TipoContato entity)
         {
             if (ValidarValor(entity))
             {
-                base.Incluir(entity);
+                return base.Incluir(entity);
             }
-            else
-            {
-                throw new ArgumentException();
-            }
+            throw new ArgumentException();
         }
 
         public override void Alterar(TipoContato entity)

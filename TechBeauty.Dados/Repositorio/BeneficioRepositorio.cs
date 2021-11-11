@@ -9,11 +9,11 @@ namespace TechBeauty.Dados.Repositorio
 {
     public class BeneficioRepositorio : RepositorioBase<Beneficio>
     {
-        public override void Incluir(Beneficio entity)
+        public override int Incluir(Beneficio entity)
         {
             if (context.Beneficio.Any(b => b.Nome == entity.Nome))
             {
-                base.Incluir(entity);
+                return base.Incluir(entity);
             }
             else
             {

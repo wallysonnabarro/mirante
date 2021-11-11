@@ -3,45 +3,47 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using TechBeauty.Dados.Repositorio;
+using TechBeauty.Dominio.Dtos;
+using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Principal.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
-    public class ColaboradorController : ControllerBase
+    [Route("[controlller]")]
+    public class ColaboradorController : Controller
     {
-        // GET: api/<ColaboradorController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        public class UsuarioController : Controller
         {
-            return new string[] { "value1", "value2" };
-        }
 
-        // GET api/<ColaboradorController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+            public ActionResult Criar([FromBody] ColaboradorDTO colaborador)
+            {
+                try
+                {
+                    var endereco = Endereco.Criar(colaborador);
+                    int id = new EnderecoRepositorio().Incluir(endereco);
+                    new ColaboradorRepositorio().Incluir(Colaborador.Criar(colaborador));
+                    return Ok();
+                }
+                catch (Exception)
+                {
+                    return NotFound();
+                }
 
-        // POST api/<ColaboradorController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+            }
 
-        // PUT api/<ColaboradorController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<ColaboradorController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            [HttpGet("paginar")]
+            public IActionResult Tabela(int skip = 0, int take = 25)
+            {
+                try
+                {
+                    return Ok(ColaboradorReadDTO.Paginar(new ColaboradorRepositorio().Paginar(skip, take)));
+                }
+                catch (Exception)
+                {
+                    return BadRequest();
+                }
+            }
         }
     }
 }

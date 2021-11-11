@@ -14,10 +14,11 @@ namespace TechBeauty.Dados.Repositorio
             context = new();
         }
 
-        public virtual void Incluir(T entity)
+        public virtual int Incluir(T entity)
         {
             context.Set<T>().Add(entity);
             context.SaveChanges();
+            return entity.Id;
         }
 
         public virtual void Alterar(T entity)

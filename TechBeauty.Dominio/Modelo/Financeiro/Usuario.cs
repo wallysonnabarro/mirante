@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TechBeauty.Dominio.Dtos;
 using TechBeauty.Dominio.Modelo.Financeiro;
 using TechBeauty.Dominio.Repositorio;
 
@@ -16,11 +17,11 @@ namespace TechBeauty.Dominio.Modelo
         public Cargo Cargo { get; private set; }
         public List<Gestao> Gestao { get; set; }//Navegação, não será populada
 
-        public static Usuario Criar(string nome, string password, Cargo cargo)
+        public static Usuario Criar(UsuarioDTO dto, Cargo cargo)
         {
             Usuario usuario = new();
-            usuario.Nome = nome;
-            usuario.Password = password;
+            usuario.Nome = dto.Nome;
+            usuario.Password = dto.Password;
             usuario.Cargo = cargo;
             return usuario;
         }

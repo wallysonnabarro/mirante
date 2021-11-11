@@ -9,17 +9,13 @@ namespace TechBeauty.Dados.Repositorio
 {
     public class GeneroRepositorio : RepositorioBase<Genero>
     {
-        public override void Incluir(Genero entity)
+        public override int Incluir(Genero entity)
         {
-            var existe = context.Genero.Where(g => g.Valor == entity.Valor).FirstOrDefault();
-            if (existe == null)
+            if (context.Genero.Any(g => g.Valor == entity.Valor))
             {
-                base.Incluir(entity);
+                return base.Incluir(entity);
             }
-            else
-            {
-                throw new ArgumentException("");
-            }
+            throw new ArgumentException("");
         }
 
         public override void Alterar(Genero entity)

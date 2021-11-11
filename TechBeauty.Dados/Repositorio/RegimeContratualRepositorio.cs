@@ -10,12 +10,13 @@ namespace TechBeauty.Dados.Repositorio
 {
     public class RegimeContratualRepositorio : RepositorioBase<RegimeContratual>
     {
-        public override void Incluir(RegimeContratual entity)
+        public override int Incluir(RegimeContratual entity)
         {
-            if (!context.RegimeContratual.All(rc => rc.Valor.Equals(entity.Valor)))
+            if (!context.RegimeContratual.Any(rc => rc.Valor == entity.Valor))
             {
-                base.Incluir(entity);
+                return base .Incluir(entity);
             }
+            throw new ArgumentException();
         }
     }
 }

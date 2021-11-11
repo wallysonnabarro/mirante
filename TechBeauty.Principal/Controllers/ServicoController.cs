@@ -1,47 +1,75 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using TechBeauty.Dominio.Dtos;
+using TechBeauty.Dados.Repositorio;
+using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Principal.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controllerS]")]
     [ApiController]
-    public class ServicoController : ControllerBase
+    public class ServicoController : Controller
     {
-        // GET: api/<ServicoController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<ServicoController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<ServicoController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult CriarServico([FromBody] ServicoDTO servico)
         {
+            try
+            {
+                new ServicoRepositorio().Incluir(Servico.Criar(servico));
+                return Ok();
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
         }
 
-        // PUT api/<ServicoController>/5
+
+        [HttpGet("paginar")]
+        public IActionResult Paginar(int skip = 0, int take = 25)
+        {
+            return Ok(ServicoReadDTO.Paginar(new ServicoRepositorio().Paginar(skip, take)));
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult Selecionar(int id)
+        {
+            try
+            {
+                return Ok(ServicoDTO.CriarServico(new ServicoRepositorio().Selecionar(id)));
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
+        }
+
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Alterar(int id, [FromBody] ServicoReadDTO dto)
         {
+            try
+            {
+                new ServicoRepositorio().Alterar(Servico.Alterar(dto, id));
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
         }
 
-        // DELETE api/<ServicoController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete]
+        public IActionResult Deletar(int id)
         {
+            try
+            {
+                new ServicoRepositorio().Excluir(id);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
         }
     }
 }

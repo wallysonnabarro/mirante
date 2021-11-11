@@ -15,7 +15,6 @@ namespace TechBeauty.Dominio.Dtos
 
         [Required(ErrorMessage = "O campo 'DataEntrada' do contrato de trabalho é obrigatório!")]
         public DateTime DataEntrada { get; set; }
-        public DateTime DataDesligamento { get; set; }
         public int RegimeId { get; set; }
         public List<int> CargosId { get; set; }
         public int ColaboradorId { get; set; }
@@ -25,7 +24,6 @@ namespace TechBeauty.Dominio.Dtos
             ContratoTrabalhoDTO dto = new();
             dto.CnpjCtps = contrato.CnpjCtps;
             dto.DataEntrada = contrato.DataEntrada;
-            dto.DataDesligamento = contrato.DataDesligamento;
             dto.RegimeId = contrato.RegimeId;
             return dto;
         }
