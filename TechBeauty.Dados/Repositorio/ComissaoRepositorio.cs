@@ -35,9 +35,10 @@ namespace TechBeauty.Dados.Repositorio
                 //Data termino da Agendamento
                 //Data status da Agendamento = concluido
                 //Data status da Agendamento = Parcialmente concluido = não existe na enum
-                return context.Comissao.Where(col => col.Id == colaboradorId)
-                    .Where(c => c.Agendamento.Status == StatusAgendamento.Concluido
-                    && c.Agendamento.DataHoraCriacao >= DateTime.Now.AddDays(-30)
+                return context.Comissao
+                    .Where(c => c.Agendamento.Colaborador.Id == colaboradorId
+                    && c.Agendamento.Status == StatusAgendamento.Concluido
+                    && c.Agendamento.DataHoraCriacao >= DateTime.Now.AddDays(-29).AddSeconds(-1)
                     && c.Agendamento.DataHoraCriacao <= DateTime.Now)
                     .OrderBy(x => x.Id)
                     .ToList();

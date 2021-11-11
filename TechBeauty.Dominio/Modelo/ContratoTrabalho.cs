@@ -17,7 +17,7 @@ namespace TechBeauty.Dominio.Modelo
         public static ContratoTrabalho Contratar(RegimeContratual regimeContratual, DateTime dataEntrada, 
             List<Cargo> cargos, string cnpjCTPS, Colaborador colaborador)
         {
-            ContratoTrabalho contratoTrabalho = new ContratoTrabalho();
+            ContratoTrabalho contratoTrabalho = new();
             contratoTrabalho.Colaborador = colaborador;
             contratoTrabalho.RegimeContratual = regimeContratual;
             contratoTrabalho.DataEntrada = dataEntrada;

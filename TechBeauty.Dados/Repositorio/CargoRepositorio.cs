@@ -9,20 +9,33 @@ namespace TechBeauty.Dados.Repositorio
     {
         public override void Incluir(Cargo entity)
         {
-            if (!context.Cargo.All(x => x.Nome.Equals(entity.Nome)))
+            if (!context.Cargo.Any(x => x.Nome == entity.Nome))
             {
                 base.Incluir(entity);
             }
-            throw new ArgumentException();
+            else
+            {
+                throw new ArgumentException($"Cargo com o nome= {entity.Nome}, já existente!", nameof(entity.Nome));
+            }
         }
 
         public override void Alterar(Cargo entity)
         {
-            if (context.Cargo.FirstOrDefault(c => c.Id == entity.Id) != null)
+            if (context.Cargo.Any(c => c.Id == entity.Id))
             {
                 base.Alterar(entity);
             }
-            throw new ArgumentException();
+            throw new ArgumentException($"O cargo {entity.Nome}, com o id {entity.Id} não encontrado.", nameof(entity.Id));
+        }
+
+        public List<Cargo> SelecionarCargos(List<int> cargosId)
+        {
+            List<Cargo> cargos = new();
+            foreach (var item in cargosId)
+            {
+                cargos.Add(context.Cargo.FirstOrDefault(c => c.Id == item));
+            }
+            return cargos;
         }
     }
 }

@@ -32,17 +32,13 @@ namespace TechBeauty.Dados.Repositorio
             {
                 return context.Set<T>().FirstOrDefault(x => x.Id == id);
             }
-            throw new ArgumentException("Identificação não encontrada!");
+            throw new ArgumentException($"Identificação {id} não encontrada!", nameof(id));
         }
 
-        public List<T> Paginar(int skip)
+        public List<T> Paginar(int skip, int take)
         {
-            int take = 25;
-
-            if (skip >= 1)
-            {
-                skip *= take;
-            }
+            take = take > 0 ? take : 25;
+            skip = skip >= 1 ? skip *= take : skip;
 
             return context.Set<T>().OrderBy(c => c.Id).Skip(skip).Take(take).ToList();
         }

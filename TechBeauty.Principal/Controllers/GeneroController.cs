@@ -11,16 +11,9 @@ namespace TechBeauty.Controllers
     public class GeneroController : ControllerBase
     {
         [HttpGet("paginar")]
-        public IActionResult GetPagina(int skip)
+        public IActionResult GetPagina(int skip, int take = 25)
         {
-            try
-            {
-                return Ok(GeneroReadDto.Paginar(new GeneroRepositorio().Paginar(skip)));
-            }
-            catch (Exception)
-            {
-                return NotFound();
-            }
+            return Ok(GeneroReadDto.Paginar(new GeneroRepositorio().Paginar(skip, take)));
         }
 
         [HttpGet("{id}")]
@@ -30,9 +23,9 @@ namespace TechBeauty.Controllers
             {
                 return Ok(new GeneroRepositorio().Selecionar(id));
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return NotFound();
+                return ValidationProblem(e.Message);
             }
         }
 
@@ -44,9 +37,9 @@ namespace TechBeauty.Controllers
                 new GeneroRepositorio().Incluir(Genero.Criar(genero.Valor));
                 return Ok();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return Accepted();
+                return ValidationProblem(e.Message);
             }
         }
 
@@ -56,11 +49,11 @@ namespace TechBeauty.Controllers
             try
             {
                 new GeneroRepositorio().Alterar(Genero.Alterar(genero.Valor, id));
-                return NoContent();
+                return Ok();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return NotFound();
+                return ValidationProblem(e.Message);
             }
         }
 
@@ -70,11 +63,11 @@ namespace TechBeauty.Controllers
             try
             {
                 new GeneroRepositorio().Excluir(id);
-                return NoContent();
+                return Ok();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return NotFound();
+                return ValidationProblem(e.Message);
             }
         }
     }

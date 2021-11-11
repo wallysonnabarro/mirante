@@ -12,9 +12,9 @@ namespace TechBeauty.Principal.Controllers
     {
         // GET: api/<TipoContatoController>/colecao
         [HttpGet("colecao")]
-        public IActionResult Get(int skip = 0)
+        public IActionResult Get(int skip = 0, int take = 25)
         {
-            return Ok(TipoContatoReadDto.Colecao(new TipoContatoRepositorio().Paginar(skip)));
+            return Ok(TipoContatoReadDto.Colecao(new TipoContatoRepositorio().Paginar(skip, take)));
         }
 
         // GET api/<TipoContatoController>/5
@@ -23,13 +23,11 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                //Retornar somente a string e não o objeto
-                TipoContato tipo = new TipoContatoRepositorio().Selecionar(id);
-                return Ok(tipo.Valor);
+                return Ok(new TipoContatoRepositorio().Selecionar(id).Valor);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return NotFound();
+                return ValidationProblem(e.Message);
             }
         }
 
@@ -42,9 +40,9 @@ namespace TechBeauty.Principal.Controllers
                 new TipoContatoRepositorio().Incluir(TipoContato.Criar(value));
                 return Ok();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return Accepted();
+                return ValidationProblem(e.Message);
             }
         }
 
@@ -55,11 +53,11 @@ namespace TechBeauty.Principal.Controllers
             try
             {
                 new TipoContatoRepositorio().Alterar(TipoContato.AtualizarTipoContato(value, id));
-                return NoContent();
+                return Ok();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return NotFound();
+                return ValidationProblem(e.Message);
             }
         }
 
@@ -70,11 +68,11 @@ namespace TechBeauty.Principal.Controllers
             try
             {
                 new TipoContatoRepositorio().Excluir(id);
-                return NoContent();
+                return Ok();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return NotFound();
+                return ValidationProblem(e.Message);
             }
         }
     }

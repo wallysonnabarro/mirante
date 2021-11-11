@@ -9,7 +9,7 @@ namespace TechBeauty.Dominio.Modelo
         public int Id { get; set; }
         public string Nome { get; private set; }
         public string Descricao { get; private set; }
-        public decimal Salario { get; set; }
+        public decimal Salario { get; private set; }
         public List<Usuario> Usuarios { get; set; }
         public List<ContratoTrabalho> ContratosTrabalhos { get; set; }
 

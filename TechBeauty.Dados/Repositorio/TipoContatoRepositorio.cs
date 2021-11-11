@@ -16,7 +16,10 @@ namespace TechBeauty.Dados.Repositorio
             {
                 base.Incluir(entity);
             }
-            throw new ArgumentException();
+            else
+            {
+                throw new ArgumentException();
+            }
         }
 
         public override void Alterar(TipoContato entity)
@@ -25,12 +28,16 @@ namespace TechBeauty.Dados.Repositorio
             {
                 base.Alterar(entity);
             }
-            throw new ArgumentException();
+            else
+            {
+                throw new ArgumentException();
+            }
         }
 
         protected bool ValidarValor(TipoContato contato)
         {
-            if (!context.TipoContato.All(tc => tc.Valor.Equals(contato.Valor)))
+            var existe = context.TipoContato.Where(tc => tc.Valor == contato.Valor).FirstOrDefault();
+            if (existe == null)
             {
                 return true;
             }

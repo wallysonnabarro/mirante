@@ -90,3 +90,4 @@ C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Dados\obj\Debug\net5.0
 C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Dados\obj\Debug\net5.0\ref\TechBeauty.Dados.dll
 C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.pdb
 C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.genruntimeconfig.cache
+C:\Users\Wallyson Nabarro\source\repos\mirante\TechBeauty.Dados\obj\Debug\net5.0\TechBeauty.Dados.csproj.CopyComplete

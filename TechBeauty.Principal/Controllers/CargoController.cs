@@ -18,16 +18,16 @@ namespace TechBeauty.Controllers
                 new CargoRepositorio().Incluir(Cargo.CriarCargo(cargo));
                 return Ok();
             }
-            catch (Exception)
+            catch (ArgumentException e)
             {
-                return Accepted();
+                return ValidationProblem(e.Message);
             }
         }
 
         [HttpGet("paginar")]
-        public IActionResult ColecaoCargos(int skip = 0)
+        public IActionResult ColecaoCargos(int skip = 0, int take = 25)
         {
-            return Ok(new CargoRepositorio().Paginar(skip));
+            return Ok(new CargoRepositorio().Paginar(skip, take));
         }
 
         [HttpGet("{id}")]
@@ -37,9 +37,9 @@ namespace TechBeauty.Controllers
             {
                 return Ok(new CargoRepositorio().Selecionar(id));
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return NotFound();
+                return ValidationProblem(e.Message);
             }
         }
 
@@ -49,11 +49,11 @@ namespace TechBeauty.Controllers
             try
             {
                 new CargoRepositorio().Alterar(Cargo.AlterarCargo(cargo, id));
-                return NoContent();
+                return Ok();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return NotFound();
+                return ValidationProblem(e.Message);
             }
         }
 
@@ -63,11 +63,11 @@ namespace TechBeauty.Controllers
             try
             {
                 new CargoRepositorio().Excluir(id);
-                return NoContent();
+                return Ok();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return NotFound();
+                return ValidationProblem(e.Message);
             }
         }
     }

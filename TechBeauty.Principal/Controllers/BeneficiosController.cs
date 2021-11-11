@@ -19,9 +19,9 @@ namespace TechBeauty.Principal.Controllers
                 new BeneficioRepositorio().Incluir(Beneficio.GerarBeneficio(beneficio));
                 return Ok();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return NotFound();
+                return ValidationProblem(e.Message);
             }
         }
 
@@ -31,29 +31,18 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                if (new BeneficioRepositorio().Selecionar(id) != null)
-                {
-                    return base.Ok(Beneficio.CoverteDto(new BeneficioRepositorio().Selecionar(id)));
-                }
-                return NotFound();
+                return base.Ok(Beneficio.CoverteDto(new BeneficioRepositorio().Selecionar(id)));
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return BadRequest();
+                return ValidationProblem(e.Message);
             }
         }
 
         [HttpGet("paginar")]
-        public IActionResult Tabela(int skip = 0)
+        public IActionResult Tabela(int skip = 0, int take = 25)
         {
-            try
-            {
-                return Ok(BeneficioReadDto.Paginar(new BeneficioRepositorio().Paginar(skip)));
-            }
-            catch (Exception)
-            {
-                return BadRequest();
-            }
+            return Ok(BeneficioReadDto.Paginar(new BeneficioRepositorio().Paginar(skip, take)));
         }
 
         [HttpPut("{id}")]
@@ -64,13 +53,12 @@ namespace TechBeauty.Principal.Controllers
                 if (new BeneficioRepositorio().Selecionar(id) != null)
                 {
                     new BeneficioRepositorio().Alterar(Beneficio.Alterar(beneficio));
-                    return NoContent();
                 }
-                return NotFound();
+                return Ok();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return BadRequest();
+                return ValidationProblem(e.Message);
             }
         }
 
@@ -82,14 +70,12 @@ namespace TechBeauty.Principal.Controllers
                 if (new BeneficioRepositorio().Selecionar(id) != null)
                 {
                     new BeneficioRepositorio().Excluir(id);
-                    return NoContent();
                 }
-                return NotFound();
-
+                return Ok();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return BadRequest();
+                return ValidationProblem(e.Message);
             }
         }
     }

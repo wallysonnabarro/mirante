@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TechBeauty.Dominio.Dtos;
 using TechBeauty.Dominio.Modelo.Enumeradores;
 using TechBeauty.Dominio.Repositorio;
 
@@ -18,28 +19,26 @@ namespace TechBeauty.Dominio.Modelo
         public StatusAgendamento Status { get; private set; }
         public List<LogAgendamento> LogAgendamentos { get; set; }
 
-        public static Agendamento Criar(Servico servico, Colaborador colaborador, string pessoaAtendida,
-            DateTime dataHoraCriacao, OrdemServico os)
+        public static Agendamento Criar(AgendaIncioReadDTO agenda, AgendamentoDTO dto, Servico servico, Colaborador colaborador
+            , OrdemServico os)
         {
             Agendamento agendamento = new Agendamento();
-            
+
             agendamento.Servico = servico;
             agendamento.Colaborador = colaborador;
-            agendamento.PessoaAtendida = pessoaAtendida;
-            agendamento.DataHoraCriacao = dataHoraCriacao;
+            agendamento.PessoaAtendida = dto.PessoaAtendida;
+
             agendamento.OrdemServico = os;
-            
-           
-            
+
+
+
             return agendamento;
         }
-        public void RemarcarAgendamento(Servico servico, Colaborador colaborador, string pessoaAtendida,
-            DateTime dataHoraInicio, OrdemServico os, DateTime dataHoraCriacao, DateTime dataHoraTermino)
+        public void RemarcarAgendamento(Colaborador colaborador,
+           OrdemServico os, DateTime dataHoraCriacao, DateTime dataHoraTermino)
         {
-            Servico = servico;
+
             Colaborador = colaborador;
-            PessoaAtendida = pessoaAtendida;
-            DataHoraInicio = dataHoraInicio;
             OrdemServico = os;
             DataHoraCriacao = dataHoraCriacao;
             DataHoraTermino = dataHoraTermino;
@@ -56,7 +55,6 @@ namespace TechBeauty.Dominio.Modelo
         {
             DataHoraTermino = dataHoraTermino;
         }
-
     }
-    
+
 }

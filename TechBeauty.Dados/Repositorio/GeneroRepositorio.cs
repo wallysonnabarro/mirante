@@ -11,11 +11,15 @@ namespace TechBeauty.Dados.Repositorio
     {
         public override void Incluir(Genero entity)
         {
-            if (!context.Genero.All(g => g.Valor.Equals(entity.Valor)))
+            var existe = context.Genero.Where(g => g.Valor == entity.Valor).FirstOrDefault();
+            if (existe == null)
             {
                 base.Incluir(entity);
             }
-            throw new ArgumentException("");
+            else
+            {
+                throw new ArgumentException("");
+            }
         }
 
         public override void Alterar(Genero entity)
