@@ -9,7 +9,7 @@ using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dados.Map
 {
-    class EscalaMap : IEntityTypeConfiguration<Escala>
+    public class EscalaMap : IEntityTypeConfiguration<Escala>
     {
         public void Configure(EntityTypeBuilder<Escala> builder)
         {
@@ -22,8 +22,8 @@ namespace TechBeauty.Dados.Map
 
 
 
-            builder.HasMany(e => e.Colaboradores) // 1 escala para varios colaboradores (1,n)
-                .WithOne(c => c.Escala) // 1 colaborador pode ter apenas 1 escala (1,1)
+            builder.HasOne(e => e.Colaborador) // 1 escala para varios colaboradores (1,n)
+                .WithMany(c => c.Escala) // 1 colaborador pode ter apenas 1 escala (1,1)
                 .IsRequired();
         }
     }

@@ -3,8 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using TechBeauty.Dados.Repositorio;
+using TechBeauty.Dominio.Dtos;
+using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Principal.Controllers
 {
@@ -12,36 +13,86 @@ namespace TechBeauty.Principal.Controllers
     [ApiController]
     public class OrdemServicoController : ControllerBase
     {
-        // GET: api/<OrdemServicoController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        // GET: api/<ContratoTrabalhoController>/colecao
+        [HttpGet("paginarOrdem/{skip}/{take}")]
+        public IActionResult Get(int skip = 0, int take = 25)
         {
-            return new string[] { "value1", "value2" };
+            return Ok(new OrdemServicoRepositorio().Paginar(skip, take));
         }
 
-        // GET api/<OrdemServicoController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        // GET api/<ContratoTrabalhoController>/5
+        [HttpGet("{ordemid}")]
+        public IActionResult Get(int ordemid)
         {
-            return "value";
+            try
+            {
+                return Ok(new OrdemServicoRepositorio().Selecionar(ordemid));
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
         }
 
-        // POST api/<OrdemServicoController>
+        // POST api/<ContratoTrabalhoController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] OrdemServicoDTO dto)
         {
+            try
+            {
+                var cliente = new ClienteRepositorio().Selecionar(dto.ClienteID);
+                new OrdemServicoRepositorio().Incluir(OrdemServico.Criar(dto, cliente));
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
         }
 
-        // PUT api/<OrdemServicoController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        // PUT api/<ContratoTrabalhoController>/5
+        [HttpPut("{putOrdemid}")]
+        public IActionResult Put(int putOrdemid, [FromBody] OrdemServicoDTO dto)
         {
+            try
+            {
+                var cliente = new ClienteRepositorio().Selecionar(dto.ClienteID);
+                new OrdemServicoRepositorio().Incluir(OrdemServico.Criar(dto, cliente));//concertar com metodo de atualizar
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
         }
 
-        // DELETE api/<OrdemServicoController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        // DELETE api/<ContratoTrabalhoController>/5
+        [HttpDelete("{deletarOrdemid}")]
+        public IActionResult Delete(int deletarOrdemid)
         {
+            try
+            {
+                new OrdemServicoRepositorio().Excluir(deletarOrdemid);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
+        }
+
+        [HttpPut("{encerrarOsId}")]
+        public IActionResult EncerramentoOS(int encerrarOsId)
+        {
+            try
+            {
+                new OrdemServicoRepositorio().AlterarStatus(encerrarOsId);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TechBeauty.Dominio.Dtos;
 using TechBeauty.Dominio.Modelo.Enumeradores;
 using TechBeauty.Dominio.Modelo.Financeiro;
 using TechBeauty.Dominio.Repositorio;
@@ -17,22 +18,25 @@ namespace TechBeauty.Dominio.Modelo
         public DateTime DataHoraCriacao { get; private set; }
         public DateTime DataHoraFechamento { get; private set; }
         public List<Pagamento> Pagamentos { get; private set; }//Navegaçãos, não será populada
-        public Gestao Gestao { get; private set; }//Será populada
         public decimal LucroDiario { get; private set; }
         public decimal RetiradasDiarias { get; private set; }
+        public Usuario Usuario { get; set; }
 
-        public static Caixa AbrirCaixa(decimal saldoInicial)
+
+        public static Caixa AbrirCaixa(decimal saldoInicial, Usuario usuario)
         {
             Caixa caixa = new();
             caixa.SaldoInicial = saldoInicial;
             caixa.DataHoraCriacao = DateTime.Now;
+            caixa.Usuario = usuario;
             return caixa;
         }
 
-        public void  FecharCaixa(List<Pagamento> pagamentos)
+        public static Caixa FecharCaixaPagamento(List<Pagamento> pagamentos, int id)
         {
-            DataHoraFechamento = DateTime.Now;
-
+            Caixa caixa = new();
+            caixa.DataHoraFechamento = DateTime.Now;
+            caixa.Id = id;
             decimal valor = 0;
 
             foreach (var item in pagamentos)
@@ -40,8 +44,10 @@ namespace TechBeauty.Dominio.Modelo
                 valor += item.OrdemServico.PrecoTotal;
             }
 
-            LucroDiario = valor - SaldoInicial;
-            SaldoFinalCaixa = valor + SaldoInicial;
+            caixa.LucroDiario = valor - caixa.SaldoInicial;
+            caixa.SaldoFinalCaixa = valor + caixa.SaldoInicial;
+
+            return caixa;
         }
 
         public void RegistrarRetiradasDiarias(decimal retirada)

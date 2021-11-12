@@ -13,13 +13,14 @@ namespace TechBeauty.Dominio.Modelo
         public Genero Genero { get; private set; }
         public string NomeSocial { get; private set; }
         public Collection<ContratoTrabalho> Contratos { get; private set; }// navegação
-        public Escala Escala { get; private set; }
+        public List<Escala> Escala { get; private set; }
         public List<Agendamento> Agendamentos { get; set; }// navegação
 
-        public static Colaborador Criar(ColaboradorDTO colaboradorDto)
+        public static Colaborador Criar(ColaboradorDTO colaboradorDto, Endereco endereco)
         {
             Colaborador colaborador = new();
             colaborador.CarteiraTrabalho = colaboradorDto.CarteiraTrabalho;
+            colaborador.Endereco = endereco;
             //colaborador.Servicos = colaboradorDto.Servicos;
             //colaborador.Endereco = colaboradorDto.Endereco;
             //colaborador.Genero = colaboradorDto.Genero;

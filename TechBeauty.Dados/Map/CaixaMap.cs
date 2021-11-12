@@ -31,8 +31,8 @@ namespace TechBeauty.Dados.Map
                 .WithOne(p => p.Caixa)
                 .IsRequired();
 
-            b.HasOne(c => c.Gestao)
-                .WithMany(g => g.Caixas)
+            b.HasOne(c => c.Usuario)
+                .WithMany(u => u.Caixa)
                 .IsRequired();
         }
     }

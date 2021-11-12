@@ -19,7 +19,7 @@ namespace TechBeauty.Dominio.Dtos
         [Required(ErrorMessage = "O campo 'DataHoraTermino' do Agendamento é obrigatório!")]
         public DateTime DataHoraTermino { get; set; }
         public int OrdemSID { get; set; }
-        public int StatusAgendamento { get; set; }
+    
         public int ColaboradorID { get; set; }
         public int ServicoID { get; set; }
 
@@ -30,7 +30,7 @@ namespace TechBeauty.Dominio.Dtos
             dto.DataHoraTermino = agendamento.DataHoraTermino;
             dto.DataHoraInicio = agendamento.DataHoraInicio;
             dto.OrdemSID = agendamento.OrdemSID;
-            dto.StatusAgendamento = agendamento.StatusAgendamento;
+         
             dto.ColaboradorID = agendamento.ColaboradorID;
             dto.ServicoID = agendamento.ServicoID;
             return dto;

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TechBeauty.Dominio.Dtos;
 using TechBeauty.Dominio.Repositorio;
 
@@ -6,7 +7,7 @@ namespace TechBeauty.Dominio.Modelo
 {
     public class Cargo : IEntity
     {
-        public int Id { get; set; }
+        public int Id { get; private set; }
         public string Nome { get; private set; }
         public string Descricao { get; private set; }
         public decimal Salario { get; private set; }
@@ -30,5 +31,9 @@ namespace TechBeauty.Dominio.Modelo
             return cargo;
         }
 
+        public static Cliente AlterarCargo(ClienteDTO cliente, int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

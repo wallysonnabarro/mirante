@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TechBeauty.Dominio.Dtos;
 using TechBeauty.Dominio.Repositorio;
 
@@ -15,6 +16,11 @@ namespace TechBeauty.Dominio.Modelo
         public string Cep { get; private set; }
         public string Bairro { get; private set; }
         public ICollection<Colaborador> Colaboradores { get; set; }
+
+        public void IncluirId(int id)
+        {
+            Id = id;
+        }
 
 
         public static Endereco Criar(ColaboradorDTO dto)

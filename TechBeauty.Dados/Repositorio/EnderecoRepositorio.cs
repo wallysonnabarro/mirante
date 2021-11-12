@@ -10,6 +10,9 @@ namespace TechBeauty.Dados.Repositorio
 {
     public class EnderecoRepositorio : RepositorioBase<Endereco>
     {
-   
+        public int Incluir(object endereco)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

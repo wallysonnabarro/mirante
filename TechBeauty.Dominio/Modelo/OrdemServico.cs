@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using TechBeauty.Dominio.Dtos;
 using TechBeauty.Dominio.Modelo.Enumeradores;
 using TechBeauty.Dominio.Repositorio;
 
@@ -11,15 +13,16 @@ namespace TechBeauty.Dominio.Modelo
         public int DuracaoTotal { get; private set; }
         public List<Agendamento> Agendamento { get; private set; } //navegação
         public List<Pagamento> Pagamentos { get; set; }//navegação
+
         public Cliente Cliente { get; private set; }
         public StatusOS Status { get; private set; }
 
-        public static OrdemServico Criar(int id, decimal precoTotal, int duracaoTotal, Cliente cliente)
+        public static OrdemServico Criar(OrdemServicoDTO osDTO, Cliente cliente)
         {
             OrdemServico ordemServico = new();
-            ordemServico.Id = id;
-            ordemServico.PrecoTotal = precoTotal;
-            ordemServico.DuracaoTotal = duracaoTotal;
+            
+            ordemServico.PrecoTotal = osDTO.PrecoTotal;
+            ordemServico.DuracaoTotal = osDTO.DuracaoTotal;
             ordemServico.Cliente = cliente;
             ordemServico.Status = StatusOS.Pendente;
             return ordemServico;
@@ -35,6 +38,23 @@ namespace TechBeauty.Dominio.Modelo
         public void AlterarPrecoTotal(decimal precoTotal)
         {
             PrecoTotal += precoTotal;
+        }
+
+        public static OrdemServico Alterar(OrdemServicoDTO os, int id)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void AlterarStatus(int id)
+        {
+            Status = (StatusOS)id;
+        }
+
+        public void OrdemServicoID(int id)
+        {
+            Id = id;
+            
         }
     }
 }

@@ -10,8 +10,8 @@ using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Principal.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("[controlller]")]
     public class UsuarioController : Controller
     {
         [HttpPost]
@@ -30,7 +30,7 @@ namespace TechBeauty.Principal.Controllers
 
         }
 
-        [HttpGet("paginar")]
+        [HttpGet("{skip}/{take}")]
         public IActionResult Tabela(int skip = 0, int take = 25)
         {
             try
@@ -56,7 +56,7 @@ namespace TechBeauty.Principal.Controllers
             }
         }
 
-        [HttpPut("atualizarUser/{id}")]
+        [HttpPut("atualizarUser")]
         public IActionResult AtualizarUser(int id, string user)
         {
             try
@@ -70,7 +70,7 @@ namespace TechBeauty.Principal.Controllers
             }
         }
 
-        [HttpPut("atualizarPassw/{id}")]
+        [HttpPut("atualizarPassw")]
         public IActionResult AtualizarPassword(int id, string password)
         {
             try
@@ -84,7 +84,7 @@ namespace TechBeauty.Principal.Controllers
             }
         }
 
-        [HttpPut("atualizarCarg/{id}")]
+        [HttpPut("atualizarCarg")]
         public IActionResult AtualizarCargo(int id, int cargoId)
         {
             try
@@ -98,7 +98,7 @@ namespace TechBeauty.Principal.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult Deletar(int id)
         {
             try

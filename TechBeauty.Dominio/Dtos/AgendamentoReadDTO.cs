@@ -9,11 +9,11 @@ namespace TechBeauty.Dominio.Dtos
 {
     public class AgendamentoReadDTO
     {
-        public int Id { get; private set; }
-        public string PessoaAtendida { get; private set; }
-        public DateTime DataHoraCriacao { get; private set;}
-        public DateTime DataHoraInicio { get; private set; }
-        public DateTime DataHoraTermino { get; private set; }
+        public int Id { get;  set; }
+        public string PessoaAtendida { get; set; }
+        public DateTime DataHoraCriacao { get;  set;}
+        public DateTime DataHoraInicio { get;  set; }
+        public DateTime DataHoraTermino { get;  set; }
 
         public static object Paginar(List<Agendamento> agendamentos)
         {

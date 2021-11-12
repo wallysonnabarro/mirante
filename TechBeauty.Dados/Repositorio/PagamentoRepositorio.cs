@@ -22,5 +22,10 @@ namespace TechBeauty.Dados.Repositorio
             context.SaveChanges();
         }
 
+        public List<Pagamento> SelecionarID(int id)
+        {
+            return context.Pagamento.Where(x => x.Id == id).ToList();
+            
+        }
     }
 }

@@ -7,7 +7,7 @@ using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dominio.Dtos
 {
-    class OrdemServicoReadDTO
+    public class OrdemServicoReadDTO
     {
         public int Id { get;  set; }
         public decimal PrecoTotal { get;  set; }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +12,15 @@ namespace TechBeauty.Principal.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClienteController : ControllerBase
+    public class PagamentoController : Controller
     {
         [HttpPost]
-        public IActionResult Incluir([FromBody] ClienteDTO cliente)
+        public IActionResult Incluir([FromBody] PagamentoDTO pagamento)
         {
             try
             {
-                new ClienteRepositorio().Incluir(Cliente.Criar(cliente));
+                var os = new OrdemServicoRepositorio().Selecionar(pagamento.OrdemServicoID);
+                new PagamentoRepositorio().Incluir(Pagamento.Criar(pagamento,os));
                 return Ok();
             }
             catch (ArgumentException e)
@@ -28,17 +30,17 @@ namespace TechBeauty.Principal.Controllers
         }
 
         [HttpGet("paginar")]
-        public IActionResult ColecaoClientes(int skip = 0, int take = 25)
+        public IActionResult ColecaoPagamentos(int skip = 0, int take = 25)
         {
-            return Ok(ClienteReadDto.Paginar(new ClienteRepositorio().Paginar(skip, take)));
+            return Ok(PagamentoReadDTO.Paginar(new PagamentoRepositorio().Paginar(skip, take)));
         }
 
         [HttpGet("{id}")]
-        public IActionResult SelecionarPorID(int id)
+        public IActionResult SelecionarPorId(int id)
         {
             try
             {
-                return Ok(new ClienteRepositorio().Selecionar(id));
+                return Ok(new PagamentoRepositorio().Selecionar(id));
             }
             catch (Exception e)
             {
@@ -47,11 +49,12 @@ namespace TechBeauty.Principal.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult AtualizarCliente(int id, [FromBody] ClienteDTO cliente)
+        public IActionResult AtualizarPagamento(int id, [FromBody] PagamentoDTO pagamento)
         {
             try
             {
-                new ClienteRepositorio().Alterar(Cargo.AlterarCargo(cliente, id));
+                var os = new OrdemServicoRepositorio().Selecionar(pagamento.OrdemServicoID);
+                new PagamentoRepositorio().Incluir(Pagamento.Alterar(pagamento,os, id));
                 return Ok();
             }
             catch (Exception e)
@@ -61,11 +64,11 @@ namespace TechBeauty.Principal.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult ExcluirCliente(int id)
+        public IActionResult Excluir(int id)
         {
             try
             {
-                new ClienteRepositorio().Excluir(id);
+                new PagamentoRepositorio().Excluir(id);
                 return Ok();
             }
             catch (Exception e)

@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace TechBeauty.Dominio.Dtos
 {
-    class ContatoDTO
+    public class ContatoDTO
     {
         [StringLength(256, ErrorMessage = "Quantidade máximo de caracteres = 256")]
         [Required(ErrorMessage = "O campo 'Valor' do contato é obrigatório!")]
         public string Valor { get; set; }
-
+        public int TipoID { get; set; }
+       
 
         public static ContatoDTO CriarContato(ContatoDTO contato)
         {
@@ -20,5 +21,6 @@ namespace TechBeauty.Dominio.Dtos
             dto.Valor = contato.Valor;
             return dto;
         }
+      
     }
 }

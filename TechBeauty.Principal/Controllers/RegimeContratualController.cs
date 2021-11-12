@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +12,14 @@ namespace TechBeauty.Principal.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClienteController : ControllerBase
+    public class RegimeContratualController : Controller
     {
         [HttpPost]
-        public IActionResult Incluir([FromBody] ClienteDTO cliente)
+        public IActionResult Incluir([FromBody] RegimeContratualDTO regime)
         {
             try
             {
-                new ClienteRepositorio().Incluir(Cliente.Criar(cliente));
+                new RegimeContratualRepositorio().Incluir(RegimeContratual.Criar(regime));
                 return Ok();
             }
             catch (ArgumentException e)
@@ -28,17 +29,17 @@ namespace TechBeauty.Principal.Controllers
         }
 
         [HttpGet("paginar")]
-        public IActionResult ColecaoClientes(int skip = 0, int take = 25)
+        public IActionResult ColecaoRegimes(int skip = 0, int take = 25)
         {
-            return Ok(ClienteReadDto.Paginar(new ClienteRepositorio().Paginar(skip, take)));
+            return Ok(RegimeContratualReadDTO.Paginar(new RegimeContratualRepositorio().Paginar(skip, take)));
         }
 
         [HttpGet("{id}")]
-        public IActionResult SelecionarPorID(int id)
+        public IActionResult SelecionarPorId(int id)
         {
             try
             {
-                return Ok(new ClienteRepositorio().Selecionar(id));
+                return Ok(new RegimeContratualRepositorio().Selecionar(id));
             }
             catch (Exception e)
             {
@@ -46,26 +47,14 @@ namespace TechBeauty.Principal.Controllers
             }
         }
 
-        [HttpPut("{id}")]
-        public IActionResult AtualizarCliente(int id, [FromBody] ClienteDTO cliente)
-        {
-            try
-            {
-                new ClienteRepositorio().Alterar(Cargo.AlterarCargo(cliente, id));
-                return Ok();
-            }
-            catch (Exception e)
-            {
-                return ValidationProblem(e.Message);
-            }
-        }
+   
 
         [HttpDelete("{id}")]
-        public IActionResult ExcluirCliente(int id)
+        public IActionResult ExcluirRegime(int id)
         {
             try
             {
-                new ClienteRepositorio().Excluir(id);
+                new RegimeContratualRepositorio().Excluir(id);
                 return Ok();
             }
             catch (Exception e)

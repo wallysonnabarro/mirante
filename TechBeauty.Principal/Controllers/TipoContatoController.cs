@@ -11,7 +11,7 @@ namespace TechBeauty.Principal.Controllers
     public class TipoContatoController : ControllerBase
     {
         // GET: api/<TipoContatoController>/colecao
-        [HttpGet("colecao")]
+        [HttpGet("paginar")]
         public IActionResult Get(int skip = 0, int take = 25)
         {
             return Ok(TipoContatoReadDto.Colecao(new TipoContatoRepositorio().Paginar(skip, take)));

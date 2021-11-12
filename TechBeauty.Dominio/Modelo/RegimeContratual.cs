@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TechBeauty.Dominio.Dtos;
 using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
@@ -18,6 +19,12 @@ namespace TechBeauty.Dominio.Modelo
 
             return regime;
         }
+
+        public static RegimeContratual Criar(RegimeContratualDTO regime)
+        {
+            throw new NotImplementedException();
+        }
+
         public void AlterarRegimeContratual(string valor)
         {
             Valor = valor;

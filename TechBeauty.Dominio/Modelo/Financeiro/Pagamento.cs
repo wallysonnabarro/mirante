@@ -1,4 +1,5 @@
 ﻿using System;
+using TechBeauty.Dominio.Dtos;
 using TechBeauty.Dominio.Modelo.Enumeradores;
 using TechBeauty.Dominio.Repositorio;
 
@@ -14,13 +15,14 @@ namespace TechBeauty.Dominio.Modelo
         public decimal? Troco { get; private set; }
         public FormaPagamento Forma { get; private set; }
 
-        public static Pagamento Criar(Pagamento pagamentoDto)
+
+        public static Pagamento Criar(PagamentoDTO pagamentoDto, OrdemServico os)
         {
             Pagamento pagamento = new();
-            pagamento.OrdemServico = pagamentoDto.OrdemServico;
+            pagamento.OrdemServico= os;
             pagamento.DataHoraPagamento = pagamentoDto.DataHoraPagamento;
             pagamento.ValorRecebido = pagamentoDto.ValorRecebido;
-            pagamento.Forma = pagamentoDto.Forma;
+            pagamento.Forma = (FormaPagamento)pagamentoDto.FormaPagamentoID;
             return pagamento;
         }
 
@@ -39,5 +41,15 @@ namespace TechBeauty.Dominio.Modelo
             Troco = ValorRecebido - OrdemServico.PrecoTotal;
         }
 
+        public static Pagamento Alterar(PagamentoDTO pagamentoDto, OrdemServico os, int id)
+        {
+            Pagamento pagamento = new();
+            pagamento.Id = id;
+            pagamento.OrdemServico = os;
+            pagamento.DataHoraPagamento = pagamentoDto.DataHoraPagamento;
+            pagamento.ValorRecebido = pagamentoDto.ValorRecebido;
+            pagamento.Forma = (FormaPagamento)pagamentoDto.FormaPagamentoID;
+            return pagamento;
+        }
     }
 }

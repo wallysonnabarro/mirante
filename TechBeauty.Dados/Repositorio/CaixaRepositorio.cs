@@ -9,12 +9,6 @@ namespace TechBeauty.Dados.Repositorio
 {
     public class CaixaRepositorio : RepositorioBase<Caixa>
     {
-        public void FecharCaixa(int id)
-        {
-            var pagamentos = context.Pagamento.Where(x => x.Id == id).OrderBy(x => x.Id).ToList();
-            context.Caixa.FirstOrDefault(x => x.Id == id).FecharCaixa(pagamentos);
-            context.SaveChanges();
-        }
 
         public void RegistrarRetiradasDiarias(int id, decimal retirada)
         {

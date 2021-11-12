@@ -7,16 +7,16 @@ using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dominio.Dtos
 {
-    class ClienteReadDTO
+    public class ClienteReadDto
     {
         public int Id { get; set; }
 
         public static object Paginar(List<Cliente> clientes)
         {
-            List<ClienteReadDTO> dto = new();
+            List<ClienteReadDto> dto = new();
             foreach (var item in clientes)
             {
-                ClienteReadDTO clienteRead = new();
+                ClienteReadDto clienteRead = new();
                 clienteRead.Id = item.Id;
                 dto.Add(clienteRead);
             }

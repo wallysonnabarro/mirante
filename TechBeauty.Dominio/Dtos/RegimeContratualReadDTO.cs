@@ -7,7 +7,7 @@ using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dominio.Dtos
 {
-    class RegimeContratualReadDTO
+    public class RegimeContratualReadDTO
     {
         public int Id { get;  set; }
         public string Valor { get; set; }

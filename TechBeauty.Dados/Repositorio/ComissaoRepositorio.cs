@@ -9,7 +9,7 @@ using TechBeauty.Dominio.Modelo.Financeiro;
 
 namespace TechBeauty.Dados.Repositorio
 {
-    class ComissaoRepositorio : RepositorioBase<Comissao>
+    public class ComissaoRepositorio : RepositorioBase<Comissao>
     {
         public void GerarComissao(Agendamento agendamento)
         {
@@ -43,7 +43,7 @@ namespace TechBeauty.Dados.Repositorio
                     .OrderBy(x => x.Id)
                     .ToList();
             }
-            return lista;
+             throw new ArgumentException($"Codigo incorreto! {colaboradorId}", nameof(colaboradorId));
         }
 
     }

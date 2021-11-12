@@ -56,20 +56,6 @@ namespace TechBeauty.Dados.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Escala",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    DataHoraEntrada = table.Column<DateTime>(type: "smallDateTime", nullable: false),
-                    DataHoraSaida = table.Column<DateTime>(type: "smallDateTime", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Escala", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Genero",
                 columns: table => new
                 {
@@ -185,8 +171,7 @@ namespace TechBeauty.Dados.Migrations
                     CarteiraTrabalho = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EnderecoId = table.Column<int>(type: "int", nullable: false),
                     GeneroId = table.Column<int>(type: "int", nullable: false),
-                    NomeSocial = table.Column<string>(type: "varchar(100)", nullable: true),
-                    EscalaId = table.Column<int>(type: "int", nullable: false)
+                    NomeSocial = table.Column<string>(type: "varchar(100)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -195,12 +180,6 @@ namespace TechBeauty.Dados.Migrations
                         name: "FK_Colaborador_Endereco_EnderecoId",
                         column: x => x.EnderecoId,
                         principalTable: "Endereco",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Colaborador_Escala_EscalaId",
-                        column: x => x.EscalaId,
-                        principalTable: "Escala",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -320,6 +299,27 @@ namespace TechBeauty.Dados.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Escala",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DataHoraEntrada = table.Column<DateTime>(type: "smallDateTime", nullable: false),
+                    DataHoraSaida = table.Column<DateTime>(type: "smallDateTime", nullable: false),
+                    ColaboradorId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Escala", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Escala_Colaborador_ColaboradorId",
+                        column: x => x.ColaboradorId,
+                        principalTable: "Colaborador",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Gestoes",
                 columns: table => new
                 {
@@ -419,9 +419,10 @@ namespace TechBeauty.Dados.Migrations
                     SaldoFinalCaixa = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     DataHoraCriacao = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DataHoraFechamento = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    GestaoId = table.Column<int>(type: "int", nullable: true),
                     LucroDiario = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    RetiradasDiarias = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    RetiradasDiarias = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    UsuarioId = table.Column<int>(type: "int", nullable: true),
+                    GestaoId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -430,6 +431,12 @@ namespace TechBeauty.Dados.Migrations
                         name: "FK_Caixa_Gestoes_GestaoId",
                         column: x => x.GestaoId,
                         principalTable: "Gestoes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Caixa_Usuarios_UsuarioId",
+                        column: x => x.UsuarioId,
+                        principalTable: "Usuarios",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -559,6 +566,11 @@ namespace TechBeauty.Dados.Migrations
                 column: "GestaoId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Caixa_UsuarioId",
+                table: "Caixa",
+                column: "UsuarioId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_CargoContratoTrabalho_ContratosTrabalhosId",
                 table: "CargoContratoTrabalho",
                 column: "ContratosTrabalhosId");
@@ -567,11 +579,6 @@ namespace TechBeauty.Dados.Migrations
                 name: "IX_Colaborador_EnderecoId",
                 table: "Colaborador",
                 column: "EnderecoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Colaborador_EscalaId",
-                table: "Colaborador",
-                column: "EscalaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Colaborador_GeneroId",
@@ -607,6 +614,11 @@ namespace TechBeauty.Dados.Migrations
                 name: "IX_ContratoTrabalho_RegimeContratualId",
                 table: "ContratoTrabalho",
                 column: "RegimeContratualId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Escala_ColaboradorId",
+                table: "Escala",
+                column: "ColaboradorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Espaco_clientes_BeneficioId",
@@ -674,6 +686,9 @@ namespace TechBeauty.Dados.Migrations
                 name: "Contato");
 
             migrationBuilder.DropTable(
+                name: "Escala");
+
+            migrationBuilder.DropTable(
                 name: "Espaco_clientes");
 
             migrationBuilder.DropTable(
@@ -720,9 +735,6 @@ namespace TechBeauty.Dados.Migrations
 
             migrationBuilder.DropTable(
                 name: "Endereco");
-
-            migrationBuilder.DropTable(
-                name: "Escala");
 
             migrationBuilder.DropTable(
                 name: "Genero");

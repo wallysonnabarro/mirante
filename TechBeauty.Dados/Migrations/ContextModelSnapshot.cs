@@ -119,9 +119,14 @@ namespace TechBeauty.Dados.Migrations
                     b.Property<decimal>("SaldoInicial")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int?>("UsuarioId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("GestaoId");
+
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Caixa");
                 });
@@ -254,6 +259,9 @@ namespace TechBeauty.Dados.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("ColaboradorId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DataHoraEntrada")
                         .HasColumnType("smallDateTime");
 
@@ -261,6 +269,8 @@ namespace TechBeauty.Dados.Migrations
                         .HasColumnType("smallDateTime");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ColaboradorId");
 
                     b.ToTable("Escala");
                 });
@@ -581,9 +591,6 @@ namespace TechBeauty.Dados.Migrations
                     b.Property<int>("EnderecoId")
                         .HasColumnType("int");
 
-                    b.Property<int>("EscalaId")
-                        .HasColumnType("int");
-
                     b.Property<int>("GeneroId")
                         .HasColumnType("int");
 
@@ -591,8 +598,6 @@ namespace TechBeauty.Dados.Migrations
                         .HasColumnType("varchar(100)");
 
                     b.HasIndex("EnderecoId");
-
-                    b.HasIndex("EscalaId");
 
                     b.HasIndex("GeneroId");
 
@@ -658,11 +663,15 @@ namespace TechBeauty.Dados.Migrations
 
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Caixa", b =>
                 {
-                    b.HasOne("TechBeauty.Dominio.Modelo.Financeiro.Gestao", "Gestao")
+                    b.HasOne("TechBeauty.Dominio.Modelo.Financeiro.Gestao", null)
                         .WithMany("Caixas")
                         .HasForeignKey("GestaoId");
 
-                    b.Navigation("Gestao");
+                    b.HasOne("TechBeauty.Dominio.Modelo.Usuario", "Usuario")
+                        .WithMany("Caixa")
+                        .HasForeignKey("UsuarioId");
+
+                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Contato", b =>
@@ -701,6 +710,17 @@ namespace TechBeauty.Dados.Migrations
                     b.Navigation("Colaborador");
 
                     b.Navigation("RegimeContratual");
+                });
+
+            modelBuilder.Entity("TechBeauty.Dominio.Modelo.Escala", b =>
+                {
+                    b.HasOne("TechBeauty.Dominio.Modelo.Colaborador", "Colaborador")
+                        .WithMany("Escala")
+                        .HasForeignKey("ColaboradorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Colaborador");
                 });
 
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.EspacoCliente", b =>
@@ -825,12 +845,6 @@ namespace TechBeauty.Dados.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TechBeauty.Dominio.Modelo.Escala", "Escala")
-                        .WithMany("Colaboradores")
-                        .HasForeignKey("EscalaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("TechBeauty.Dominio.Modelo.Genero", "Genero")
                         .WithMany("Colaboradores")
                         .HasForeignKey("GeneroId")
@@ -844,8 +858,6 @@ namespace TechBeauty.Dados.Migrations
                         .IsRequired();
 
                     b.Navigation("Endereco");
-
-                    b.Navigation("Escala");
 
                     b.Navigation("Genero");
                 });
@@ -866,11 +878,6 @@ namespace TechBeauty.Dados.Migrations
                 });
 
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Endereco", b =>
-                {
-                    b.Navigation("Colaboradores");
-                });
-
-            modelBuilder.Entity("TechBeauty.Dominio.Modelo.Escala", b =>
                 {
                     b.Navigation("Colaboradores");
                 });
@@ -921,6 +928,8 @@ namespace TechBeauty.Dados.Migrations
 
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Usuario", b =>
                 {
+                    b.Navigation("Caixa");
+
                     b.Navigation("Gestao");
                 });
 
@@ -936,6 +945,8 @@ namespace TechBeauty.Dados.Migrations
                     b.Navigation("Agendamentos");
 
                     b.Navigation("Contratos");
+
+                    b.Navigation("Escala");
                 });
 #pragma warning restore 612, 618
         }

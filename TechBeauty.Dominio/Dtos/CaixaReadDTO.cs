@@ -7,7 +7,7 @@ using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dominio.Dtos
 {
-    class CaixaReadDTO
+    public class CaixaReadDTO
     {
         public int Id { get; set; }
         public decimal SaldoInicial { get; set; }
@@ -23,7 +23,7 @@ namespace TechBeauty.Dominio.Dtos
             foreach (var item in caixas)
             {
                 CaixaReadDTO caixaRead = new();
-                caixaRead.Id = item.Id;
+               
                 caixaRead.SaldoInicial = item.SaldoInicial;
                 caixaRead.SaldoFinalCaixa = item.SaldoFinalCaixa;
                 caixaRead.DataHoraCriacao = item.DataHoraCriacao;

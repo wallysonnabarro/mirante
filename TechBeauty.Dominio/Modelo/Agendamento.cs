@@ -19,34 +19,37 @@ namespace TechBeauty.Dominio.Modelo
         public StatusAgendamento Status { get; private set; }
         public List<LogAgendamento> LogAgendamentos { get; set; }
 
-        public static Agendamento Criar(AgendaIncioReadDTO agenda, AgendamentoDTO dto, Servico servico, Colaborador colaborador
-            , OrdemServico os)
+
+
+        public static Agendamento Criar(AgendamentoDTO dto, Servico servico, Colaborador colaborador, OrdemServico os)
         {
-            Agendamento agendamento = new Agendamento();
+            Agendamento agendamento = new();
 
             agendamento.Servico = servico;
             agendamento.Colaborador = colaborador;
             agendamento.PessoaAtendida = dto.PessoaAtendida;
-
             agendamento.OrdemServico = os;
-
-
-
             return agendamento;
         }
-        public void RemarcarAgendamento(Colaborador colaborador,
-           OrdemServico os, DateTime dataHoraCriacao, DateTime dataHoraTermino)
+        
+        public static Agendamento RemarcarAgendamento(AgendamentoDTO dto, Colaborador colaborador,
+           OrdemServico os, int id) 
         {
-
-            Colaborador = colaborador;
-            OrdemServico = os;
-            DataHoraCriacao = dataHoraCriacao;
-            DataHoraTermino = dataHoraTermino;
+            Agendamento ag = new();
+            ag.Id = id;
+            ag.Colaborador = colaborador;
+            ag.OrdemServico = os;
+            ag.DataHoraCriacao = dto.DataHoraInicio;
+            ag.DataHoraTermino = dto.DataHoraTermino;
+            return ag;
         }
         public void ExecucaoServico(DateTime dataHoraInicio)
         {
             DataHoraInicio = dataHoraInicio;
         }
+
+      
+
         public void AlterarStatusAgendamento(StatusAgendamento status)
         {
             Status = status;

@@ -6,7 +6,7 @@ using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Principal.Controllers
 {
-    [Route("[controllerS]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class ServicoController : Controller
     {
@@ -18,9 +18,9 @@ namespace TechBeauty.Principal.Controllers
                 new ServicoRepositorio().Incluir(Servico.Criar(servico));
                 return Ok();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return NotFound();
+                return ValidationProblem(e.Message);
             }
         }
 
@@ -58,7 +58,7 @@ namespace TechBeauty.Principal.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult Deletar(int id)
         {
             try

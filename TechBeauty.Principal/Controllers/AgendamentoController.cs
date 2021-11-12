@@ -3,6 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TechBeauty.Dados.Repositorio;
+using TechBeauty.Dominio.Dtos;
+using TechBeauty.Dominio.Modelo;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,36 +15,70 @@ namespace TechBeauty.Principal.Controllers
     [ApiController]
     public class AgendamentoController : ControllerBase
     {
-        // GET: api/<AgendamentoController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<AgendamentoController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<AgendamentoController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Incluir([FromBody] AgendamentoDTO dto)
         {
+            try
+            {
+                var servico = new ServicoRepositorio().Selecionar(dto.ServicoID);
+                var colaborador = new ColaboradorRepositorio().Selecionar(dto.ColaboradorID);
+                var os = new OrdemServicoRepositorio().Selecionar(dto.OrdemSID);
+                new AgendamentoRepositorio().Incluir(Agendamento.Criar(dto, servico, colaborador, os));
+                return Ok();
+            }
+            catch (ArgumentException e)
+            {
+                return ValidationProblem(e.Message);
+            }
         }
 
-        // PUT api/<AgendamentoController>/5
+        [HttpGet("paginar")]
+        public IActionResult ColecaoAgendada(int skip = 0, int take = 25)
+        {
+            return Ok(AgendamentoReadDTO.Paginar(new AgendamentoRepositorio().Paginar(skip, take)));
+        }
+
+        [HttpGet("selecionar")]
+        public IActionResult SelecionarPorID(int id)
+        {
+            try
+            {
+                return Ok(new AgendamentoRepositorio().Selecionar(id));
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
+        }
+
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Remarcar(int id, [FromBody] AgendamentoDTO dto)
         {
+            try
+            {
+                var colaborador = new ColaboradorRepositorio().Selecionar(dto.ColaboradorID);
+                var os = new OrdemServicoRepositorio().Selecionar(dto.OrdemSID);
+                new AgendamentoRepositorio().Alterar(Agendamento.RemarcarAgendamento(dto, colaborador,os, id));
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
         }
 
-        // DELETE api/<AgendamentoController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Excluir(int id)
         {
+            try
+            {
+                new AgendamentoRepositorio().Excluir(id);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
         }
     }
 }

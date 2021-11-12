@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +12,14 @@ namespace TechBeauty.Principal.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClienteController : ControllerBase
+    public class CargoController : ControllerBase
     {
         [HttpPost]
-        public IActionResult Incluir([FromBody] ClienteDTO cliente)
+        public IActionResult Incluir([FromBody] ContatoDTO contato)
         {
             try
             {
-                new ClienteRepositorio().Incluir(Cliente.Criar(cliente));
+                new ContatoRepositorio().Incluir(Contato.Criar(contato));
                 return Ok();
             }
             catch (ArgumentException e)
@@ -28,9 +29,9 @@ namespace TechBeauty.Principal.Controllers
         }
 
         [HttpGet("paginar")]
-        public IActionResult ColecaoClientes(int skip = 0, int take = 25)
+        public IActionResult ColecaoContatos(int skip = 0, int take = 25)
         {
-            return Ok(ClienteReadDto.Paginar(new ClienteRepositorio().Paginar(skip, take)));
+            return Ok(ContatoReadDTO.Paginar(new ContatoRepositorio().Paginar(skip, take)));
         }
 
         [HttpGet("{id}")]
@@ -38,7 +39,7 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                return Ok(new ClienteRepositorio().Selecionar(id));
+                return Ok(new ContatoRepositorio().Selecionar(id));
             }
             catch (Exception e)
             {
@@ -47,11 +48,12 @@ namespace TechBeauty.Principal.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult AtualizarCliente(int id, [FromBody] ClienteDTO cliente)
+        public IActionResult AtualizarContato(int id, [FromBody] ContatoDTO contato)
         {
             try
             {
-                new ClienteRepositorio().Alterar(Cargo.AlterarCargo(cliente, id));
+                var tipo = new TipoContatoRepositorio().Selecionar(contato.TipoID);
+                new ContatoRepositorio().Alterar(Contato.AlterarContato(contato, tipo));
                 return Ok();
             }
             catch (Exception e)
@@ -61,11 +63,11 @@ namespace TechBeauty.Principal.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult ExcluirCliente(int id)
+        public IActionResult DeletarContato(int id)
         {
             try
             {
-                new ClienteRepositorio().Excluir(id);
+                new ContatoRepositorio().Excluir(id);
                 return Ok();
             }
             catch (Exception e)

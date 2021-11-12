@@ -6,7 +6,7 @@ using TechBeauty.Dados.Repositorio;
 
 namespace TechBeauty.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class GeneroController : ControllerBase
     {

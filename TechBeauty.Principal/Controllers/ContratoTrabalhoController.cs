@@ -14,19 +14,19 @@ namespace TechBeauty.Principal.Controllers
     public class ContratoTrabalhoController : ControllerBase
     {
         // GET: api/<ContratoTrabalhoController>/colecao
-        [HttpGet("colecao")]
+        [HttpGet("paginarContrato/{skip}/{take}")]
         public IActionResult Get(int skip = 0, int take = 25)
         {
             return Ok(new ContratoTrabalhoRepositorio().Paginar(skip, take));
         }
 
         // GET api/<ContratoTrabalhoController>/5
-        [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        [HttpGet("{getContratoId}")]
+        public IActionResult Get(int getContratoId)
         {
             try
             {
-                return Ok(new ContratoTrabalhoRepositorio().Selecionar(id));
+                return Ok(new ContratoTrabalhoRepositorio().Selecionar(getContratoId));
             }
             catch (Exception e)
             {
@@ -54,15 +54,15 @@ namespace TechBeauty.Principal.Controllers
         }
 
         // PUT api/<ContratoTrabalhoController>/5
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] ContratoTrabalhoDTO dto)
+        [HttpPut("{putContratoId}")]
+        public IActionResult Put(int putContratoId, [FromBody] ContratoTrabalhoDTO dto)
         {
             try
             {
                 var regime = new RegimeContratualRepositorio().Selecionar(dto.RegimeId);
                 var cargos = new CargoRepositorio().SelecionarCargos(dto.CargosId);
                 var colaborador = new ColaboradorRepositorio().Selecionar(dto.ColaboradorId);
-                new ContratoTrabalhoRepositorio().Alterar(ContratoTrabalho.Atualizar(dto, regime, cargos, colaborador, id));
+                new ContratoTrabalhoRepositorio().Alterar(ContratoTrabalho.Atualizar(dto, regime, cargos, colaborador, putContratoId));
                 return Ok();
             }
             catch (Exception e)
@@ -72,12 +72,12 @@ namespace TechBeauty.Principal.Controllers
         }
 
         // DELETE api/<ContratoTrabalhoController>/5
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        [HttpDelete("{deleteContratoId}")]
+        public IActionResult Delete(int deleteContratoId)
         {
             try
             {
-                new ContratoTrabalhoRepositorio().Excluir(id);
+                new ContratoTrabalhoRepositorio().Excluir(deleteContratoId);
                 return Ok();
             }
             catch (Exception e)
@@ -86,8 +86,8 @@ namespace TechBeauty.Principal.Controllers
             }
         }
 
-        [HttpPut("{id}")]
-        public IActionResult EncerramentoContrato(int id, DateTime dataEncerramento)
+        [HttpPut("{encerrarId}")]
+        public IActionResult EncerramentoContrato(int encerrarId, DateTime dataEncerramento)
         {
             try
             {

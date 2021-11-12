@@ -7,24 +7,24 @@ using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dominio.Dtos
 {
-    public class CargoReadDto
+    public class CargoReadDTO
     {
 
         public int Id { get; set; }
-        public string Nome { get; private set; }
-        public string Descricao { get; private set; }
-        public decimal Salario { get; private set; }
+        public string Nome { get;  set; }
+        public string Descricao { get;  set; }
+        public decimal Salario { get;  set; }
 
-        public static List<CargoReadDto> Paginar(List<Cargo> cargos)
+        public static List<CargoReadDTO> Paginar(List<Cargo> cargo)
         {
-            List<CargoReadDto> dtos = new();
-            foreach (var item in cargos)
+            List<CargoReadDTO> dtos = new();
+            foreach (var item in cargo)
             {
-                CargoReadDto dto = new();
+                CargoReadDTO dto = new();
+                dto.Id = item.Id;
                 dto.Nome = item.Nome;
                 dto.Descricao = item.Descricao;
                 dto.Salario = item.Salario;
-                dtos.Add(dto);
             }
             return dtos;
         }

@@ -7,8 +7,8 @@ using TechBeauty.Dominio.Modelo.Financeiro;
 
 namespace TechBeauty.Principal.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("[controller]")]
     public class BeneficiosController : ControllerBase
     {
         [HttpPost]

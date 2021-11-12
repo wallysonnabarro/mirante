@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TechBeauty.Dominio.Dtos;
 using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
@@ -17,6 +18,12 @@ namespace TechBeauty.Dominio.Modelo
             cliente.DataNascimento = clienteDto.DataNascimento;
             return cliente;
         }
+
+        public static Cliente Criar(ClienteDTO cliente)
+        {
+            throw new NotImplementedException();
+        }
+
         public void AlterarCliente(Cliente cliente)
         {
             Nome = cliente.Nome;

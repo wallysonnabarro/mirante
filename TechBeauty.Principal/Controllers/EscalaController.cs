@@ -3,6 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TechBeauty.Dados.Repositorio;
+using TechBeauty.Dominio.Dtos;
+using TechBeauty.Dominio.Modelo;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,36 +15,67 @@ namespace TechBeauty.Principal.Controllers
     [ApiController]
     public class EscalaController : ControllerBase
     {
-        // GET: api/<EscalaController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [HttpGet("paginar")]
+        public IActionResult GetPagina(int skip, int take = 25)
         {
-            return new string[] { "value1", "value2" };
+            return Ok(EscalaReadDTO.Paginar(new EscalaRepositorio().Paginar(skip, take)));
         }
 
-        // GET api/<EscalaController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            try
+            {
+                return Ok(new EscalaRepositorio().Selecionar(id));
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
         }
 
-        // POST api/<EscalaController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] EscalaDTO dto)
         {
+            try
+            {
+                var colaborador = new ColaboradorRepositorio().Selecionar(dto.ColaboradorID);
+                new EscalaRepositorio().Incluir(Escala.Criar(dto, colaborador));
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
         }
 
-        // PUT api/<EscalaController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromBody] EscalaDTO dto)
         {
+            try
+            {
+                var colaborador = new ColaboradorRepositorio().Selecionar(dto.ColaboradorID);
+                new EscalaRepositorio().Alterar(Escala.ModificarEscala(dto, id, colaborador));
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
         }
 
-        // DELETE api/<EscalaController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Excluir(int id)
         {
+            try
+            {
+                new EscalaRepositorio().Excluir(id);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
         }
     }
 }

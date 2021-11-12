@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TechBeauty.Dominio.Dtos
 {
-    class RegimeContratualDTO
+    public class RegimeContratualDTO
     {
         [StringLength(20, ErrorMessage = "Quantidade máximo de caracteres = 20")]
         [Required(ErrorMessage = "O campo Valor Regime Contratual é obrigatório!")]

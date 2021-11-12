@@ -7,7 +7,7 @@ using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dominio.Dtos
 {
-    class PagamentoReadDTO
+    public class PagamentoReadDTO
     {
         public int Id { get;  set; }
         public DateTime DataHoraPagamento { get;  set; }

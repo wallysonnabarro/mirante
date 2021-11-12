@@ -7,18 +7,13 @@ using System.Threading.Tasks;
 
 namespace TechBeauty.Dominio.Dtos
 {
-    class ComissaoDTO
+    public class ComissaoDTO
     {
         [StringLength(5, ErrorMessage = "Quantidade máximo de caracteres = 5")]
         [Required(ErrorMessage = "O campo 'Valor' de comissão é obrigatório!")]
         public decimal Valor { get; set; }
 
-
-        public static ComissaoDTO CriaComissaoo(ComissaoDTO comissao)
-        {
-            ComissaoDTO dto = new();
-            dto.Valor = comissao.Valor;
-            return dto;
-        }
+        public int AgendamentoID { get; set; }
+       
     }
 }

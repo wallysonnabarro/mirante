@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace TechBeauty.Principal.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class EspacoClienteController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+       
     }
 }

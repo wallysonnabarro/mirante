@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TechBeauty.Dominio.Dtos;
 using TechBeauty.Dominio.Repositorio;
 
 namespace TechBeauty.Dominio.Modelo
@@ -19,12 +20,20 @@ namespace TechBeauty.Dominio.Modelo
 
             return contato;
         }
-        public void AlterarContato(Contato contatoDto)
+
+        public static Contato Criar(ContatoDTO contato)
         {
-            Tipo = contatoDto.Tipo;
-            Valor = contatoDto.Valor;
+            throw new NotImplementedException();
         }
-      
-    
+
+        public static Contato AlterarContato(ContatoDTO contato, TipoContato tipo)
+        {
+            Contato dto = new();
+            dto.Tipo = tipo;
+            dto.Valor = contato.Valor;
+            return dto;
+        }
+
+
     }
 }

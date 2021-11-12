@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TechBeauty.Dominio.Dtos
 {
-    class PagamentoDTO
+    public class PagamentoDTO
     {
         [StringLength(20, ErrorMessage = "Quantidade máximo de caracteres = 20")]
         [Required(ErrorMessage = "O campo 'DataHoraPagamento' de pagamento é obrigatório!")]
@@ -20,13 +20,16 @@ namespace TechBeauty.Dominio.Dtos
         [StringLength(20, ErrorMessage = "Quantidade máximo de caracteres = 20")]
         [Required(ErrorMessage = "O campo 'Troco' do pagamento é obrigatório!")]
         public decimal? Troco { get; set; }
-
+        public int OrdemServicoID { get; set; }
+        public int FormaPagamentoID { get; set; }
         public static PagamentoDTO CriarPagamento(PagamentoDTO pagamento)
         {
             PagamentoDTO dto = new();
             dto.DataHoraPagamento = pagamento.DataHoraPagamento;
             dto.ValorRecebido = pagamento.ValorRecebido;
-            
+            dto.FormaPagamentoID = pagamento.FormaPagamentoID;
+            dto.OrdemServicoID = pagamento.OrdemServicoID;
+
             return dto;
         }
     }
