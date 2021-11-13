@@ -17,8 +17,5 @@ namespace TechBeauty.Dominio.Dtos
         [StringLength(150, ErrorMessage = "Quantidade máximo de caracteres = 150")]
         [Required(ErrorMessage = "O campo descrição do cargo é obrigatório!")]
         public string Descricao { get; set; }
-
-        [Required(ErrorMessage = "O campo salário é obrigatório!")]
-        public decimal Salario { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TechBeauty.Dominio.Dtos;
-using TechBeauty.Dominio.Repositorio;
+using TechBeauty.Dominio.Interfaces;
 
 namespace TechBeauty.Dominio.Modelo
 {
@@ -13,38 +13,31 @@ namespace TechBeauty.Dominio.Modelo
         public DateTime? DataDesligamento { get; private set; }
         public string CnpjCTPS { get; private set; }
         public decimal PorcentagemComissao { get; private set; }
+        public decimal Salario { get; private set; }
         public RegimeContratual RegimeContratual { get; private set; } //Navegação relação (1,1) é necessário popular
         public List<Cargo> Cargos { get; private set; }//Tabela relacional
 
-        public static ContratoTrabalho Contratar(RegimeContratual regimeContratual, DateTime dataEntrada,
-            List<Cargo> cargos, string cnpjCTPS, Colaborador colaborador, decimal porcentagemComissao)
+        public static ContratoTrabalho Contratar(RegimeContratual regimeContratual, List<Cargo> cargos,
+            Colaborador colaborador, ContratoTrabalhoDTO dto)
         {
             ContratoTrabalho contratoTrabalho = new();
             contratoTrabalho.Colaborador = colaborador;
             contratoTrabalho.RegimeContratual = regimeContratual;
-            contratoTrabalho.DataEntrada = dataEntrada;
+            contratoTrabalho.DataEntrada = dto.DataEntrada;
             contratoTrabalho.Cargos = cargos;
-            contratoTrabalho.CnpjCTPS = cnpjCTPS;
-            contratoTrabalho.PorcentagemComissao = porcentagemComissao;
+            contratoTrabalho.CnpjCTPS = dto.CnpjCtps;
+            contratoTrabalho.PorcentagemComissao = dto.ProcentagemComissao;
+            contratoTrabalho.Salario = dto.Salario;
             return contratoTrabalho;
 
-        }
-        public void ModificarContrato(ContratoTrabalho contratoTrabalho)
-        {
-
-            RegimeContratual = contratoTrabalho.RegimeContratual;
-            DataEntrada = contratoTrabalho.DataEntrada;
-            DataDesligamento = contratoTrabalho.DataDesligamento;
-            Cargos = contratoTrabalho.Cargos;
-            Colaborador = contratoTrabalho.Colaborador;
-            CnpjCTPS = contratoTrabalho.CnpjCTPS;
         }
         public void EncerrarContrato(DateTime dataDesligamento)
         {
             DataDesligamento = dataDesligamento;
         }
 
-        public static ContratoTrabalho Atualizar(ContratoTrabalhoDTO dto, RegimeContratual regime, List<Cargo> cargos, Colaborador colaborador, int id)
+        public static ContratoTrabalho Atualizar(ContratoTrabalhoDTO dto, RegimeContratual regime,
+            List<Cargo> cargos, Colaborador colaborador, int id)
         {
             ContratoTrabalho contrato = new();
             contrato.Id = id;
@@ -59,6 +52,11 @@ namespace TechBeauty.Dominio.Modelo
         public void UpdatePorcentagemComissao(decimal porcentagem)
         {
             PorcentagemComissao = porcentagem;
+        }
+
+        public void AtualizarSalario(decimal salario)
+        {
+            Salario = salario;
         }
     }
 }

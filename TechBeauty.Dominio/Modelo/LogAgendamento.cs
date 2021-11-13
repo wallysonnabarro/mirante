@@ -1,6 +1,6 @@
 ﻿using System;
 using TechBeauty.Dominio.Modelo.Enumeradores;
-using TechBeauty.Dominio.Repositorio;
+using TechBeauty.Dominio.Interfaces;
 
 namespace TechBeauty.Dominio.Modelo
 {

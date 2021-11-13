@@ -1,7 +1,5 @@
-﻿
-
-using TechBeauty.Dominio.Modelo.Financeiro;
-using TechBeauty.Dominio.Repositorio;
+﻿using TechBeauty.Dominio.Modelo.Financeiro;
+using TechBeauty.Dominio.Interfaces;
 
 namespace TechBeauty.Dominio.Modelo
 {

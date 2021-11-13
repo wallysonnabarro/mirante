@@ -14,9 +14,25 @@ namespace TechBeauty.Dados.Repositorio
         {
             if (!context.RegimeContratual.Any(rc => rc.Valor == entity.Valor))
             {
-                return base .Incluir(entity);
+                return base.Incluir(entity);
             }
-            throw new ArgumentException();
+            else
+            {
+                throw new ArgumentException();
+            }
         }
+
+        public override void Alterar(RegimeContratual entity)
+        {
+            if (!context.RegimeContratual.Any(r => r.Valor == entity.Valor))
+            {
+                base.Alterar(entity);
+            }
+            else
+            {
+                throw new ArgumentException($"O regime {entity.Valor}, já existe no banco de dados", nameof(entity.Valor));
+            }
+        }
+
     }
 }

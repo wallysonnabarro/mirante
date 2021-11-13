@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TechBeauty.Dominio.Dtos;
-using TechBeauty.Dominio.Repositorio;
+using TechBeauty.Dominio.Interfaces;
 
 namespace TechBeauty.Dominio.Modelo
 {
@@ -10,7 +10,6 @@ namespace TechBeauty.Dominio.Modelo
         public int Id { get; private set; }
         public string Nome { get; private set; }
         public string Descricao { get; private set; }
-        public decimal Salario { get; private set; }
         public List<Usuario> Usuarios { get; set; }
         public List<ContratoTrabalho> ContratosTrabalhos { get; set; }
 
@@ -20,7 +19,6 @@ namespace TechBeauty.Dominio.Modelo
             Cargo cargo = new();
             cargo.Nome = dto.Nome;
             cargo.Descricao = dto.Descricao;
-            cargo.Salario = dto.Salario;
             return cargo;
         }
 

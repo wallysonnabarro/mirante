@@ -10,8 +10,8 @@ using TechBeauty.Dados;
 namespace TechBeauty.Dados.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20211112121751_first")]
-    partial class first
+    [Migration("20211113183738_primeiro")]
+    partial class primeiro
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -148,9 +148,6 @@ namespace TechBeauty.Dados.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(100)");
 
-                    b.Property<decimal>("Salario")
-                        .HasColumnType("decimal(18,2)");
-
                     b.HasKey("Id");
 
                     b.ToTable("Cargo");
@@ -202,8 +199,14 @@ namespace TechBeauty.Dados.Migrations
                     b.Property<DateTime>("DataEntrada")
                         .HasColumnType("smallDateTime");
 
+                    b.Property<decimal>("PorcentagemComissao")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<int>("RegimeContratualId")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("Salario")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 

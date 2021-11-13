@@ -19,5 +19,8 @@ namespace TechBeauty.Dominio.Dtos
         public int ColaboradorId { get; set; }
         [Required(ErrorMessage = "O campo 'PorcentagemComissao' do contrato de trabalho é obrigatório!")]
         public decimal ProcentagemComissao { get; set; }
+
+        [Required(ErrorMessage = "O campo salário é obrigatório!")]
+        public decimal Salario { get; set; }
     }
 }

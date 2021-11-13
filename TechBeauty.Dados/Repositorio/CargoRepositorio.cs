@@ -25,7 +25,10 @@ namespace TechBeauty.Dados.Repositorio
             {
                 base.Alterar(entity);
             }
-            throw new ArgumentException($"O cargo {entity.Nome}, com o id {entity.Id} não encontrado.", nameof(entity.Id));
+            else
+            {
+                throw new ArgumentException($"O cargo {entity.Nome}, com o id {entity.Id} não encontrado.", nameof(entity.Id));
+            }
         }
 
         public List<Cargo> SelecionarCargos(List<int> cargosId)

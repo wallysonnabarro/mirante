@@ -12,7 +12,7 @@ namespace TechBeauty.Principal.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CargoController : ControllerBase
+    public class ContatoController : ControllerBase
     {
         [HttpPost]
         public IActionResult Incluir([FromBody] ContatoDTO contato)
@@ -28,7 +28,7 @@ namespace TechBeauty.Principal.Controllers
             }
         }
 
-        [HttpGet("paginar")]
+        [HttpGet("paginar/{skip}/{take}")]
         public IActionResult ColecaoContatos(int skip = 0, int take = 25)
         {
             return Ok(ContatoReadDTO.Paginar(new ContatoRepositorio().Paginar(skip, take)));

@@ -32,8 +32,8 @@ namespace TechBeauty.Principal.Controllers
         }
 
         // POST api/<TipoContatoController>
-        [HttpPost]
-        public IActionResult Post([FromBody] string value)
+        [HttpPost("{value}")]
+        public IActionResult Post(string value)
         {
             try
             {

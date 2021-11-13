@@ -11,9 +11,8 @@ namespace TechBeauty.Dominio.Dtos
     {
 
         public int Id { get; set; }
-        public string Nome { get;  set; }
-        public string Descricao { get;  set; }
-        public decimal Salario { get;  set; }
+        public string Nome { get; set; }
+        public string Descricao { get; set; }
 
         public static List<CargoReadDTO> Paginar(List<Cargo> cargo)
         {
@@ -24,9 +23,18 @@ namespace TechBeauty.Dominio.Dtos
                 dto.Id = item.Id;
                 dto.Nome = item.Nome;
                 dto.Descricao = item.Descricao;
-                dto.Salario = item.Salario;
+                dtos.Add(dto);
             }
             return dtos;
+        }
+
+        public static object Selecionar(Cargo cargo)
+        {
+            CargoReadDTO dto = new();
+            dto.Id = cargo.Id;
+            dto.Nome = cargo.Nome;
+            dto.Descricao = cargo.Descricao;
+            return dto;
         }
     }
 }

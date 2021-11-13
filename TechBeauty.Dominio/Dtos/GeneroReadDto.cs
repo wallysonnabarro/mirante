@@ -12,10 +12,6 @@ namespace TechBeauty.Dominio.Dtos
         public int Id { get; set; }
         public string Valor { get; set; }
 
-        public GeneroReadDto()
-        {
-
-        }
 
         public GeneroReadDto(Genero genero)
         {
@@ -32,5 +28,6 @@ namespace TechBeauty.Dominio.Dtos
             }
             return dtos;
         }
+
     }
 }

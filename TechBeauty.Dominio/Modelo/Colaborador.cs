@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using TechBeauty.Dominio.Dtos;
-using TechBeauty.Dominio.Repositorio;
+using TechBeauty.Dominio.Interfaces;
 
 namespace TechBeauty.Dominio.Modelo
 {

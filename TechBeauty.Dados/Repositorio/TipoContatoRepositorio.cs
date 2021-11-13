@@ -33,8 +33,7 @@ namespace TechBeauty.Dados.Repositorio
 
         protected bool ValidarValor(TipoContato contato)
         {
-            var existe = context.TipoContato.Where(tc => tc.Valor == contato.Valor).FirstOrDefault();
-            if (existe == null)
+            if (context.TipoContato.Any(tc => tc.Valor == contato.Valor))
             {
                 return true;
             }

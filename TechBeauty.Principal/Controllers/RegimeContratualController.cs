@@ -47,7 +47,19 @@ namespace TechBeauty.Principal.Controllers
             }
         }
 
-   
+        [HttpPut("{id}")]
+        public IActionResult Atualizar(int id, [FromBody] RegimeContratualDTO dto)
+        {
+            try
+            {
+                new RegimeContratualRepositorio().Alterar(RegimeContratual.AlterarRegimeContratual(id, dto.Valor));
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
+        }
 
         [HttpDelete("{id}")]
         public IActionResult ExcluirRegime(int id)

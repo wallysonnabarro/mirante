@@ -1,4 +1,4 @@
-﻿namespace TechBeauty.Dominio.Repositorio
+﻿namespace TechBeauty.Dominio.Interfaces
 {
     public interface IEntity
     {

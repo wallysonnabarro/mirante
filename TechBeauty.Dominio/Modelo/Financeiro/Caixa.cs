@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TechBeauty.Dominio.Dtos;
 using TechBeauty.Dominio.Modelo.Enumeradores;
 using TechBeauty.Dominio.Modelo.Financeiro;
-using TechBeauty.Dominio.Repositorio;
+using TechBeauty.Dominio.Interfaces;
 
 namespace TechBeauty.Dominio.Modelo
 {

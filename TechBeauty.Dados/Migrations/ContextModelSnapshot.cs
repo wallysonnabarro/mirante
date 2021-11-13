@@ -146,9 +146,6 @@ namespace TechBeauty.Dados.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(100)");
 
-                    b.Property<decimal>("Salario")
-                        .HasColumnType("decimal(18,2)");
-
                     b.HasKey("Id");
 
                     b.ToTable("Cargo");
@@ -200,8 +197,14 @@ namespace TechBeauty.Dados.Migrations
                     b.Property<DateTime>("DataEntrada")
                         .HasColumnType("smallDateTime");
 
+                    b.Property<decimal>("PorcentagemComissao")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<int>("RegimeContratualId")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("Salario")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TechBeauty.Dados.Migrations
 {
-    public partial class first : Migration
+    public partial class primeiro : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,8 +28,7 @@ namespace TechBeauty.Dados.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "varchar(100)", nullable: false),
-                    Descricao = table.Column<string>(type: "varchar(150)", nullable: false),
-                    Salario = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Descricao = table.Column<string>(type: "varchar(150)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -276,10 +275,12 @@ namespace TechBeauty.Dados.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ColaboradorId = table.Column<int>(type: "int", nullable: false),
-                    RegimeContratualId = table.Column<int>(type: "int", nullable: false),
                     DataEntrada = table.Column<DateTime>(type: "smallDateTime", nullable: false),
                     DataDesligamento = table.Column<DateTime>(type: "smallDateTime", nullable: true),
-                    CnpjCTPS = table.Column<string>(type: "varchar(14)", nullable: false)
+                    CnpjCTPS = table.Column<string>(type: "varchar(14)", nullable: false),
+                    PorcentagemComissao = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Salario = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    RegimeContratualId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

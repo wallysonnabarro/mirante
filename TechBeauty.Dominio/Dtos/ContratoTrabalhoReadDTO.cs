@@ -9,10 +9,11 @@ namespace TechBeauty.Dominio.Dtos
 {
     public class ContratoTrabalhoReadDTO
     {
-        public int Id { get; private set; }
-        public string CnpjCTPS { get; private set; }
-        public DateTime DataEntrada { get; private set; }
-        public DateTime? DataDesligamento { get; private set; }
+        public int Id { get; set; }
+        public string CnpjCTPS { get; set; }
+        public DateTime DataEntrada { get; set; }
+        public DateTime? DataDesligamento { get; set; }
+        public decimal Salario { get; set; }
 
         public static object Paginar(List<ContratoTrabalho> contratos)
         {

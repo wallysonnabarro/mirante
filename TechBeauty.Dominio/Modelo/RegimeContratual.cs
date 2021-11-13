@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TechBeauty.Dominio.Dtos;
-using TechBeauty.Dominio.Repositorio;
+using TechBeauty.Dominio.Interfaces;
 
 namespace TechBeauty.Dominio.Modelo
 {
@@ -21,9 +21,12 @@ namespace TechBeauty.Dominio.Modelo
             return regime;
         }
 
-        public void AlterarRegimeContratual(string valor)
+        public static RegimeContratual AlterarRegimeContratual(int id, string valor)
         {
-            Valor = valor;
+            RegimeContratual regime = new();
+            regime.Id = id;
+            regime.Valor = valor;
+            return regime;
         }
 
     }

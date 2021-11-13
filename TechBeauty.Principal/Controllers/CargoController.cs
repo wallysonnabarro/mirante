@@ -24,7 +24,7 @@ namespace TechBeauty.Controllers
             }
         }
 
-        [HttpGet("{skip}/{take}")]
+        [HttpGet("paginar/{skip}/{take}")]
         public IActionResult ColecaoCargos(int skip = 0, int take = 25)
         {
             return Ok(CargoReadDTO.Paginar(new CargoRepositorio().Paginar(skip, take)));
@@ -35,7 +35,7 @@ namespace TechBeauty.Controllers
         {
             try
             {
-                return Ok(new CargoRepositorio().Selecionar(Id));
+                return Ok(CargoReadDTO.Selecionar(new CargoRepositorio().Selecionar(Id)));
             }
             catch (Exception e)
             {

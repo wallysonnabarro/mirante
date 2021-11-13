@@ -12,11 +12,26 @@ namespace TechBeauty.Dados.Repositorio
     {
         public override int Incluir(Servico entity)
         {
-            if (!context.Servico.All(s => s.Nome.Equals(entity.Nome)))
+            if (!context.Servico.Any(s => s.Nome == entity.Nome))
             {
-                return base .Incluir(entity);
+                return base.Incluir(entity);
             }
-            throw new ArgumentException();
+            else
+            {
+                throw new ArgumentException();
+            }
+        }
+
+        public override void Alterar(Servico entity)
+        {
+            if (context.Servico.Any(s => s.Id == entity.Id))
+            {
+                base.Alterar(entity);
+            }
+            else
+            {
+                throw new ArgumentException($"Serviço {entity.Nome}, já existe!", nameof(entity.Nome));
+            }
         }
     }
 }

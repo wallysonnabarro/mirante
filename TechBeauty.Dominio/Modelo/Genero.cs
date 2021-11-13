@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using TechBeauty.Dominio.Dtos;
-using TechBeauty.Dominio.Repositorio;
+using TechBeauty.Dominio.Interfaces;
 
 namespace TechBeauty.Dominio.Modelo
 {

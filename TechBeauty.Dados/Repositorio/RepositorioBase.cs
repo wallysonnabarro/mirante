@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using TechBeauty.Dominio.Repositorio;
+using TechBeauty.Dominio.Interfaces;
 
 namespace TechBeauty.Dados.Repositorio
 {
@@ -33,7 +33,10 @@ namespace TechBeauty.Dados.Repositorio
             {
                 return context.Set<T>().FirstOrDefault(x => x.Id == id);
             }
-            throw new ArgumentException($"Identificação {id} não encontrada!", nameof(id));
+            else
+            {
+                throw new ArgumentException($"Identificação {id} não encontrada!", nameof(id));
+            }
         }
 
         public List<T> Paginar(int skip, int take)

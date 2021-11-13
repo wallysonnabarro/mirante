@@ -21,7 +21,7 @@ namespace TechBeauty.Controllers
         {
             try
             {
-                return Ok(new GeneroRepositorio().Selecionar(id));
+                return Ok(new GeneroReadDto(new GeneroRepositorio().Selecionar(id)));
             }
             catch (Exception e)
             {
@@ -44,7 +44,7 @@ namespace TechBeauty.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Genero genero)
+        public IActionResult Put(int id, [FromBody] GeneroDto genero)
         {
             try
             {

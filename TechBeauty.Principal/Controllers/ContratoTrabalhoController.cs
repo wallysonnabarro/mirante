@@ -44,7 +44,7 @@ namespace TechBeauty.Principal.Controllers
                 var cargos = new CargoRepositorio().SelecionarCargos(dto.CargosId);
                 var colaborador = new ColaboradorRepositorio().Selecionar(dto.ColaboradorId);
                 new ContratoTrabalhoRepositorio().Incluir(
-                    ContratoTrabalho.Contratar(regime, dto.DataEntrada, cargos, dto.CnpjCtps, colaborador, dto.ProcentagemComissao));
+                    ContratoTrabalho.Contratar(regime, cargos, colaborador, dto));
                 return Ok();
             }
             catch (Exception e)
