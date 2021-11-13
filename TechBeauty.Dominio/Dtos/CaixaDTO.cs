@@ -12,19 +12,7 @@ namespace TechBeauty.Dominio.Dtos
         [StringLength(50, ErrorMessage = "Quantidade máximo de caracteres = 50")]
         [Required(ErrorMessage = "O campo 'SaldoInicial' do caixa é obrigatório!")]
         public decimal SaldoInicial { get; set; }
-
-  
         public int UsuarioID { get; set; }
-
-
-        public static CaixaDTO CriarCaixa(CaixaDTO caixa)
-        {
-            CaixaDTO dto = new();
-            dto.SaldoInicial= caixa.SaldoInicial;
-            dto.UsuarioID = caixa.UsuarioID;
-            return dto;
-        }
-
 
     }
 }

@@ -13,14 +13,5 @@ namespace TechBeauty.Dominio.Dtos
         [Required(ErrorMessage = "O campo 'Valor' do contato é obrigatório!")]
         public string Valor { get; set; }
         public int TipoID { get; set; }
-       
-
-        public static ContatoDTO CriarContato(ContatoDTO contato)
-        {
-            ContatoDTO dto = new();
-            dto.Valor = contato.Valor;
-            return dto;
-        }
-      
     }
 }

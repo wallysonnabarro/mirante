@@ -12,12 +12,5 @@ namespace TechBeauty.Dominio.Dtos
         [StringLength(30, ErrorMessage = "Quantidade máximo de caracteres = 30")]
         [Required(ErrorMessage = "O campo 'Valor' do Tipo contato é obrigatório!")]
         public string Valor { get;  set; }
-
-        public static TipoContatoDTO CriarTipo(TipoContatoDTO tipo)
-        {
-            TipoContatoDTO dto = new();
-            dto.Valor = tipo.Valor;
-            return dto;
-        }
     }
 }

@@ -14,11 +14,6 @@ namespace TechBeauty.Dominio.Dtos
         public string Nome { get; set; }
         public string Descricao { get; set; }
 
-        public ReadCargoDto()
-        {
-
-        }
-
         public ReadCargoDto(Cargo cargo)
         {
             Codigo = cargo.Id;

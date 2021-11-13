@@ -7,7 +7,7 @@ using TechBeauty.Dominio.Modelo;
 
 namespace TechBeauty.Dominio.Dtos
 {
-    class UsuarioReadDTO
+    public class UsuarioReadDTO
     {
         public int Id { get; set; }
         public string Nome { get; set; }
@@ -18,6 +18,16 @@ namespace TechBeauty.Dominio.Dtos
             usuarioRead.Id = usuario.Id;
             usuarioRead.Nome = usuario.Nome;
             return usuarioRead;
+        }
+
+        public static List<UsuarioReadDTO> Paginar(List<Usuario> usuarios)
+        {
+            List<UsuarioReadDTO> dtos = new();
+            foreach (var item in usuarios)
+            {
+                dtos.Add(Convert(item));
+            }
+            return dtos;
         }
     }
 }

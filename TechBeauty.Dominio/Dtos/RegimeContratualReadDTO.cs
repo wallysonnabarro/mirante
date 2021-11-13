@@ -12,8 +12,7 @@ namespace TechBeauty.Dominio.Dtos
         public int Id { get;  set; }
         public string Valor { get; set; }
 
-
-        public static object Paginar(List<RegimeContratual> regimes)
+        public static List<RegimeContratualReadDTO> Paginar(List<RegimeContratual> regimes)
         {
             List<RegimeContratualReadDTO> dto = new();
             foreach (var item in regimes)
@@ -26,5 +25,12 @@ namespace TechBeauty.Dominio.Dtos
             return dto;
         }
 
+        public static RegimeContratualReadDTO Converte(RegimeContratual regimeContratual)
+        {
+            RegimeContratualReadDTO dto = new();
+            dto.Id = regimeContratual.Id;
+            dto.Valor = regimeContratual.Valor;
+            return dto;
+        }
     }
 }

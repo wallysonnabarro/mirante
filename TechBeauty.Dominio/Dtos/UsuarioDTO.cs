@@ -21,23 +21,5 @@ namespace TechBeauty.Dominio.Dtos
 
         public int CargoId { get; set; }
 
-        public static UsuarioDTO CriarUsuario(UsuarioDTO usuario)
-        {
-            UsuarioDTO dto = new();
-            dto.Nome = usuario.Nome;
-            dto.Password = usuario.Password;
-            dto.CargoId = usuario.CargoId;
-            return dto;
-        }
-
-        public static object Paginar(List<Usuario> usuarios)
-        {
-            List<UsuarioReadDTO> dtos = new();
-            foreach (var item in usuarios)
-            {
-                dtos.Add(UsuarioReadDTO.Convert(item));
-            }
-            return dtos;
-        }
     }
 }

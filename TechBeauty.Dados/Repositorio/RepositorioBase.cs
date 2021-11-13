@@ -29,7 +29,7 @@ namespace TechBeauty.Dados.Repositorio
 
         public virtual T Selecionar(int id)
         {
-            if (Validar(id))
+            if (context.Set<T>().FirstOrDefault(x => x.Id == id) != null)
             {
                 return context.Set<T>().FirstOrDefault(x => x.Id == id);
             }
@@ -47,24 +47,20 @@ namespace TechBeauty.Dados.Repositorio
 
         public void Excluir(int id)
         {
-            if (Validar(id))
+            if (context.Set<T>().FirstOrDefault(x => x.Id == id) != null)
             {
-                context.Set<T>().Remove(Selecionar(id));
+                context.Set<T>().Remove(context.Set<T>().FirstOrDefault(x => x.Id == id));
+                context.SaveChanges();
             }
-            throw new ArgumentException("Identificação não encontrada!");
+            else
+            {
+                throw new ArgumentException("Identificação não encontrada!", nameof(id));
+            }
         }
 
         public List<T> Tabela(T entity)
         {
             return context.Set<T>().Where(x => x.Id == entity.Id).ToList();
-        }
-        protected bool Validar(int id)
-        {
-            if (!context.TipoContato.All(tc => tc.Id == id))
-            {
-                return true;
-            }
-            return false;
         }
 
         public void Dispose()

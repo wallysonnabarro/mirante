@@ -35,7 +35,7 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                return Ok(UsuarioDTO.Paginar(new UsuarioRepositorio().Paginar(skip, take)));
+                return Ok(UsuarioReadDTO.Paginar(new UsuarioRepositorio().Paginar(skip, take)));
             }
             catch (Exception)
             {

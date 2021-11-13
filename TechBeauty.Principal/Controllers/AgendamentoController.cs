@@ -51,6 +51,20 @@ namespace TechBeauty.Principal.Controllers
             }
         }
 
+        [HttpGet("concluirAgendamento")]
+        public IActionResult ConcluirAgendamento(int id)
+        {
+            try
+            {
+                new AgendamentoRepositorio().ConcluirAgendamento(id);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
+        }
+
         [HttpPut("{id}")]
         public IActionResult Remarcar(int id, [FromBody] AgendamentoDTO dto)
         {
@@ -58,7 +72,7 @@ namespace TechBeauty.Principal.Controllers
             {
                 var colaborador = new ColaboradorRepositorio().Selecionar(dto.ColaboradorID);
                 var os = new OrdemServicoRepositorio().Selecionar(dto.OrdemSID);
-                new AgendamentoRepositorio().Alterar(Agendamento.RemarcarAgendamento(dto, colaborador,os, id));
+                new AgendamentoRepositorio().Alterar(Agendamento.RemarcarAgendamento(dto, colaborador, os, id));
                 return Ok();
             }
             catch (Exception e)

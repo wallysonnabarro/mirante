@@ -17,14 +17,5 @@ namespace TechBeauty.Dominio.Dtos
         [StringLength(150, ErrorMessage = "Quantidade máximo de caracteres = 150")]
         [Required(ErrorMessage = "O campo descrição do beneficio é obrigatório!")]
         public string Descricao { get; set; }
-
-
-        public static BeneficioDto CriarBeneficio(BeneficioDto beneficio)
-        {
-            BeneficioDto dto = new();
-            dto.Nome = beneficio.Nome;
-            dto.Descricao = beneficio.Descricao;
-            return dto;
-        }
     }
 }

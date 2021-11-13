@@ -11,21 +11,8 @@ namespace TechBeauty.Dominio.Dtos
     {
         [Required(ErrorMessage = "O campo 'PrecoTotal' da OrdemServico é obrigatório!")]
         public decimal PrecoTotal { get; set; }
-
         [Required(ErrorMessage = "O campo 'DuracaoTotal' da OrdemServico é obrigatório!")]
-        public int DuracaoTotal { get; set; }
-
-       
+        public int DuracaoTotal { get; set; }       
         public int ClienteID { get; set; }
-
-        public static OrdemServicoDTO CriarOS(OrdemServicoDTO os)
-        {
-            OrdemServicoDTO dto = new();
-            dto.PrecoTotal = os.PrecoTotal;
-            dto.DuracaoTotal = os.DuracaoTotal;
-        
-            dto.ClienteID = os.ClienteID;
-            return dto;
-        }
     }
 }

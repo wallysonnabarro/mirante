@@ -17,7 +17,5 @@ namespace TechBeauty.Dominio.Dtos
         [Required(ErrorMessage = "O campo Nome social do Colaborador é obrigatório!")]
         public string CPF { get; set; }
         public DateTime DataNascimento { get; set; }
-      
-  
     }
 }

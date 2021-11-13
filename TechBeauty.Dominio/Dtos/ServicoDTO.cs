@@ -13,16 +13,11 @@ namespace TechBeauty.Dominio.Dtos
         [StringLength(50, ErrorMessage = "Quantidade máximo de caracteres = 50")]
         [Required(ErrorMessage = "O campo Nome do Servico é obrigatório!")]
         public string Nome { get; set; }
-
-
         [Required(ErrorMessage = "O campo Preco do Servico é obrigatório!")]
         public decimal Preco { get; set; }
-
         [StringLength(150, ErrorMessage = "Quantidade máximo de caracteres = 150")]
         [Required(ErrorMessage = "O campo Descrição do Servico é obrigatório!")]
         public string Descricao { get; set; }
-
-
         [Required(ErrorMessage = "O campo DuracaoEmMin do Servico é obrigatório!")]
         public int DuracaoEmMin { get; set; }
 

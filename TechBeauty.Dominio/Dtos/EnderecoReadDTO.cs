@@ -9,10 +9,14 @@ namespace TechBeauty.Dominio.Dtos
 {
     public class EnderecoReadDTO
     {
-        public int ID { get; set; }
-        public string Numero { get;  set; } 
-        public string Complemento { get;  set; } 
-        public string Cep { get;  set; } 
+        public int Id { get; set; }
+        public string Logradouro { get; set; }
+        public string Cidade { get; set; }
+        public string UF { get; set; }
+        public string Numero { get; set; }
+        public string Complemento { get; set; }
+        public string Cep { get; set; }
+        public string Bairro { get; set; }
 
         public static object Paginar(List<Endereco> enderecos)
         {
@@ -20,7 +24,11 @@ namespace TechBeauty.Dominio.Dtos
             foreach (var item in enderecos)
             {
                 EnderecoReadDTO enderecoRead = new();
-                enderecoRead.ID = item.Id;
+                enderecoRead.Id = item.Id;
+                enderecoRead.Logradouro = item.Logradouro;
+                enderecoRead.Cidade = item.Cidade;
+                enderecoRead.UF = item.UF;
+                enderecoRead.Bairro = item.Bairro;
                 enderecoRead.Cep = item.Cep;
                 enderecoRead.Numero = item.Numero;
                 enderecoRead.Complemento = item.Complemento;

@@ -39,7 +39,7 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                return Ok(new RegimeContratualRepositorio().Selecionar(id));
+                return Ok(RegimeContratualReadDTO.Converte(new RegimeContratualRepositorio().Selecionar(id)));
             }
             catch (Exception e)
             {

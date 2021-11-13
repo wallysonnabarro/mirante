@@ -10,30 +10,15 @@ namespace TechBeauty.Dominio.Dtos
     public class AgendamentoDTO
     {
         [StringLength(30, ErrorMessage = "Quantidade máximo de caracteres = 30")]
-        [Required(ErrorMessage = "O campo 'PessoaAtendida' do Agendamento é obrigatório!")]
+        [Required(ErrorMessage = "O campo 'Pessoa Atendida' do Agendamento é obrigatório!")]
         public string PessoaAtendida { get; set; }
-
-        [Required(ErrorMessage = "O campo 'DataHoraInicio' do Agendamento é obrigatório!")]
+        [Required(ErrorMessage = "O campo 'Data Hora de Inicio' do Agendamento é obrigatório!")]
         public DateTime DataHoraInicio { get; set; }
-
-        [Required(ErrorMessage = "O campo 'DataHoraTermino' do Agendamento é obrigatório!")]
+        [Required(ErrorMessage = "O campo 'Data Hora de Termino' do Agendamento é obrigatório!")]
         public DateTime DataHoraTermino { get; set; }
         public int OrdemSID { get; set; }
-    
         public int ColaboradorID { get; set; }
         public int ServicoID { get; set; }
 
-        public static AgendamentoDTO CriarAgendamento(AgendamentoDTO agendamento)
-        {
-            AgendamentoDTO dto = new();
-            dto.PessoaAtendida = agendamento.PessoaAtendida;
-            dto.DataHoraTermino = agendamento.DataHoraTermino;
-            dto.DataHoraInicio = agendamento.DataHoraInicio;
-            dto.OrdemSID = agendamento.OrdemSID;
-         
-            dto.ColaboradorID = agendamento.ColaboradorID;
-            dto.ServicoID = agendamento.ServicoID;
-            return dto;
-        }
     }
 }

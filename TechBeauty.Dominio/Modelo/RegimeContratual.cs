@@ -11,18 +11,14 @@ namespace TechBeauty.Dominio.Modelo
         public string Valor { get; private set; }
         public List<ContratoTrabalho> ContratosDeTrabalho { get; set; } // Navegação  - relação (1,n) não será populada
 
-        public static RegimeContratual Criar(string valor)
+
+        public static RegimeContratual Criar(RegimeContratualDTO dto)
         {
             RegimeContratual regime = new();
 
-            regime.Valor = valor;
+            regime.Valor = dto.Valor;
 
             return regime;
-        }
-
-        public static RegimeContratual Criar(RegimeContratualDTO regime)
-        {
-            throw new NotImplementedException();
         }
 
         public void AlterarRegimeContratual(string valor)

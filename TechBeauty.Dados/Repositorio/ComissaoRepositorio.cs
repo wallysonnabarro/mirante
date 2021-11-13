@@ -43,8 +43,12 @@ namespace TechBeauty.Dados.Repositorio
                     .OrderBy(x => x.Id)
                     .ToList();
             }
-             throw new ArgumentException($"Codigo incorreto! {colaboradorId}", nameof(colaboradorId));
+            throw new ArgumentException($"Codigo incorreto! {colaboradorId}", nameof(colaboradorId));
         }
 
+        internal void RegistrarPorcentagem(Agendamento agendamento)
+        {
+            base.Incluir(Comissao.GerarComissao(agendamento, context.Servico.FirstOrDefault(s => s.Id == agendamento.Servico.Id).Preco));
+        }
     }
 }

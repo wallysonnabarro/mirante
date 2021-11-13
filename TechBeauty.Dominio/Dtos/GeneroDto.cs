@@ -13,12 +13,5 @@ namespace TechBeauty.Dominio.Dtos
         [StringLength(30, ErrorMessage = "Quantidade máximo de caracteres = 30")]
         [Required(ErrorMessage = "O campo Genero é obrigatório!")]
         public string Valor { get; set; }
-
-        public static GeneroDto CriarGenero(string genero)
-        {
-            GeneroDto dto = new();
-            dto.Valor = genero;
-            return dto;
-        }
     }
 }

@@ -20,7 +20,7 @@ namespace TechBeauty.Dominio.Modelo
         {
             Pagamento pagamento = new();
             pagamento.OrdemServico= os;
-            pagamento.DataHoraPagamento = pagamentoDto.DataHoraPagamento;
+            pagamento.DataHoraPagamento = DateTime.Now;
             pagamento.ValorRecebido = pagamentoDto.ValorRecebido;
             pagamento.Forma = (FormaPagamento)pagamentoDto.FormaPagamentoID;
             return pagamento;
@@ -46,7 +46,7 @@ namespace TechBeauty.Dominio.Modelo
             Pagamento pagamento = new();
             pagamento.Id = id;
             pagamento.OrdemServico = os;
-            pagamento.DataHoraPagamento = pagamentoDto.DataHoraPagamento;
+            pagamento.DataHoraPagamento = DateTime.Now;
             pagamento.ValorRecebido = pagamentoDto.ValorRecebido;
             pagamento.Forma = (FormaPagamento)pagamentoDto.FormaPagamentoID;
             return pagamento;

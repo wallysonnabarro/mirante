@@ -20,7 +20,6 @@ namespace TechBeauty.Dominio.Modelo
         public List<LogAgendamento> LogAgendamentos { get; set; }
 
 
-
         public static Agendamento Criar(AgendamentoDTO dto, Servico servico, Colaborador colaborador, OrdemServico os)
         {
             Agendamento agendamento = new();
@@ -48,7 +47,6 @@ namespace TechBeauty.Dominio.Modelo
             DataHoraInicio = dataHoraInicio;
         }
 
-      
 
         public void AlterarStatusAgendamento(StatusAgendamento status)
         {

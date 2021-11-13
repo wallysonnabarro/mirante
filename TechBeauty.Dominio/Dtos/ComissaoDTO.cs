@@ -9,10 +9,8 @@ namespace TechBeauty.Dominio.Dtos
 {
     public class ComissaoDTO
     {
-        [StringLength(5, ErrorMessage = "Quantidade máximo de caracteres = 5")]
         [Required(ErrorMessage = "O campo 'Valor' de comissão é obrigatório!")]
         public decimal Valor { get; set; }
-
         public int AgendamentoID { get; set; }
        
     }
