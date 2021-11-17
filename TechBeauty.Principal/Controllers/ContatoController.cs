@@ -14,12 +14,12 @@ namespace TechBeauty.Principal.Controllers
     [ApiController]
     public class ContatoController : ControllerBase
     {
-        [HttpPost]
-        public IActionResult Incluir([FromBody] ContatoDTO contato)
+        [HttpPost("postar/{id}")]
+        public IActionResult Incluir(int id, [FromBody] ContatoDTO contato)
         {
             try
             {
-                new ContatoRepositorio().Incluir(Contato.Criar(contato.PessoaId, contato));
+                new ContatoRepositorio().Incluir(Contato.Criar(id, contato));
                 return Ok();
             }
             catch (ArgumentException e)

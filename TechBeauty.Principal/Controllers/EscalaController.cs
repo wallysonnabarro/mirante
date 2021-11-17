@@ -7,18 +7,36 @@ using TechBeauty.Dados.Repositorio;
 using TechBeauty.Dominio.Dtos;
 using TechBeauty.Dominio.Modelo;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace TechBeauty.Principal.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class EscalaController : ControllerBase
     {
-        [HttpGet("paginar")]
+        [HttpGet("paginar/{skip}/{take}")]
         public IActionResult GetPagina(int skip, int take = 25)
         {
-            return Ok(EscalaReadDTO.Paginar(new EscalaRepositorio().Paginar(skip, take)));
+            return Ok(new EscalaRepositorio().PaginarPorDataAtual(skip, take));
+        }
+
+        [HttpGet("paginar/{colaboradorId}/{skip}/{take}")]
+        public IActionResult GetPaginaPorColaborador(int colaboradorId, int skip, int take = 25)
+        {
+            return Ok(new EscalaRepositorio().PaginarPorColaborador(colaboradorId, skip, take));
+        }
+
+        [HttpPost]
+        public IActionResult Post([FromBody] EscalaDTO dto)
+        {
+            try
+            {
+                new EscalaRepositorio().Incluir(Escala.Criar(dto));
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
         }
 
         [HttpGet("{id}")]
@@ -34,28 +52,13 @@ namespace TechBeauty.Principal.Controllers
             }
         }
 
-        [HttpPost]
-        public IActionResult Post([FromBody] EscalaDTO dto)
-        {
-            try
-            {
-                var colaborador = new ColaboradorRepositorio().Selecionar(dto.ColaboradorID);
-                new EscalaRepositorio().Incluir(Escala.Criar(dto, colaborador));
-                return Ok();
-            }
-            catch (Exception e)
-            {
-                return ValidationProblem(e.Message);
-            }
-        }
 
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] EscalaDTO dto)
         {
             try
             {
-                var colaborador = new ColaboradorRepositorio().Selecionar(dto.ColaboradorID);
-                new EscalaRepositorio().Alterar(Escala.ModificarEscala(dto, id, colaborador));
+                new EscalaRepositorio().Alterar(Escala.ModificarEscala(dto, id));
                 return Ok();
             }
             catch (Exception e)

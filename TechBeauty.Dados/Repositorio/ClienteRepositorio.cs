@@ -16,7 +16,51 @@ namespace TechBeauty.Dados.Repositorio
             {
                 return base.Incluir(entity);
             }
-            throw new ArgumentException("");
+            else
+            {
+                throw new ArgumentException("Cliente já cadastrado!", nameof(entity.CPF));
+            }
+        }
+
+        public void ExcluirCascata(int id)
+        {
+            if (context.Cliente.Any(x => x.Id == id))
+            {
+                var cliente = context.Cliente.FirstOrDefault(c => c.Id == id);
+                var contato = context.Contato.Where(c => c.PessoaId == id).ToList();
+
+                context.Remove(cliente);
+                context.SaveChanges();
+            }
+            else
+            {
+                throw new ArgumentException("Cliente não encontrado!", nameof(id));
+            }
+        }
+
+        public Cliente SelecionarCliente(int id)
+        {
+            if (context.Cliente.Any(x => x.Id == id))
+            {
+                return context.Cliente.FirstOrDefault(x => x.Id == id);
+            }
+            else
+            {
+                throw new ArgumentException("Cliente não encontrado!", nameof(id));
+            }
+        }
+
+        public void AtualizarCliente(Cliente cliente)
+        {
+            if (context.Cliente.Any(x => x.Id == cliente.Id))
+            {
+                context.Cliente.Update(cliente);
+                context.SaveChanges();
+            }
+            else
+            {
+                throw new ArgumentException("Cliente não encontrado!");
+            }
         }
     }
 }

@@ -25,5 +25,13 @@ namespace TechBeauty.Dados.Repositorio
                 }
             }
         }
+
+        public void IncluirContatoCliente(int id, ClienteDTO cliente)
+        {
+            foreach (var item in cliente.ContatosDtos)
+            {
+                base.Incluir(Contato.Criar(id, item));
+            }
+        }
     }
 }

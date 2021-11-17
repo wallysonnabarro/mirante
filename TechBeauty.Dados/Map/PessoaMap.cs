@@ -24,7 +24,8 @@ namespace TechBeauty.Dados.Map
 
             builder.HasMany(p => p.Contatos) //uma pesssoa pode ter vários contatos (1,n) 
                 .WithOne(c => c.Pessoa) // um contato pode ter apenas 1 pessoa (1,1)
-                .IsRequired();
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

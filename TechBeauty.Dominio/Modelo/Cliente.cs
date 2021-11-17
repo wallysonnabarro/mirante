@@ -5,12 +5,12 @@ using TechBeauty.Dominio.Interfaces;
 
 namespace TechBeauty.Dominio.Modelo
 {
-    public class Cliente : Pessoa,IEntity
+    public class Cliente : Pessoa, IEntity
     {
         public List<OrdemServico> OrdensServicos { get; set; }//Navegação, não é populada
         public List<EspacoCliente> EspacoCliente { get; set; }//Navegação, não é populada
-             
-        public static Cliente Criar(Cliente clienteDto)
+
+        public static Cliente Criar(ClienteDTO clienteDto)
         {
             Cliente cliente = new();
             cliente.Nome = clienteDto.Nome;
@@ -19,16 +19,14 @@ namespace TechBeauty.Dominio.Modelo
             return cliente;
         }
 
-        public static Cliente Criar(ClienteDTO cliente)
+        public static Cliente AlterarCliente(ClienteDTO dto, int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public void AlterarCliente(Cliente cliente)
-        {
-            Nome = cliente.Nome;
-            CPF = cliente.CPF;
-            DataNascimento = cliente.DataNascimento;
+            Cliente cliente = new();
+            cliente.Id = id;
+            cliente.Nome = dto.Nome;
+            cliente.CPF = dto.CPF;
+            cliente.DataNascimento = dto.DataNascimento;
+            return cliente;
         }
     }
 }

@@ -18,7 +18,8 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                new ClienteRepositorio().Incluir(Cliente.Criar(cliente));
+                int id = new ClienteRepositorio().Incluir(Cliente.Criar(cliente));
+                new ContatoRepositorio().IncluirContatoCliente(id, cliente);
                 return Ok();
             }
             catch (ArgumentException e)
@@ -38,7 +39,7 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                return Ok(new ClienteRepositorio().Selecionar(id));
+                return Ok(ClienteReadDto.Cliente(new ClienteRepositorio().SelecionarCliente(id)));
             }
             catch (Exception e)
             {
@@ -51,7 +52,7 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                //new ClienteRepositorio().Alterar(Cargo.AlterarCargo(cliente, id));
+                new ClienteRepositorio().AtualizarCliente(Cliente.AlterarCliente(cliente, id));
                 return Ok();
             }
             catch (Exception e)
@@ -65,7 +66,7 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                new ClienteRepositorio().Excluir(id);
+                new ClienteRepositorio().ExcluirCascata(id);
                 return Ok();
             }
             catch (Exception e)
