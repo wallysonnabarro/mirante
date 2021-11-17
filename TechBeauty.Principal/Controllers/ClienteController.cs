@@ -51,7 +51,7 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                new ClienteRepositorio().Alterar(Cargo.AlterarCargo(cliente, id));
+                //new ClienteRepositorio().Alterar(Cargo.AlterarCargo(cliente, id));
                 return Ok();
             }
             catch (Exception e)

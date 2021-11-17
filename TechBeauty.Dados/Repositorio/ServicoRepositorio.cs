@@ -22,6 +22,17 @@ namespace TechBeauty.Dados.Repositorio
             }
         }
 
+        public ICollection<Servico> Serviços(ICollection<int> serviçosId)
+        {
+            ICollection<Servico> servicos = new HashSet<Servico>();
+            foreach (var item in serviçosId)
+            {
+                Servico servico = context.Servico.FirstOrDefault(s => s.Id == item);
+                servicos.Add(servico);
+            }
+            return servicos;
+        }
+
         public override void Alterar(Servico entity)
         {
             if (context.Servico.Any(s => s.Id == entity.Id))

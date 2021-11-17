@@ -10,8 +10,8 @@ using TechBeauty.Dados;
 namespace TechBeauty.Dados.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20211113183738_primeiro")]
-    partial class primeiro
+    [Migration("20211116174525_segundoContrato")]
+    partial class segundoContrato
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,36 +20,6 @@ namespace TechBeauty.Dados.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("CargoContratoTrabalho", b =>
-                {
-                    b.Property<int>("CargosId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ContratosTrabalhosId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CargosId", "ContratosTrabalhosId");
-
-                    b.HasIndex("ContratosTrabalhosId");
-
-                    b.ToTable("CargoContratoTrabalho");
-                });
-
-            modelBuilder.Entity("ColaboradorServico", b =>
-                {
-                    b.Property<int>("ColaboradoresId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ServicosId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ColaboradoresId", "ServicosId");
-
-                    b.HasIndex("ServicosId");
-
-                    b.ToTable("ColaboradorServico");
-                });
 
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Agendamento", b =>
                 {
@@ -151,6 +121,28 @@ namespace TechBeauty.Dados.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cargo");
+                });
+
+            modelBuilder.Entity("TechBeauty.Dominio.Modelo.CargoContratoTrabalho", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CargosId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ContratosTrabalhosId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CargosId");
+
+                    b.HasIndex("ContratosTrabalhosId");
+
+                    b.ToTable("CargoContratoTrabalho");
                 });
 
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Contato", b =>
@@ -519,6 +511,9 @@ namespace TechBeauty.Dados.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CargoId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Descricao")
                         .IsRequired()
                         .HasColumnType("varchar(150)");
@@ -534,6 +529,8 @@ namespace TechBeauty.Dados.Migrations
                         .HasColumnType("decimal(6,2)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CargoId");
 
                     b.ToTable("Servico");
                 });
@@ -590,53 +587,17 @@ namespace TechBeauty.Dados.Migrations
                 {
                     b.HasBaseType("TechBeauty.Dominio.Modelo.Pessoa");
 
-                    b.Property<string>("CarteiraTrabalho")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("EnderecoId")
                         .HasColumnType("int");
 
                     b.Property<int>("GeneroId")
                         .HasColumnType("int");
 
-                    b.Property<string>("NomeSocial")
-                        .HasColumnType("varchar(100)");
-
                     b.HasIndex("EnderecoId");
 
                     b.HasIndex("GeneroId");
 
                     b.ToTable("Colaborador");
-                });
-
-            modelBuilder.Entity("CargoContratoTrabalho", b =>
-                {
-                    b.HasOne("TechBeauty.Dominio.Modelo.Cargo", null)
-                        .WithMany()
-                        .HasForeignKey("CargosId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TechBeauty.Dominio.Modelo.ContratoTrabalho", null)
-                        .WithMany()
-                        .HasForeignKey("ContratosTrabalhosId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ColaboradorServico", b =>
-                {
-                    b.HasOne("TechBeauty.Dominio.Modelo.Colaborador", null)
-                        .WithMany()
-                        .HasForeignKey("ColaboradoresId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TechBeauty.Dominio.Modelo.Servico", null)
-                        .WithMany()
-                        .HasForeignKey("ServicosId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Agendamento", b =>
@@ -677,6 +638,25 @@ namespace TechBeauty.Dados.Migrations
                         .HasForeignKey("UsuarioId");
 
                     b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("TechBeauty.Dominio.Modelo.CargoContratoTrabalho", b =>
+                {
+                    b.HasOne("TechBeauty.Dominio.Modelo.Cargo", "Cargo")
+                        .WithMany("CargoContratosTrabalho")
+                        .HasForeignKey("CargosId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TechBeauty.Dominio.Modelo.ContratoTrabalho", "ContratoTrabalho")
+                        .WithMany("CargoContratoTrabalho")
+                        .HasForeignKey("ContratosTrabalhosId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cargo");
+
+                    b.Navigation("ContratoTrabalho");
                 });
 
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Contato", b =>
@@ -822,6 +802,17 @@ namespace TechBeauty.Dados.Migrations
                     b.Navigation("OrdemServico");
                 });
 
+            modelBuilder.Entity("TechBeauty.Dominio.Modelo.Servico", b =>
+                {
+                    b.HasOne("TechBeauty.Dominio.Modelo.Cargo", "Cargo")
+                        .WithMany("Servicos")
+                        .HasForeignKey("CargoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cargo");
+                });
+
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Usuario", b =>
                 {
                     b.HasOne("TechBeauty.Dominio.Modelo.Cargo", "Cargo")
@@ -879,7 +870,16 @@ namespace TechBeauty.Dados.Migrations
 
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Cargo", b =>
                 {
+                    b.Navigation("CargoContratosTrabalho");
+
+                    b.Navigation("Servicos");
+
                     b.Navigation("Usuarios");
+                });
+
+            modelBuilder.Entity("TechBeauty.Dominio.Modelo.ContratoTrabalho", b =>
+                {
+                    b.Navigation("CargoContratoTrabalho");
                 });
 
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Endereco", b =>

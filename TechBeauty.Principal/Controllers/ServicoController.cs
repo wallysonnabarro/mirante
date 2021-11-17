@@ -45,7 +45,7 @@ namespace TechBeauty.Principal.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Alterar(int id, [FromBody] ServicoReadDTO dto)
+        public IActionResult Alterar(int id, [FromBody] ServicoDTO dto)
         {
             try
             {

@@ -20,7 +20,7 @@ namespace TechBeauty.Dados.Repositorio
             throw new ArgumentException();
         }
 
-        public bool ValidarUsuario(UsuarioDTO usuario)
+        public bool ValidarUsuario(UsuarioValidarDto usuario)
         {
             if (context.Usuario.Any(x => x.Nome == usuario.Nome & x.Password == usuario.Password))
             {

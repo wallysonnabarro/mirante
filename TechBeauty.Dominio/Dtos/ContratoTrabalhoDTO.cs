@@ -15,12 +15,12 @@ namespace TechBeauty.Dominio.Dtos
         [Required(ErrorMessage = "O campo 'DataEntrada' do contrato de trabalho é obrigatório!")]
         public DateTime DataEntrada { get; set; }
         public int RegimeId { get; set; }
-        public List<int> CargosId { get; set; }
         public int ColaboradorId { get; set; }
         [Required(ErrorMessage = "O campo 'PorcentagemComissao' do contrato de trabalho é obrigatório!")]
         public decimal ProcentagemComissao { get; set; }
 
         [Required(ErrorMessage = "O campo salário é obrigatório!")]
         public decimal Salario { get; set; }
+        public List<int> CargosId { get; set; }
     }
 }

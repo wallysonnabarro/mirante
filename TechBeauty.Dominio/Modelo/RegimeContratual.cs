@@ -29,8 +29,12 @@ namespace TechBeauty.Dominio.Modelo
             return regime;
         }
 
+        public static RegimeContratualReadDTO CoverteRead(RegimeContratual regime)
+        {
+            RegimeContratualReadDTO readDTO = new();
+            readDTO.Id = regime.Id;
+            readDTO.Valor = regime.Valor;
+            return readDTO;
+        }
     }
-
-
-
 }

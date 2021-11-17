@@ -17,7 +17,7 @@ namespace TechBeauty.Principal.Controllers
         [HttpGet("paginarContrato/{skip}/{take}")]
         public IActionResult Get(int skip = 0, int take = 25)
         {
-            return Ok(new ContratoTrabalhoRepositorio().Paginar(skip, take));
+            return Ok(new ContratoTrabalhoRepositorio().PaginarJoin(skip, take));
         }
 
         // GET api/<ContratoTrabalhoController>/5
@@ -26,7 +26,7 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                return Ok(new ContratoTrabalhoRepositorio().Selecionar(getContratoId));
+                return Ok(new ContratoTrabalhoRepositorio().SelecionarJoin(getContratoId));
             }
             catch (Exception e)
             {
@@ -40,11 +40,8 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                var regime = new RegimeContratualRepositorio().Selecionar(dto.RegimeId);
-                var cargos = new CargoRepositorio().SelecionarCargos(dto.CargosId);
-                var colaborador = new ColaboradorRepositorio().Selecionar(dto.ColaboradorId);
-                new ContratoTrabalhoRepositorio().Incluir(
-                    ContratoTrabalho.Contratar(regime, cargos, colaborador, dto));
+                new CargoContratoTrabalhoRepositorio().IncluirMuitos(dto.CargosId,
+                    new ContratoTrabalhoRepositorio().Incluir(ContratoTrabalho.Contratar(dto)));
                 return Ok();
             }
             catch (Exception e)
@@ -59,10 +56,8 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                var regime = new RegimeContratualRepositorio().Selecionar(dto.RegimeId);
-                var cargos = new CargoRepositorio().SelecionarCargos(dto.CargosId);
-                var colaborador = new ColaboradorRepositorio().Selecionar(dto.ColaboradorId);
-                new ContratoTrabalhoRepositorio().Alterar(ContratoTrabalho.Atualizar(dto, regime, cargos, colaborador, putContratoId));
+                new ContratoTrabalhoRepositorio().Alterar(ContratoTrabalho.Atualizar(dto, putContratoId));
+                new CargoContratoTrabalhoRepositorio().AlterarTudo(putContratoId, dto.CargosId);
                 return Ok();
             }
             catch (Exception e)
@@ -71,26 +66,13 @@ namespace TechBeauty.Principal.Controllers
             }
         }
 
-        // DELETE api/<ContratoTrabalhoController>/5
-        [HttpDelete("{deleteContratoId}")]
-        public IActionResult Delete(int deleteContratoId)
-        {
-            try
-            {
-                new ContratoTrabalhoRepositorio().Excluir(deleteContratoId);
-                return Ok();
-            }
-            catch (Exception e)
-            {
-                return ValidationProblem(e.Message);
-            }
-        }
 
-        [HttpPut("{encerrarId}")]
+        [HttpPut("{encerrarId}/{dataEncerramento}")]
         public IActionResult EncerramentoContrato(int encerrarId, DateTime dataEncerramento)
         {
             try
             {
+                new ContratoTrabalhoRepositorio().EncerrarContrato(encerrarId, dataEncerramento);
                 return Ok();
             }
             catch (Exception e)

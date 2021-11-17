@@ -14,15 +14,16 @@ namespace TechBeauty.Dominio.Modelo
         public int Id { get; private set; }
         public string Nome { get; private set; }
         public string Password { get; private set; }
+        public int CargoId { get; set; }
         public Cargo Cargo { get; private set; }
         public List<Gestao> Gestao { get; set; }//Navegação, não será populada
         public List<Caixa> Caixa { get; set; }
-        public static Usuario Criar(UsuarioDTO dto, Cargo cargo)
+        public static Usuario Criar(UsuarioDTO dto)
         {
             Usuario usuario = new();
             usuario.Nome = dto.Nome;
             usuario.Password = dto.Password;
-            usuario.Cargo = cargo;
+            usuario.CargoId = dto.CargoId;
             return usuario;
         }
         public void AlterarUsuario(string nome)

@@ -27,8 +27,9 @@ namespace TechBeauty.Dados.Map
                 .HasColumnType("varchar(14)")
                 .IsRequired();
 
-            builder.HasMany(ct => ct.Cargos) //relacionamento de contratoTrabalho para varios cargos (n,n)
-                .WithMany(c => c.ContratosTrabalhos); // relacionamento de cargo pra varios contratos (n.n)
+            builder.HasMany(ct => ct.CargoContratoTrabalho) //relacionamento de contratoTrabalho para varios cargos (n,n)
+                .WithOne(cct => cct.ContratoTrabalho)
+                .HasForeignKey(x => x.ContratosTrabalhosId); // relacionamento de cargo pra varios contratos (n.n)
                  //obs: Como o relacionamento é (n,n) não é necessário realizar o .IsRequerid();
         }
     }

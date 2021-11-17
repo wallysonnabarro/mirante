@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using TechBeauty.Dominio.Dtos;
 using TechBeauty.Dominio.Interfaces;
 
@@ -10,9 +11,9 @@ namespace TechBeauty.Dominio.Modelo
         public int Id { get; private set; }
         public string Nome { get; private set; }
         public string Descricao { get; private set; }
-        public List<Usuario> Usuarios { get; set; }
-        public List<ContratoTrabalho> ContratosTrabalhos { get; set; }
-
+        public List<Usuario> Usuarios { get; private set; }
+        public ICollection<CargoContratoTrabalho> CargoContratosTrabalho { get; private set; }
+        public ICollection<Servico> Servicos { get; private set; }
 
         public static Cargo CriarCargo(CargoDto dto)
         {
@@ -27,11 +28,6 @@ namespace TechBeauty.Dominio.Modelo
             Cargo cargo = CriarCargo(dto);
             cargo.Id = id;
             return cargo;
-        }
-
-        public static Cliente AlterarCargo(ClienteDTO cliente, int id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

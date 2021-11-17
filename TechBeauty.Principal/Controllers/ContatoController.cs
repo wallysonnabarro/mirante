@@ -19,7 +19,7 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                new ContatoRepositorio().Incluir(Contato.Criar(contato));
+                new ContatoRepositorio().Incluir(Contato.Criar(contato.PessoaId, contato));
                 return Ok();
             }
             catch (ArgumentException e)
@@ -47,13 +47,25 @@ namespace TechBeauty.Principal.Controllers
             }
         }
 
+        [HttpGet("contatoPessoa/{pessoaId}")]
+        public IActionResult SelecionarPorPeassoaId(int pessoaId)
+        {
+            try
+            {
+                return Ok(new ContatoRepositorio().SelecionarContatoPessoa(pessoaId));
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
+        }
+
         [HttpPut("{id}")]
         public IActionResult AtualizarContato(int id, [FromBody] ContatoDTO contato)
         {
             try
             {
-                var tipo = new TipoContatoRepositorio().Selecionar(contato.TipoID);
-                new ContatoRepositorio().Alterar(Contato.AlterarContato(contato, tipo));
+                new ContatoRepositorio().Alterar(Contato.AlterarContato(id, contato));
                 return Ok();
             }
             catch (Exception e)

@@ -13,7 +13,7 @@ namespace TechBeauty.Dados.Map
     {
         public void Configure(EntityTypeBuilder<Cargo> builder)
         {
-            builder.ToTable("Cargo"); 
+            builder.ToTable("Cargo");
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Nome)
@@ -22,9 +22,12 @@ namespace TechBeauty.Dados.Map
             builder.Property(x => x.Descricao)
                .HasColumnType("varchar(150)")
                .IsRequired();
-
-           
-  
+            builder.HasMany(c => c.Servicos)
+                .WithOne(s => s.Cargo)
+                .IsRequired();
+            builder.HasMany(c => c.CargoContratosTrabalho) //relacionamento de contratoTrabalho para varios cargos (n,n)
+               .WithOne(cct => cct.Cargo)
+               .HasForeignKey(x => x.CargosId); // relacionamento de cargo pra varios contratos (n.n)
         }
     }
 }

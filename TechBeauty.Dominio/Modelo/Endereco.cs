@@ -17,11 +17,6 @@ namespace TechBeauty.Dominio.Modelo
         public string Bairro { get; private set; }
         public ICollection<Colaborador> Colaboradores { get; set; }
 
-        public void IncluirId(int id)
-        {
-            Id = id;
-        }
-
 
         public static Endereco Criar(ColaboradorDTO dto)
         {
@@ -45,6 +40,20 @@ namespace TechBeauty.Dominio.Modelo
             Complemento = endereco.Complemento;
             Cep = endereco.Cep;
             Bairro = endereco.Bairro;
+        }
+
+        public static Endereco Aterar(EnderecoReadDTO dto)
+        {
+            Endereco endereco = new();
+            endereco.Id = dto.Id;
+            endereco.Logradouro = dto.Logradouro;
+            endereco.Cidade = dto.Cidade;
+            endereco.Bairro = dto.Bairro;
+            endereco.Cep = dto.Cep;
+            endereco.Complemento = dto.Complemento;
+            endereco.UF = dto.UF;
+            endereco.Numero = dto.Numero;
+            return endereco;
         }
     }
 }

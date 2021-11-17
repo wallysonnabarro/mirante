@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TechBeauty.Dados.Migrations
 {
-    public partial class primeiro : Migration
+    public partial class primeira : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -96,22 +96,6 @@ namespace TechBeauty.Dados.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Servico",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(type: "varchar(50)", nullable: false),
-                    Preco = table.Column<decimal>(type: "decimal(6,2)", nullable: false),
-                    Descricao = table.Column<string>(type: "varchar(150)", nullable: false),
-                    DuracaoEmMin = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Servico", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "TipoContato",
                 columns: table => new
                 {
@@ -122,6 +106,29 @@ namespace TechBeauty.Dados.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TipoContato", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Servico",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nome = table.Column<string>(type: "varchar(50)", nullable: false),
+                    Preco = table.Column<decimal>(type: "decimal(6,2)", nullable: false),
+                    Descricao = table.Column<string>(type: "varchar(150)", nullable: false),
+                    DuracaoEmMin = table.Column<int>(type: "int", nullable: false),
+                    CargoId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Servico", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Servico_Cargo_CargoId",
+                        column: x => x.CargoId,
+                        principalTable: "Cargo",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -167,10 +174,8 @@ namespace TechBeauty.Dados.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false),
-                    CarteiraTrabalho = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EnderecoId = table.Column<int>(type: "int", nullable: false),
                     GeneroId = table.Column<int>(type: "int", nullable: false),
-                    NomeSocial = table.Column<string>(type: "varchar(100)", nullable: true)
+                    EnderecoId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -201,9 +206,9 @@ namespace TechBeauty.Dados.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PessoaId = table.Column<int>(type: "int", nullable: false),
+                    Valor = table.Column<string>(type: "varchar(256)", nullable: false),
                     TipoId = table.Column<int>(type: "int", nullable: false),
-                    Valor = table.Column<string>(type: "varchar(256)", nullable: false)
+                    PessoaId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -245,42 +250,18 @@ namespace TechBeauty.Dados.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ColaboradorServico",
-                columns: table => new
-                {
-                    ColaboradoresId = table.Column<int>(type: "int", nullable: false),
-                    ServicosId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ColaboradorServico", x => new { x.ColaboradoresId, x.ServicosId });
-                    table.ForeignKey(
-                        name: "FK_ColaboradorServico_Colaborador_ColaboradoresId",
-                        column: x => x.ColaboradoresId,
-                        principalTable: "Colaborador",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ColaboradorServico_Servico_ServicosId",
-                        column: x => x.ServicosId,
-                        principalTable: "Servico",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ContratoTrabalho",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ColaboradorId = table.Column<int>(type: "int", nullable: false),
                     DataEntrada = table.Column<DateTime>(type: "smallDateTime", nullable: false),
                     DataDesligamento = table.Column<DateTime>(type: "smallDateTime", nullable: true),
                     CnpjCTPS = table.Column<string>(type: "varchar(14)", nullable: false),
                     PorcentagemComissao = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Salario = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    RegimeContratualId = table.Column<int>(type: "int", nullable: false)
+                    RegimeContratualId = table.Column<int>(type: "int", nullable: false),
+                    ColaboradorId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -587,11 +568,6 @@ namespace TechBeauty.Dados.Migrations
                 column: "GeneroId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ColaboradorServico_ServicosId",
-                table: "ColaboradorServico",
-                column: "ServicosId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Comissao_AgendamentoId",
                 table: "Comissao",
                 column: "AgendamentoId");
@@ -667,6 +643,11 @@ namespace TechBeauty.Dados.Migrations
                 column: "OrdemServicoId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Servico_CargoId",
+                table: "Servico",
+                column: "CargoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Usuarios_CargoId",
                 table: "Usuarios",
                 column: "CargoId");
@@ -676,9 +657,6 @@ namespace TechBeauty.Dados.Migrations
         {
             migrationBuilder.DropTable(
                 name: "CargoContratoTrabalho");
-
-            migrationBuilder.DropTable(
-                name: "ColaboradorServico");
 
             migrationBuilder.DropTable(
                 name: "Comissao");

@@ -18,29 +18,73 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                var endereco = Endereco.Criar(colaborador);
-                int id = new EnderecoRepositorio().Incluir(endereco);
-                endereco.IncluirId(id);
-                new ColaboradorRepositorio().Incluir(Colaborador.Criar(colaborador, endereco));
+                int id = new ColaboradorRepositorio().Incluir(Colaborador.Criar(
+                    colaborador,
+                    new EnderecoRepositorio().IncluirComRetorno(Endereco.Criar(colaborador))));
+
+                new ContatoRepositorio().IncluirContato(id, colaborador);
+
                 return Ok();
             }
             catch (Exception)
             {
                 return NotFound();
             }
-
         }
 
-        [HttpGet("paginar")]
+        [HttpGet("paginar/{skip}/{take}")]
         public IActionResult Tabela(int skip = 0, int take = 25)
         {
             try
             {
-                return Ok(ColaboradorReadDTO.Paginar(new ColaboradorRepositorio().Paginar(skip, take)));
+
+                return Ok(new ColaboradorRepositorio().PaginarInnerJoin(skip, take));
             }
             catch (Exception)
             {
                 return BadRequest();
+            }
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult AtualizarColaborador(int id, [FromBody] ColaboradorAtualizarDto colaborador)
+        {
+            try
+            {
+                new ColaboradorRepositorio().Alterar(Colaborador.Atualizar(colaborador));
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
+        }
+
+        [HttpPut("atualizarEndereco")]
+        public IActionResult AtualizarEnderecoColaborador([FromBody] EnderecoReadDTO dto)
+        {
+            try
+            {
+                new EnderecoRepositorio().Alterar(Endereco.Aterar(dto));
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult Selecionar(int id)
+        {
+            try
+            {
+                //Implementar a troca de Colaborador para Colaborador Read
+                return Ok(new ColaboradorRepositorio().SelecaoUnica(id));
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
             }
         }
     }

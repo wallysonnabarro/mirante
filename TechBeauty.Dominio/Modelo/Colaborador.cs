@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using TechBeauty.Dominio.Dtos;
 using TechBeauty.Dominio.Interfaces;
@@ -7,38 +8,33 @@ namespace TechBeauty.Dominio.Modelo
 {
     public class Colaborador : Pessoa, IEntity
     {
-        public string CarteiraTrabalho { get; private set; }
-        public List<Servico> Servicos { get; private set; }
-        public Endereco Endereco { get; private set; }
-        public Genero Genero { get; private set; }
-        public string NomeSocial { get; private set; }
-        public Collection<ContratoTrabalho> Contratos { get; private set; }// navegação
-        public List<Escala> Escala { get; private set; }
-        public List<Agendamento> Agendamentos { get; set; }// navegação
+        public int GeneroId { get; private set; }
+        public int EnderecoId { get; private set; }
+        public Genero Genero { get; private set; }//navegação
+        public Endereco Endereco { get; private set; }//navegação
+        public ICollection<ContratoTrabalho> Contratos { get; private set; }// navegação
+        public ICollection<Escala> Escala { get; private set; }//navegação
+        public ICollection<Agendamento> Agendamentos { get; set; }// navegação
 
-        public static Colaborador Criar(ColaboradorDTO colaboradorDto, Endereco endereco)
+        public static Colaborador Criar(ColaboradorDTO colaboradorDto, int enderecoId)
         {
             Colaborador colaborador = new();
-            colaborador.CarteiraTrabalho = colaboradorDto.CarteiraTrabalho;
-            colaborador.Endereco = endereco;
-            //colaborador.Servicos = colaboradorDto.Servicos;
-            //colaborador.Endereco = colaboradorDto.Endereco;
-            //colaborador.Genero = colaboradorDto.Genero;
-            //colaborador.NomeSocial = colaboradorDto.NomeSocial;
-            //colaborador.Escala = colaboradorDto.Escala;
-
+            colaborador.Nome = colaboradorDto.Nome;
+            colaborador.CPF = colaboradorDto.CPF;
+            colaborador.DataNascimento = colaboradorDto.DataNascimento;
+            colaborador.EnderecoId = enderecoId;
+            colaborador.GeneroId = colaboradorDto.GeneroId;
             return colaborador;
         }
-        public void ModificarColaborador(Colaborador colaborador)
+
+        public static Colaborador Atualizar(ColaboradorAtualizarDto dto)
         {
-            CarteiraTrabalho = colaborador.CarteiraTrabalho;
-            Servicos = colaborador.Servicos;
-            Endereco = colaborador.Endereco;
-            Genero = colaborador.Genero;
-            NomeSocial = colaborador.NomeSocial;
-            Contratos = colaborador.Contratos;
-            Escala = colaborador.Escala;
+            Colaborador colaborador = new();
+            colaborador.Nome = dto.Nome;
+            colaborador.CPF = dto.CPF;
+            colaborador.DataNascimento = dto.DataNascimento;
+            colaborador.GeneroId = dto.GeneroId;
+            return colaborador;
         }
-        
     }
 }

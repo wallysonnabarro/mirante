@@ -11,9 +11,6 @@ namespace TechBeauty.Dominio.Dtos
     public class ColaboradorDTO
     {
         public string NomeSocial { get; set; }
-        [StringLength(50, ErrorMessage = "Quantidade máximo de caracteres = 50")]
-        [Required(ErrorMessage = "O campo 'Carteira de Trabalho' do Colaborador é obrigatório!")]
-        public string CarteiraTrabalho { get; set; }
         [StringLength(100, ErrorMessage = "Quantidade máximo de caracteres = 100")]
         [Required(ErrorMessage = "O campo Nome do Colaborador é obrigatório!")]
         public string Nome { get; set; }
@@ -43,6 +40,6 @@ namespace TechBeauty.Dominio.Dtos
         [Required(ErrorMessage = "O campo bairro do endereço é obrigatório!")]
         public string Bairro { get; set; }
         public int GeneroId { get; set; }
-        public int EscalaId { get; set; }
+        public List<ContatoDTO> ContatosDtos { get; set; }
     }
 }

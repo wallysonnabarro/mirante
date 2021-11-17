@@ -12,8 +12,9 @@ namespace TechBeauty.Dominio.Modelo
         public decimal Preco { get; private set; }
         public string Descricao { get; private set; }
         public int DuracaoEmMin { get; private set; }
-        public List<Agendamento> Agendamentos { get; set; }
-        public List<Colaborador> Colaboradores { get; set; }
+        public int CargoId { get; private set; }
+        public Cargo Cargo { get; private set; }
+        public List<Agendamento> Agendamentos { get; private set; }
 
         public static Servico Criar(ServicoDTO dto)
         {
@@ -22,6 +23,7 @@ namespace TechBeauty.Dominio.Modelo
             servico.Preco = dto.Preco;
             servico.Descricao = dto.Descricao;
             servico.DuracaoEmMin = dto.DuracaoEmMin;
+            servico.CargoId = dto.CargoId;
             return servico;
         }
         public void ModificarServico(Servico servico)
@@ -30,9 +32,10 @@ namespace TechBeauty.Dominio.Modelo
             Preco = servico.Preco;
             Descricao = servico.Descricao;
             DuracaoEmMin = servico.DuracaoEmMin;
+            CargoId = servico.CargoId;
         }
 
-        public static Servico Alterar(ServicoReadDTO dto, int id)
+        public static Servico Alterar(ServicoDTO dto, int id)
         {
             Servico servico = new();
             servico.Id = id;
@@ -40,6 +43,7 @@ namespace TechBeauty.Dominio.Modelo
             servico.Descricao = dto.Descricao;
             servico.Preco = dto.Preco;
             servico.DuracaoEmMin = dto.DuracaoEmMin;
+            servico.CargoId = dto.CargoId;
             return servico;
         }
     }

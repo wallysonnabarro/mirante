@@ -19,8 +19,7 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                var cargo = new CargoRepositorio().Selecionar(usuario.CargoId);
-                new UsuarioRepositorio().Incluir(Usuario.Criar(usuario, cargo));
+                new UsuarioRepositorio().Incluir(Usuario.Criar(usuario));
                 return Ok();
             }
             catch (Exception e)
@@ -44,7 +43,7 @@ namespace TechBeauty.Principal.Controllers
         }
 
         [HttpPost("validar")]
-        public IActionResult ValidarUsuario([FromBody] UsuarioDTO dto)
+        public IActionResult ValidarUsuario([FromBody] UsuarioValidarDto dto)
         {
             try
             {

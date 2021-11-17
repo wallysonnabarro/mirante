@@ -17,6 +17,7 @@ namespace TechBeauty.Dados
         public DbSet<Beneficio> Beneficio { get; set; }
         public DbSet<Caixa> Caixa { get; set; }
         public DbSet<ContratoTrabalho> ContratoTrabalho { get; set; }
+        public DbSet<CargoContratoTrabalho> CargoContratoTrabalho { get; set; }
         public DbSet<Endereco> Endereco { get; set; }
         public DbSet<Escala> Escala { get; set; }
         public DbSet<EspacoCliente> EspacoCliente { get; set; }

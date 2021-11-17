@@ -12,7 +12,7 @@ namespace TechBeauty.Dados.Repositorio
     {
         public override int Incluir(TipoContato entity)
         {
-            if (ValidarValor(entity))
+            if (!ValidarValor(entity))
             {
                 return base.Incluir(entity);
             }

@@ -20,6 +20,8 @@ namespace TechBeauty.Dominio.Dtos
         public string Descricao { get; set; }
         [Required(ErrorMessage = "O campo DuracaoEmMin do Servico é obrigatório!")]
         public int DuracaoEmMin { get; set; }
+        [Required(ErrorMessage = "O código do cargo é obrigatório!")]
+        public int CargoId { get; set; }
 
 
         public static ServicoDTO CriarServico(Servico servico)

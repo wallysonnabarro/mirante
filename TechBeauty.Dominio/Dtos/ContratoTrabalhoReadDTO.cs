@@ -15,6 +15,9 @@ namespace TechBeauty.Dominio.Dtos
         public DateTime? DataDesligamento { get; set; }
         public decimal Salario { get; set; }
 
+        public RegimeContratualReadDTO RegimeRead { get; set; }
+        public List<CargoReadDTO> ReadCargos { get; set; }
+
         public static object Paginar(List<ContratoTrabalho> contratos)
         {
             List<ContratoTrabalhoReadDTO> dto = new();
