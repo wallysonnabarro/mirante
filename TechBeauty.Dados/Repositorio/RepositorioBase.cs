@@ -53,7 +53,7 @@ namespace TechBeauty.Dados.Repositorio
             }
         }
 
-        public List<T> Paginar(int skip, int take)
+        public virtual List<T> Paginar(int skip, int take)
         {
             take = take > 0 ? take : 25;
             skip = skip >= 1 ? skip *= take : skip;

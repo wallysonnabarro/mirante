@@ -17,7 +17,7 @@ namespace TechBeauty.Principal.Controllers
         [HttpGet("paginarOrdem/{skip}/{take}")]
         public IActionResult Get(int skip = 0, int take = 25)
         {
-            return Ok(new OrdemServicoRepositorio().Paginar(skip, take));
+            return Ok(OrdemServicoReadDTO.Paginar(new OrdemServicoRepositorio().Paginar(skip, take)));
         }
 
         // GET api/<ContratoTrabalhoController>/5
@@ -26,7 +26,7 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                return Ok(new OrdemServicoRepositorio().Selecionar(ordemid));
+                return Ok(OrdemServicoReadDTO.Converter(new OrdemServicoRepositorio().Selecionar(ordemid)));
             }
             catch (Exception e)
             {
@@ -34,15 +34,14 @@ namespace TechBeauty.Principal.Controllers
             }
         }
 
-        // POST api/<ContratoTrabalhoController>
+        //POST api/<ContratoTrabalhoController>
         [HttpPost]
         public IActionResult Post([FromBody] OrdemServicoDTO dto)
         {
             try
             {
-                var cliente = new ClienteRepositorio().Selecionar(dto.ClienteID);
-                new OrdemServicoRepositorio().Incluir(OrdemServico.Criar(dto, cliente));
-                return Ok();
+                int id = new OrdemServicoRepositorio().AbrirOrdemServico(OrdemServico.Criar(dto));
+                return CreatedAtAction(nameof(Get), new { Id = id}, dto);
             }
             catch (Exception e)
             {
@@ -56,8 +55,8 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                var cliente = new ClienteRepositorio().Selecionar(dto.ClienteID);
-                new OrdemServicoRepositorio().Incluir(OrdemServico.Criar(dto, cliente));//concertar com metodo de atualizar
+                //var cliente = new ClienteRepositorio().Selecionar(dto.ClienteID);
+                //new OrdemServicoRepositorio().Incluir(OrdemServico.Criar(dto, cliente));//concertar com metodo de atualizar
                 return Ok();
             }
             catch (Exception e)
@@ -72,7 +71,7 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                new OrdemServicoRepositorio().Excluir(deletarOrdemid);
+                //new OrdemServicoRepositorio().Excluir(deletarOrdemid);
                 return Ok();
             }
             catch (Exception e)

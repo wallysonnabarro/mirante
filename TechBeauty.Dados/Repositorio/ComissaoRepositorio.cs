@@ -11,44 +11,39 @@ namespace TechBeauty.Dados.Repositorio
 {
     public class ComissaoRepositorio : RepositorioBase<Comissao>
     {
-        public void GerarComissao(Agendamento agendamento)
-        {
-            var contratoTrabalho = agendamento.Colaborador.Contratos.FirstOrDefault(x => x.Id == agendamento.Colaborador.Id);
-
-            if (contratoTrabalho.CnpjCTPS.ToUpper().Equals("CNPJ"))
-            {
-                Comissao.GerarComissao(agendamento, 0.60M);
-            }
-            else
-            {
-                Comissao.GerarComissao(agendamento, 0.45M);
-            }
-        }
 
         public List<Comissao> ListagemComissao(int colaboradorId)
         {
-            List<Comissao> lista = new();
             if (context.Colaborador.FirstOrDefault(x => x.Id == colaboradorId) != null)
             {
-                //Pegar a data atual e subtrair 30 dias dela                
-                //Data inicio da Agendamento
-                //Data termino da Agendamento
-                //Data status da Agendamento = concluido
-                //Data status da Agendamento = Parcialmente concluido = não existe na enum
+                int dia = DateTime.Now.Day;
                 return context.Comissao
                     .Where(c => c.Agendamento.Colaborador.Id == colaboradorId
                     && c.Agendamento.Status == StatusAgendamento.Concluido
-                    && c.Agendamento.DataHoraCriacao >= DateTime.Now.AddDays(-29).AddSeconds(-1)
+                    && c.Agendamento.DataHoraCriacao >= DateTime.Now.AddDays(-dia).AddSeconds(-1)
                     && c.Agendamento.DataHoraCriacao <= DateTime.Now)
                     .OrderBy(x => x.Id)
                     .ToList();
             }
-            throw new ArgumentException($"Codigo incorreto! {colaboradorId}", nameof(colaboradorId));
+            else
+            {
+                throw new ArgumentException($"Codigo incorreto! {colaboradorId}", nameof(colaboradorId));
+            }
         }
 
         internal void RegistrarPorcentagem(Agendamento agendamento)
         {
-            base.Incluir(Comissao.GerarComissao(agendamento, context.Servico.FirstOrDefault(s => s.Id == agendamento.Servico.Id).Preco));
+            if (!context.Comissao.Any(c => c.AgendamentoId == agendamento.Id))
+            {
+                base.Incluir(Comissao.GerarComissao(
+                    context.Servico.FirstOrDefault(s => s.Id == agendamento.ServicoId).Preco,
+                    context.ContratoTrabalho.FirstOrDefault(ct => ct.Id == agendamento.ColaboradorId).PorcentagemComissao,
+                    agendamento.Id));
+            }
+            else
+            {
+                throw new ArgumentException("Comissão já foi gerada para esse agendamento.");
+            }
         }
     }
 }

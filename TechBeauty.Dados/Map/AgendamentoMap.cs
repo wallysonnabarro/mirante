@@ -33,7 +33,6 @@ namespace TechBeauty.Dados.Map
             builder.HasMany(a => a.LogAgendamentos) // 1 agendamento para vários logs (1,n)
                 .WithOne(l => l.Agendamento) // 1 log para 1 agendamento (1,1)
                 .IsRequired();
-
         }
     }
 }

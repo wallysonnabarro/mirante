@@ -20,11 +20,8 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                var servico = new ServicoRepositorio().Selecionar(dto.ServicoID);
-                var colaborador = new ColaboradorRepositorio().Selecionar(dto.ColaboradorID);
-                var os = new OrdemServicoRepositorio().Selecionar(dto.OrdemSID);
-                new AgendamentoRepositorio().Incluir(Agendamento.Criar(dto, servico, colaborador, os));
-                return Ok();
+                int id = new AgendamentoRepositorio().Agendar(Agendamento.Criar(dto));
+                return CreatedAtAction(nameof(SelecionarPorID), new { Id = id }, dto);
             }
             catch (ArgumentException e)
             {
@@ -43,7 +40,7 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                return Ok(new AgendamentoRepositorio().Selecionar(id));
+                return Ok(AgendamentoReadDTO.Selecionar(new AgendamentoRepositorio().Selecionar(id)));
             }
             catch (Exception e)
             {
@@ -51,7 +48,7 @@ namespace TechBeauty.Principal.Controllers
             }
         }
 
-        [HttpGet("concluirAgendamento")]
+        [HttpGet("concluirAgendamento/{id}")]
         public IActionResult ConcluirAgendamento(int id)
         {
             try
@@ -70,9 +67,21 @@ namespace TechBeauty.Principal.Controllers
         {
             try
             {
-                var colaborador = new ColaboradorRepositorio().Selecionar(dto.ColaboradorID);
-                var os = new OrdemServicoRepositorio().Selecionar(dto.OrdemSID);
-                new AgendamentoRepositorio().Alterar(Agendamento.RemarcarAgendamento(dto, colaborador, os, id));
+                new AgendamentoRepositorio().Alterar(Agendamento.RemarcarAgendamento(dto, id));
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
+        }
+
+        [HttpPut("iniciar/{id}")]
+        public IActionResult IniciarioServicoAgendado(int id)
+        {
+            try
+            {
+                new AgendamentoRepositorio().Iniciar(id);
                 return Ok();
             }
             catch (Exception e)

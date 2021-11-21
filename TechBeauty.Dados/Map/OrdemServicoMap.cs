@@ -17,12 +17,10 @@ namespace TechBeauty.Dados.Map
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.PrecoTotal)
-           .HasColumnType("decimal(6,2)")
-           .IsRequired();
+           .HasColumnType("decimal(6,2)");
 
             builder.Property(x => x.DuracaoTotal)
-               .HasColumnType("int")
-               .IsRequired();
+               .HasColumnType("int");
 
             builder.Property(x => x.Status)
                .HasColumnType("int")

@@ -32,18 +32,16 @@ namespace TechBeauty.Dominio.Dtos
         public static List<EscalaReadDTO> Converter(List<Colaborador> colaboradors, List<Escala> escalas)
         {
             List<EscalaReadDTO> escalaReads = new();
-            foreach (var item in escalas)
+            for (int i = 0; i < escalas.Count; i++)
             {
-                foreach (var col in colaboradors)
-                {
-                    EscalaReadDTO dTO = new();
-                    dTO.DataHoraEntrada = item.DataHoraEntrada;
-                    dTO.DataHoraSaida = item.DataHoraSaida;
-                    dTO.Id = item.Id;
-                    dTO.ColaboradorId = item.ColaboradorId;
-                    dTO.Colaborador = col.Nome;
-                    escalaReads.Add(dTO);
-                }
+                Escala escala = escalas[i];
+                EscalaReadDTO dTO = new();
+                dTO.Id = escala.Id;
+                dTO.DataHoraEntrada = escala.DataHoraEntrada;
+                dTO.DataHoraSaida = escala.DataHoraSaida;
+                dTO.ColaboradorId = escala.ColaboradorId;
+                dTO.Colaborador = colaboradors[i].Nome;
+                escalaReads.Add(dTO);
             }
             return escalaReads;
         }

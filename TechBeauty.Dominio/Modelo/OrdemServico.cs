@@ -9,22 +9,21 @@ namespace TechBeauty.Dominio.Modelo
     public class OrdemServico : IEntity
     {
         public int Id { get; private set; }
+        public int ClienteId { get; private set; }
         public decimal PrecoTotal { get; private set; }
         public int DuracaoTotal { get; private set; }
-        public List<Agendamento> Agendamento { get; private set; } //navegação
-        public List<Pagamento> Pagamentos { get; set; }//navegação
-
-        public Cliente Cliente { get; private set; }
         public StatusOS Status { get; private set; }
+        public DateTime DataCriacao { get; private set; }
+        public List<Agendamento> Agendamento { get; private set; } //navegação
+        public List<Pagamento> Pagamentos { get; private set; }//navegação
+        public Cliente Cliente { get; private set; }//navegação
 
-        public static OrdemServico Criar(OrdemServicoDTO osDTO, Cliente cliente)
+        public static OrdemServico Criar(OrdemServicoDTO osDTO)
         {
             OrdemServico ordemServico = new();
-            
-            ordemServico.PrecoTotal = osDTO.PrecoTotal;
-            ordemServico.DuracaoTotal = osDTO.DuracaoTotal;
-            ordemServico.Cliente = cliente;
+            ordemServico.ClienteId = osDTO.ClienteID;
             ordemServico.Status = StatusOS.Pendente;
+            ordemServico.DataCriacao = DateTime.Now;
             return ordemServico;
         }
         public void Alterar(OrdemServico ordemServico)
@@ -35,16 +34,16 @@ namespace TechBeauty.Dominio.Modelo
             Status = ordemServico.Status;
         }
 
-        public void AlterarPrecoTotal(decimal precoTotal)
+        public void AlterarPrecoTotalDuracao(Servico servico)
         {
-            PrecoTotal += precoTotal;
+            PrecoTotal += servico.Preco;
+            DuracaoTotal += servico.DuracaoEmMin;
         }
 
         public static OrdemServico Alterar(OrdemServicoDTO os, int id)
         {
             throw new NotImplementedException();
         }
-
 
         public void AlterarStatus(int id)
         {

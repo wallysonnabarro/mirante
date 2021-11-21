@@ -19,6 +19,5 @@ namespace TechBeauty.Dominio.Dtos
         public int OrdemSID { get; set; }
         public int ColaboradorID { get; set; }
         public int ServicoID { get; set; }
-
     }
 }

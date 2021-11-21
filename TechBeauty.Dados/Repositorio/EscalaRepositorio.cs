@@ -21,7 +21,7 @@ namespace TechBeauty.Dados.Repositorio
                 var innerJoin = (from c in context.Colaborador
                                  join s in context.Escala on c.Id equals s.ColaboradorId
                                  where s.ColaboradorId == colaboradorId && s.DataHoraEntrada >= DateTime.Now
-                                 orderby c.Id
+                                 orderby s.Id
                                  select new { s, c }).Take(take).Skip(skip).ToList();
 
                 List<Colaborador> colaboradors = new();
@@ -50,7 +50,7 @@ namespace TechBeauty.Dados.Repositorio
             var innerJoin = (from c in context.Colaborador
                              join s in context.Escala on c.Id equals s.ColaboradorId
                              where s.DataHoraEntrada >= DateTime.Now
-                             orderby c.Id
+                             orderby s.Id
                              select new { s, c }).Take(take).Skip(skip).ToList();
 
             List<Colaborador> colaboradors = new();

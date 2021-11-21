@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TechBeauty.Dados;
 
 namespace TechBeauty.Dados.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20211119194840_OrdemServicoDataCriacao")]
+    partial class OrdemServicoDataCriacao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -322,7 +324,7 @@ namespace TechBeauty.Dados.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AgendamentoId")
+                    b.Property<int?>("AgendamentoId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Valor")
@@ -330,8 +332,7 @@ namespace TechBeauty.Dados.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AgendamentoId")
-                        .IsUnique();
+                    b.HasIndex("AgendamentoId");
 
                     b.ToTable("Comissao");
                 });
@@ -413,7 +414,7 @@ namespace TechBeauty.Dados.Migrations
                     b.Property<int>("ClienteId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("DataCriacao")
+                    b.Property<DateTime>("DataCriação")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("DuracaoTotal")
@@ -740,10 +741,8 @@ namespace TechBeauty.Dados.Migrations
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Financeiro.Comissao", b =>
                 {
                     b.HasOne("TechBeauty.Dominio.Modelo.Agendamento", "Agendamento")
-                        .WithOne("Comissao")
-                        .HasForeignKey("TechBeauty.Dominio.Modelo.Financeiro.Comissao", "AgendamentoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("AgendamentoId");
 
                     b.Navigation("Agendamento");
                 });
@@ -864,8 +863,6 @@ namespace TechBeauty.Dados.Migrations
 
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Agendamento", b =>
                 {
-                    b.Navigation("Comissao");
-
                     b.Navigation("LogAgendamentos");
                 });
 

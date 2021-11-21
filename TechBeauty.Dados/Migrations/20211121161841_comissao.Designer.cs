@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TechBeauty.Dados;
 
 namespace TechBeauty.Dados.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20211121161841_comissao")]
+    partial class comissao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -330,8 +332,7 @@ namespace TechBeauty.Dados.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AgendamentoId")
-                        .IsUnique();
+                    b.HasIndex("AgendamentoId");
 
                     b.ToTable("Comissao");
                 });
@@ -740,8 +741,8 @@ namespace TechBeauty.Dados.Migrations
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Financeiro.Comissao", b =>
                 {
                     b.HasOne("TechBeauty.Dominio.Modelo.Agendamento", "Agendamento")
-                        .WithOne("Comissao")
-                        .HasForeignKey("TechBeauty.Dominio.Modelo.Financeiro.Comissao", "AgendamentoId")
+                        .WithMany()
+                        .HasForeignKey("AgendamentoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -864,8 +865,6 @@ namespace TechBeauty.Dados.Migrations
 
             modelBuilder.Entity("TechBeauty.Dominio.Modelo.Agendamento", b =>
                 {
-                    b.Navigation("Comissao");
-
                     b.Navigation("LogAgendamentos");
                 });
 

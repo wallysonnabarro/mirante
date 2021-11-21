@@ -31,5 +31,15 @@ namespace TechBeauty.Dominio.Dtos
             return dto;
         }
 
+        public static AgendamentoReadDTO Selecionar(Agendamento agendamento)
+        {
+            AgendamentoReadDTO agendamentoRead = new();
+            agendamentoRead.Id = agendamento.Id;
+            agendamentoRead.PessoaAtendida = agendamento.PessoaAtendida;
+            agendamentoRead.DataHoraCriacao = agendamento.DataHoraCriacao;
+            agendamentoRead.DataHoraInicio = agendamento.DataHoraInicio;
+            agendamentoRead.DataHoraTermino = agendamento.DataHoraTermino;
+            return agendamentoRead;
+        }
     }
 }

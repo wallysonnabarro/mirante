@@ -7,20 +7,19 @@ using TechBeauty.Dominio.Modelo.Financeiro;
 
 namespace TechBeauty.Dominio.Dtos
 {
-    class ComissaoReadDTO
+    public class ComissaoReadDTO
     {
         public int Id { get; private set; }
         public decimal Valor { get; private set; }
 
-        public static object Paginar(List<Comissao> comissoes)
+        public static List<ComissaoReadDTO> Paginar(List<Comissao> comissoes)
         {
             List<ComissaoReadDTO> dto = new();
             foreach (var item in comissoes)
             {
                 ComissaoReadDTO comissaoRead = new();
                 comissaoRead.Id = item.Id;
-                comissaoRead.Valor = item.Valor;
-                
+                comissaoRead.Valor = item.Valor;                
                 dto.Add(comissaoRead);
             }
             return dto;
